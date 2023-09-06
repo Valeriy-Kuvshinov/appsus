@@ -32,7 +32,7 @@ export function MailPreview({ email }) {
 
     <div className="innerBox">
       <button onClick={changeStarSelection}>
-        {console.log(email.isStar)}
+        {/* {console.log(email.isStar)} */}
         {(email.isStar === true) ?
           <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}
@@ -41,11 +41,18 @@ export function MailPreview({ email }) {
     </div>
     <p>{email.subject}</p>
     <p>{email.sentAt}</p>
+    <div>
     <button onClick={toNote}>
       <i className="fa-regular fa-note-sticky"></i>
     </button>
     <button onClick={deleteMail}>
       <i className="fa-solid fa-trash"></i>
     </button>
+    <button>
+    <Link to={`/mail/details/${email.id}`}>
+        <i className="fa-solid fa-expand"></i>
+    </Link>
+    </button>
+    </div>
   </section>
 }

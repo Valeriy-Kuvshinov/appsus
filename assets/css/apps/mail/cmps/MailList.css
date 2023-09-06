@@ -2,6 +2,7 @@
  .mail{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border:1px solid black;
  }
  .mail-box{
@@ -9,7 +10,12 @@
  }
  .mails{
    width: 100%;
+   text-align: center;
  }
+ul{
+  list-style-type: none;
+  padding: 10px;
+}
  .innerBox{
     display: flex;
  }

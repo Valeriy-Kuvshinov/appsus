@@ -20,13 +20,11 @@ export function MailList() {
     }
     if(emails.length===0)return
         return <section className="mails">
-                <Link to={`/mail/compose`}>compose</Link>
-                <ul>
+                <button><Link to={`/mail/compose`}>compose</Link></button>
+                <ul className="mail-line">
                   {emails.map(mail=>
                   <li key={mail.id} className="mail-box">
                    <MailPreview email={mail}/>
-                   {/* <button onClick={checkMail} id={mail.id}>check</button> */}
-                   {/* <Link to={`/mail/details/${mail.id}`}>t</Link> */}
                   </li>
                  )}
                 </ul>
