@@ -4,6 +4,9 @@ import { noteService } from "../services/note.service.js"
 const { useState, useEffect } = React
 
 export function NoteList({ notes, setNotes }) {
+    const pinnedNotes = notes.filter(note => note.isPinned)
+    const otherNotes = notes.filter(note => !note.isPinned)
+
     const handleDelete = async (noteId) => {
         await noteService.remove(noteId);
         setNotes(notes.filter(note => note.id !== noteId))
@@ -28,10 +31,19 @@ export function NoteList({ notes, setNotes }) {
     }
 
     return (
-        <div className='notes-list'>
-            {notes.map(note => (
-                <NotePreview key={note.id} note={note} onDelete={handleDelete} onSave={handleSave} onDuplicate={handleDuplicate} />
-            ))}
+        <div className='notes-container'>
+            <h3>PINNED</h3>
+            <div className='notes-list'>
+                {pinnedNotes.map(note => (
+                    <NotePreview key={note.id} note={note} onDelete={handleDelete} onSave={handleSave} onDuplicate={handleDuplicate} />
+                ))}
+            </div>
+            <h3>OTHERS</h3>
+            <div className='notes-list'>
+                {otherNotes.map(note => (
+                    <NotePreview key={note.id} note={note} onDelete={handleDelete} onSave={handleSave} onDuplicate={handleDuplicate} />
+                ))}
+            </div>
         </div>
     )
 }

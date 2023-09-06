@@ -1,25 +1,48 @@
 header {
-    background: lightcyan;
-    /* border-bottom: 2px solid white; */
+    background: #f4f4f4;
+    color: #333;
+    font-family: 'Roboto', sans-serif;
 }
 
 .app-header {
     display: flex;
     justify-content: space-between;
-    padding: 10px;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1.5px solid #a8a8a8;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
     height: 50px;
+    border-radius: 10px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 }
 
 nav a {
-    margin: .5em;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    border-radius: 10px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
 
-nav a:active {
-    color: purple;
+nav a:hover {
+    background-color: #e0e0e0;
+    color: #333;
 }
 
-nav a.active {
-    color: darkblue;
-    font-weight: bold;
-    text-decoration: overline;
+nav a:active,
+nav a.active-link {
+    background-color: #ccc;
+    color: #333;
 }

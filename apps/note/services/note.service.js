@@ -10,7 +10,8 @@ export const noteService = {
     remove,
     save,
     createNote,
-    getEmptyNote
+    getEmptyNote,
+    togglePin,
 }
 
 function query(filterBy = {}) {
@@ -42,6 +43,13 @@ function remove(noteId) {
 function save(note) {
     if (note.id) return asyncStorageService.put(NOTE_KEY, note)
     else return asyncStorageService.post(NOTE_KEY, note)
+}
+
+function togglePin(noteId) {
+    return get(noteId).then(note => {
+        note.isPinned = !note.isPinned
+        return save(note)
+    })
 }
 
 function createNote(type, info, isPinned = false, style = {}) {
@@ -79,7 +87,7 @@ function _createNotes() {
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: true,
-                style: { backgroundColor: '#00d' },
+                style: { backgroundColor: '#FFFFFF' },
                 info: {
                     title: 'Yes Fullstack!',
                     txt: 'Fullstack Me Baby!'
@@ -94,7 +102,7 @@ function _createNotes() {
                     title: 'Bobi and Me'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#FFFFFF'
                 }
             },
             {
@@ -118,7 +126,7 @@ function _createNotes() {
                     title: 'Cat Video'
                 },
                 style: {
-                    backgroundColor: '#00d'
+                    backgroundColor: '#FFFFFF'
                 }
             }
         ]

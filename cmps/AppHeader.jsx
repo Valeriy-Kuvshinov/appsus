@@ -1,16 +1,37 @@
 const { Link, NavLink } = ReactRouterDOM
+const { useState, useEffect } = React
 
 export function AppHeader() {
+    const [currentImage, setCurrentImage] = useState('imgs/appsusimposter.png')
 
-    return <header className="app-header">
-        <Link to="/">
-            <img src="imgs/appsusimposter.png"/>
-        </Link>
-        <nav>
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/about">About</NavLink>
-            <NavLink to="/mail">Mail</NavLink>
-            <NavLink to="/note">Note</NavLink>
-        </nav>
-    </header>
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentImage(prevImage => {
+                return prevImage === 'imgs/appsusimposter.png' ? 'imgs/susimposter.png' : 'imgs/appsusimposter.png'
+            })
+        }, 10000)
+
+        return () => {
+            clearInterval(timer)
+        }
+    }, [])
+
+    const setActiveNavLink = (path) => {
+        return window.location.hash.includes(path) ? 'active' : ''
+    }
+
+    return (
+        <header className="app-header">
+            <Link to="/" className="logo-container">
+                <img src={currentImage} alt="App logo" className="logo" />
+            </Link>
+            <nav className="nav-links">
+                <a className={setActiveNavLink("/")} href="#/">Home</a>
+                <a className={setActiveNavLink("/about")} href="#/about">About</a>
+                <a className={setActiveNavLink("/mail")} href="#/mail">Mail</a>
+                <a className={setActiveNavLink("/note")} href="#/note">Notes</a>
+                <a className={setActiveNavLink("/note")} href="#/note">Books</a>
+            </nav>
+        </header>
+    )
 }

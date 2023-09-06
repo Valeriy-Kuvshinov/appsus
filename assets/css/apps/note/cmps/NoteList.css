@@ -1,7 +1,7 @@
 .note-page {
     background-color: #f1f3f4;
     font-family: 'Roboto', sans-serif;
-    padding: 0 20px;
+    padding: 10px;
     text-align: center;
 }
 
@@ -18,8 +18,8 @@
     margin: 20px auto;
     background: #fff;
     padding: 10px;
-    border-radius: 10px;
-    max-width: 800px;
+    border-radius: 15px;
+    max-width: 400px;
 }
 
 .note-filter input,
@@ -29,6 +29,15 @@
     background: transparent;
     outline: none;
     font-size: 18px;
+}
+
+.notes-container h3 {
+    text-align: left;
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+    color: #686767;
+    font-size: .8875rem;
+    margin-left: 3vw;
 }
 
 .notes-list {
@@ -59,14 +68,13 @@
 }
 
 .note-card button {
-    background: #fff;
-    border: none;
-    cursor: pointer;
     margin-right: 8px;
     color: #202124;
     font-size: 18px;
+    background: transparent;
     transition: background 0.3s;
-    padding: 8px;
+    padding: 4px;
+    border-radius: 50%;
 }
 
 .note-card button:hover {
@@ -81,14 +89,14 @@
     line-height: 1.5;
 }
 
-.note-card img{
+.note-card img {
     width: 100%;
     height: fit-content;
 }
 
 .note-card .actions {
     display: flex;
-    gap: 8px;
+    justify-content: space-between;
 }
 
 .note-creation {
@@ -126,10 +134,8 @@
 }
 
 .note-creation button {
-    cursor: pointer;
     background-color: #007bff;
     color: #fff;
-    border: none;
 }
 
 .note-creation button:hover {
@@ -143,20 +149,52 @@
     margin: 5px 0 0;
 }
 
+.color-picker-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.color-picker-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 10px;
+}
+
+.color-picker-dropdown:hover .color-picker-content {
+    display: grid;
+    border-radius: 15px;
+}
+
+.color-box {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.pinned {
+    color: gold;
+}
+
 /* Screen width adaptions */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1200px) {
     .notes-list {
         column-count: 3;
     }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     .notes-list {
         column-count: 2;
     }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 450px) {
     .notes-list {
         column-count: 1;
     }
