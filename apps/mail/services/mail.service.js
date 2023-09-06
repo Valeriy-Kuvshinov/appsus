@@ -1,9 +1,10 @@
-import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
+import {storageService} from '../../../services/storage.service.js'
 
 const EMAIL_KEY = 'emailDB'
 var gFilterBy = {title: '', listPrice: 0}
-// _createEmails()
+_createEmails()
 
 export const EmailService = {
     query,
@@ -16,10 +17,8 @@ export const EmailService = {
     setFilterBy,
 }
 
-// addGoogleEmail()
-
 function query() {
-    return storageService.query(EMAIL_KEY)
+    return asyncStorageService.query(EMAIL_KEY)
         .then(emails => {
             // if (gFilterBy.txt) {
             //     const regex = new RegExp(gFilterBy.txt, 'i')
@@ -53,8 +52,8 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(title = '',description,pageCount, publishedDate=new Date(), listPrice={amount:0,isOnSale:true},imageURL='') {
-    return { id: '', title, description, pageCount, publishedDate, listPrice, imageURL}
+function getEmptyEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='',isStar=false) {
+    return { id: '', subject, body, isRead, sentAt, removedAt, from, to, isStar}
 }
 
 function getFilterBy() {
@@ -77,18 +76,18 @@ function getNextEmailId(emailId) {
 }
 
 function _createEmails() {
-    let emails = utilService.loadFromStorage(EMAIL_KEY)
+    console.log('email created')
+    let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createEmail('breadland',' ',200, 2020, {amount:300,isOnSale:true},''))
-        emails.push(_createEmail('james and the wheat field',' ',50, 1990, {amount:120,isOnSale:false},''))
-        emails.push(_createEmail('Roei and the bread bakery',' ',1000, 2015, {amount:40,isOnSale:true},''))
-        utilService.saveToStorage(EMAIL_KEY, emails)
+        emails.push(_createEmail('bread','bread is good for fiber'
+        ,false, Date.now(), null,'bread@bread.com','user@pegasus.com',false))
+        storageService.saveToStorage(EMAIL_KEY, emails)
     }
 }
 
-function _createEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='') {
-    const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from,to)
+function _createEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='', isStar=false) {
+    const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from, to, isStar)
     email.id = utilService.makeId()
     return email
 }
