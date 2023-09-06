@@ -58,11 +58,15 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     return (
         <div className='note-card'>
             <h2>{note.info.title || note.info.txt}</h2>
-            {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info)}
-            {!isEditing && <button onClick={() => onDelete(note.id)}><i class="fa-solid fa-rectangle-xmark"></i></button>}
-            {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
-            {isEditing && <button onClick={() => setIsEditing(false)}>Save</button>}
-            {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
+            <div className="content">
+                {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info)}
+            </div>
+            <div className="actions">
+                {!isEditing && <button onClick={() => onDelete(note.id)}><i className="fa-solid fa-rectangle-xmark"></i></button>}
+                {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
+                {isEditing && <button onClick={() => setIsEditing(false)}>Save</button>}
+                {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
+            </div>
         </div>
     )
 }
