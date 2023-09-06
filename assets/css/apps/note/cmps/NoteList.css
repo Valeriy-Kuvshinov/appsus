@@ -103,6 +103,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    margin-bottom: 2vh;
 }
 
 .note-creation select,

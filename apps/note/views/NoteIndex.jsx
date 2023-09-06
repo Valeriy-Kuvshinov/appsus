@@ -15,16 +15,16 @@ export function NoteIndex() {
         loadNotes()
     }, [searchTerm, filterType])
 
+
     const loadNotes = async () => {
-        if (!notes.length) {
-            const fetchedNotes = await noteService.query({ txt: searchTerm, type: filterType })
-            setNotes(fetchedNotes)
-        }
+        const filterBy = { txt: searchTerm, type: filterType }
+        const fetchedNotes = await noteService.query(filterBy)
+        setNotes(fetchedNotes)
     }
 
     const handleNoteAdded = (newNote) => {
-        setNotes([...notes, newNote]);
-    };
+        setNotes([...notes, newNote])
+    }
 
     return (
         <div className='note-page'>
