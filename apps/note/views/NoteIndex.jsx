@@ -25,7 +25,7 @@ export function NoteIndex() {
     }
 
     return (
-        <div>
+        <div className = 'note-page'>
             <h1>MissKeep</h1>
 
             <div>
@@ -39,7 +39,7 @@ export function NoteIndex() {
 
             <main>
                 <AddNote onNoteAdded={handleNoteAdded} />
-                <NoteList notes={notes} />
+                <NoteList notes={notes} loadNotes={loadNotes} />
             </main>
         </div>
     )
