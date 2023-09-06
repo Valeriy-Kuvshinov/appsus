@@ -16,16 +16,18 @@ export function NoteIndex() {
     }, [searchTerm, filterType])
 
     const loadNotes = async () => {
-        const fetchedNotes = await noteService.query({ txt: searchTerm, type: filterType })
-        setNotes(fetchedNotes)
+        if (!notes.length) {
+            const fetchedNotes = await noteService.query({ txt: searchTerm, type: filterType })
+            setNotes(fetchedNotes)
+        }
     }
 
-    const handleNoteAdded = () => {
-        loadNotes()
-    }
+    const handleNoteAdded = (newNote) => {
+        setNotes([...notes, newNote]);
+    };
 
     return (
-        <div className = 'note-page'>
+        <div className='note-page'>
             <h1>MissKeep</h1>
 
             <div>
@@ -39,7 +41,7 @@ export function NoteIndex() {
 
             <main>
                 <AddNote onNoteAdded={handleNoteAdded} />
-                <NoteList notes={notes} loadNotes={loadNotes} />
+                <NoteList notes={notes} setNotes={setNotes} />
             </main>
         </div>
     )

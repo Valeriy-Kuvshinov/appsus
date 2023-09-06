@@ -81,6 +81,11 @@
     line-height: 1.5;
 }
 
+.note-card img{
+    width: 100%;
+    height: fit-content;
+}
+
 .note-card .actions {
     display: flex;
     gap: 8px;

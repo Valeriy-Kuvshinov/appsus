@@ -22,36 +22,37 @@ export const AddNote = ({ onNoteAdded }) => {
         })
 
         if (!isValid) {
-            setErrorMessage(errorMessage)
-            return
+            setErrorMessage(errorMessage);
+            return;
         }
 
-        let info = {}
+        let info = {};
 
         if (noteType === 'NoteTxt') {
             info = {
                 title: newNoteTitle,
                 txt: newNoteText,
-            }
+            };
         } else if (noteType === 'NoteImg' || noteType === 'NoteVideo') {
             info = {
                 title: newNoteTitle,
                 url: mediaLink,
-            }
+            };
         } else if (noteType === 'NoteTodos') {
-            const todoItems = todos.split(',').map((txt) => ({ txt: txt.trim(), doneAt: null }))
+            const todoItems = todos.split(',').map((txt) => ({ txt: txt.trim(), doneAt: null }));
             info = {
                 title: newNoteTitle,
                 todos: todoItems,
-            }
+            };
         }
 
-        await noteService.createNote(noteType, info)
-        setNewNoteTitle('')
-        setNewNoteText('')
-        setMediaLink('')
-        setTodos('')
-        onNoteAdded()
+        const newNote = await noteService.createNote(noteType, info);
+
+        setNewNoteTitle('');
+        setNewNoteText('');
+        setMediaLink('');
+        setTodos('');
+        onNoteAdded(newNote);
     }
 
     return (

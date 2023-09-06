@@ -7,8 +7,7 @@
 
 @import './basics/base.css';
 @import './basics/helpers.css';
-@import './basics/layout.css';
-
+@import './setup/fonts.css';
 /* Views */
 @import './views/home.css';
 
