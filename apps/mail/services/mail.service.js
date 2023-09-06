@@ -4,7 +4,7 @@ import { storageService } from '../../../services/storage.service.js'
 import { noteService } from '../../note/services/note.service.js'
 
 const EMAIL_KEY = 'emailDB'
-var gFilterBy = { title: '', listPrice: 0 }
+var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false}
 _createEmails()
 
 export const EmailService = {
@@ -58,12 +58,15 @@ function getEmptyEmail(subject, body, isRead = false, sentAt = null, removedAt =
 }
 
 function getFilterBy() {
-    return gFilterBy.listPrice
+    // return gFilterBy.listPrice
 }
 
-function setFilterBy(filterBy = {}) {
+function setFilterBy(filterType = {}) {
     // if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-    if (filterBy.listPrice !== undefined) gFilterBy.listPrice = filterBy.listPrice
+    (filterType.isStar) ? gFilterBy.isStar : !gFilterBy.isStar
+    (filterType.isRead) ? gFilterBy.isRead : !gFilterBy.isRead
+    (filterType.isTrash) ? gFilterBy.isTrash : !gFilterBy.isTrash
+    (filterType.isSent) ? gFilterBy.isSent : !gFilterBy.isSent
     return gFilterBy
 }
 

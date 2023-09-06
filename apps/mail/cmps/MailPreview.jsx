@@ -24,7 +24,6 @@ export function MailPreview({ email }) {
       })
   }
   function deleteMail() {
-    console.log(email.id)
     EmailService.remove(email.id)
 
   }
@@ -38,8 +37,8 @@ export function MailPreview({ email }) {
           <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}
       </button>
-      <button>X</button>
-      <button>X</button>
+      <button> X </button>
+      <button> X </button>
       <p>{email.from}</p>
     </div>
     <p>{email.subject}</p>
