@@ -31,6 +31,6 @@ export function MailPreview({email}){
             </div>
               <p>{email.subject}</p>
               <p>{email.sentAt}</p>
-              <Link to={`/mail/details/${email.id}`}>S</Link>
+              {/* <Link to={`/mail/details/${email.id}`}>S</Link> */}
            </section>
 }

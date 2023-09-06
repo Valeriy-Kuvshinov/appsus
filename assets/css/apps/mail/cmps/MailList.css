@@ -2,6 +2,10 @@
  .mail{
     display: flex;
     justify-content: space-between;
+    border:1px solid black;
+ }
+ .mail-box{
+   padding: 10px;
  }
  .innerBox{
     display: flex;
