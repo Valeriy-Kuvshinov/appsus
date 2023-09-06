@@ -2,8 +2,10 @@ import { utilService } from './util.service.js'
 import { storageService } from './async-storage.service.js'
 
 const EMAIL_KEY = 'emailDB'
+const BREAD_KEY = 'breadDB'
 var gFilterBy = {title: '', listPrice: 0}
-// _createEmails()
+_createEmails()
+const url='https://www.googleapis.com/emails/v1/volumes?printType=emails&q=effective%2520javascript'
 
 export const EmailService = {
     query,
@@ -14,6 +16,7 @@ export const EmailService = {
     getNextEmailId,
     getFilterBy,
     setFilterBy,
+    addGoogleEmail
 }
 
 // addGoogleEmail()
@@ -25,9 +28,9 @@ function query() {
             //     const regex = new RegExp(gFilterBy.txt, 'i')
             //     emails = emails.filter(email => regex.test(email.title))
             // }
-            // if (gFilterBy.listPrice) {
-            //     emails = emails.filter(email => email.listPrice.amount >= gFilterBy.listPrice)
-            // }  
+            if (gFilterBy.listPrice) {
+                emails = emails.filter(email => email.listPrice.amount >= gFilterBy.listPrice)
+            }  
             return emails
         })
 }
@@ -36,7 +39,7 @@ function get(emailId) {
     return storageService.get(EMAIL_KEY, emailId)
     .then((email) => 
     {
-        // email = _setNextPrevEmailId(email)
+        email = _setNextPrevEmailId(email)
         return email
     })
 }
@@ -51,6 +54,10 @@ function save(email) {
     } else {
         return storageService.post(EMAIL_KEY, email)
     }
+}
+
+function addReview(emailId,review){
+    storageService.put(EMAIL_KEY, email)
 }
 
 function getEmptyEmail(title = '',description,pageCount, publishedDate=new Date(), listPrice={amount:0,isOnSale:true},imageURL='') {
@@ -76,6 +83,11 @@ function getNextEmailId(emailId) {
         })
 }
 
+function addGoogleEmail(emailName='bread'){
+    const url2=`https://www.googleapis.com/emails/v1/volumes?printType=emails&q=${emailName}`
+    return axios.get(url2).then((res)=>{return (res.data.items).splice(0,5)})
+}
+
 function _createEmails() {
     let emails = utilService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
@@ -87,8 +99,13 @@ function _createEmails() {
     }
 }
 
-function _createEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='') {
-    const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from,to)
+function _createEmail(title, description,pageCount,publishedDate=Date.now(), listPrice = {amount: 250,isOnSale: false},imageURL) {
+    const email = getEmptyEmail(title, description, pageCount, publishedDate, listPrice, imageURL)
+    email.id = utilService.makeId()
+    return email
+}
+
+function _addId(email){
     email.id = utilService.makeId()
     return email
 }
