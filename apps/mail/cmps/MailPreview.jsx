@@ -1,6 +1,8 @@
 
 // const { useState , useEffect} = React
 
+import { EmailService } from "../services/mail.service.js"
+
 const { useParams, useNavigate, Link } = ReactRouterDOM
 
 export function MailPreview({email}){
@@ -16,13 +18,21 @@ export function MailPreview({email}){
         // }
         // getEmails(emails)
     }
+    function toNote(){
+        console.log('note')
+    }
+    function deleteMail(){
+        console.log(email.id)
+        EmailService.remove(email.id)
+
+    }
     return <section className="mail">
             
             <div className="innerBox">
               <button onClick={changeStarSelection}>
-                {/* {console.log(emails.isStar)} */}
+                {console.log(email.isStar)}
                 {(email.isStar===true)?
-                <i className="fa-solid fa-star"></i>:
+                <i className="fa-solid fa-star starred"></i>:
                 <i className="fa-regular fa-star"></i>}
               </button>
               <button>X</button>
@@ -31,6 +41,11 @@ export function MailPreview({email}){
             </div>
               <p>{email.subject}</p>
               <p>{email.sentAt}</p>
-              {/* <Link to={`/mail/details/${email.id}`}>S</Link> */}
+              <button onClick={toNote}>
+              <i className="fa-regular fa-note-sticky"></i>
+              </button>
+              <button onClick={deleteMail}>
+              <i className="fa-solid fa-trash"></i>
+              </button>
            </section>
 }

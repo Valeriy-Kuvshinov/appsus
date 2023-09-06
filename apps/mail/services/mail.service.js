@@ -41,14 +41,14 @@ function get(emailId) {
 }
 
 function remove(emailId) {
-    return storageService.remove(EMAIL_KEY, emailId)
+    return asyncStorageService.remove(EMAIL_KEY, emailId)
 }
 
 function save(email) {
     if (email.id) {
-        return storageService.put(EMAIL_KEY, email)
+        return asyncStorageService.put(EMAIL_KEY, email)
     } else {
-        return storageService.post(EMAIL_KEY, email)
+        return asyncStorageService.post(EMAIL_KEY, email)
     }
 }
 
@@ -83,7 +83,7 @@ function _createEmails() {
         emails.push(_createEmail('bread','bread is good for fiber'
         ,false, Date.now(), null,'bread@bread.com','user@pegasus.com',false))
         emails.push(_createEmail('bready','bread is great'
-        ,false, Date.now(), null,'breadtistic@bread123.com','user@pegasus.com',false))
+        ,false, Date.now(), null,'breadtistic@bread123.com','user@pegasus.com',true))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
 }

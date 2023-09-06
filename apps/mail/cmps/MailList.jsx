@@ -1,6 +1,6 @@
 import { EmailService } from "../services/mail.service.js"
 import { MailPreview } from "./MailPreview.jsx"
-import { MailDetails } from "./MailDetails.jsx"
+import { EmailCompose } from "./EmailCompose.jsx"
 
 
 
@@ -28,10 +28,11 @@ export function MailList() {
                   <li key={mail.id} className="mail-box">
                    <MailPreview email={mail}/>
                    {/* <button onClick={checkMail} id={mail.id}>check</button> */}
-                   <Link to={`/mail/details/${mail.id}`}>t</Link>
+                   {/* <Link to={`/mail/details/${mail.id}`}>t</Link> */}
                   </li>
                  )}
                 </ul>
-                {/* <MailDetails mail={emails[0]}/> */}
+                <Link to={`/mail/compose`}>compose</Link>
+                {/* <EmailCompose mail={emails[0]}/> */}
               </section>
 }
