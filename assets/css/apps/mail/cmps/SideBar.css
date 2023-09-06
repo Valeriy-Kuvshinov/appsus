@@ -1,12 +1,17 @@
 .mailbox-chooser{
     display: flex;
     flex-direction: column;
-    width: 100px;
+    width: 256px;
     background-color: rgb(226, 226, 226);
 }
 .mailbox-chooser button{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     border: 0;
+    height: 32px;
     background-color: rgb(226, 226, 226);
+    padding: 2px;
 }
 .mailbox-chooser button:hover{
     background-color: rgb(177, 177, 177);
