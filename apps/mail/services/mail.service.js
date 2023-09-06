@@ -1,6 +1,7 @@
 import { utilService } from '../../../services/util.service.js'
 import { asyncStorageService } from '../../../services/async-storage.service.js'
-import {storageService} from '../../../services/storage.service.js'
+import { storageService } from '../../../services/storage.service.js'
+import { noteService } from '../../note/services/note.service.js'
 
 const EMAIL_KEY = 'emailDB'
 var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false}
@@ -15,6 +16,7 @@ export const EmailService = {
     getNextEmailId,
     getFilterBy,
     setFilterBy,
+    createNoteFromEmail,
 }
 
 function query() {
@@ -33,11 +35,10 @@ function query() {
 
 function get(emailId) {
     return asyncStorageService.get(EMAIL_KEY, emailId)
-    .then((email) => 
-    {
-        // email = _setNextPrevEmailId(email)
-        return email
-    })
+        .then((email) => {
+            // email = _setNextPrevEmailId(email)
+            return email
+        })
 }
 
 function remove(emailId) {
@@ -52,8 +53,8 @@ function save(email) {
     }
 }
 
-function getEmptyEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='',isStar=false) {
-    return { id: '', subject, body, isRead, sentAt, removedAt, from, to, isStar}
+function getEmptyEmail(subject, body, isRead = false, sentAt = null, removedAt = null, from = '', to = '', isStar = false) {
+    return { id: '', subject, body, isRead, sentAt, removedAt, from, to, isStar }
 }
 
 function getFilterBy() {
@@ -83,15 +84,26 @@ function _createEmails() {
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
-        emails.push(_createEmail('bread','bread is good for fiber'
-        ,false, Date.now(), null,'bread@bread.com','user@pegasus.com',false))
-        emails.push(_createEmail('bready','bread is great'
-        ,false, Date.now(), null,'breadtistic@bread123.com','user@pegasus.com',true))
+        emails.push(_createEmail('bread', 'bread is good for fiber'
+            , false, Date.now(), null, 'bread@bread.com', 'user@pegasus.com', false))
+        emails.push(_createEmail('bready', 'bread is great'
+            , false, Date.now(), null, 'breadtistic@bread123.com', 'user@pegasus.com', true))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
 }
 
-function _createEmail(subject, body,isRead=false, sentAt=null,removedAt=null,from='',to='', isStar=false) {
+function createNoteFromEmail(emailId) {
+    return get(emailId)
+        .then(email => {
+            const noteInfo = {
+                title: email.subject,
+                txt: email.body
+            }
+            return noteService.createNote('NoteTxt', noteInfo)
+        })
+}
+
+function _createEmail(subject, body, isRead = false, sentAt = null, removedAt = null, from = '', to = '', isStar = false) {
     const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from, to, isStar)
     email.id = utilService.makeId()
     return email
