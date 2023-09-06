@@ -18,11 +18,9 @@ export function MailList() {
     function checkMail(ev){
         console.log(ev.target.id)
     }
-
-    // console.log(emails)
     if(emails.length===0)return
-        return <section>
-                
+        return <section className="mails">
+                <Link to={`/mail/compose`}>compose</Link>
                 <ul>
                   {emails.map(mail=>
                   <li key={mail.id} className="mail-box">
@@ -32,7 +30,5 @@ export function MailList() {
                   </li>
                  )}
                 </ul>
-                <Link to={`/mail/compose`}>compose</Link>
-                {/* <EmailCompose mail={emails[0]}/> */}
               </section>
 }

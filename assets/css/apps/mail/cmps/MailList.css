@@ -7,6 +7,9 @@
  .mail-box{
    padding: 10px;
  }
+ .mails{
+   width: 100%;
+ }
  .innerBox{
     display: flex;
  }
