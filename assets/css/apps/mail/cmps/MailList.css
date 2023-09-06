@@ -1,28 +1,85 @@
  /* mail list */
- .mail{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border:1px solid black;
+ /* .mail {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border: 1px solid black;
  }
- .mail-box{
+
+ .mail-box {
    padding: 10px;
  }
- .mails{
+
+ .mails {
    width: 100%;
    text-align: center;
  }
-ul{
-  list-style-type: none;
-  padding: 10px;
-}
- .innerBox{
-    display: flex;
+
+ ul {
+   list-style-type: none;
+   padding: 10px;
  }
- .innerBox button{
-    background-color: white;
-    border: 0;
+
+ .innerBox {
+   display: flex;
  }
- .starred{
+
+ .innerBox button {
+   background-color: white;
+   border: 0;
+ }
+
+ .starred {
    color: goldenrod;
+ } */
+
+ .mail {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   border-bottom: 1px solid #ccc;
+   padding: 12px;
+   cursor: pointer;
+ }
+
+ .mail-box {
+   text-align: center;
+ }
+
+ .mails {
+   width: 100%;
+   padding: 15px;
+ }
+
+ ul {
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+ }
+
+ .innerBox {
+   display: flex;
+   align-items: center;
+ }
+
+ .innerBox button {
+   background-color: transparent;
+ }
+
+ .starred {
+   color: goldenrod;
+ }
+
+ .mail-buttons {
+   display: flex;
+ }
+
+ .mail-buttons button {
+   background-color: transparent;
+   padding: 10px;
+   border-radius: 10px;
+ }
+
+ .mail-buttons button:hover {
+   background-color: #f2f2f2;
  }

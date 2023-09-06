@@ -1,4 +1,5 @@
 .main-mail{
     display: flex;
     height: 100%;
+    box-sizing: border-box;
 }

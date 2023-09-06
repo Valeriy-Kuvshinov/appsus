@@ -2,22 +2,22 @@
 import { EmailService } from "../services/mail.service.js"
 
 
-export function EmailCompose(){
+export function EmailCompose() {
 
-    function updateTo(ev){
+    function updateTo(ev) {
         console.log(ev.target.value)
     }
-    function updateSubject(ev){
+    function updateSubject(ev) {
         console.log(ev.target.value)
     }
-    function updateBody(ev){
+    function updateBody(ev) {
         console.log(ev.target.value)
     }
-    function addMail(){
-        var to=document.getElementById('mailTo').value
-        var subject=document.getElementById('mailSubject').value
-        var body=document.getElementById('mailBody').value
-        const newEmail=EmailService.getEmptyEmail(subject,body,false,Date.now(),null,'user@pegasus.com',to,false)
+    function addMail() {
+        var to = document.getElementById('mailTo').value
+        var subject = document.getElementById('mailSubject').value
+        var body = document.getElementById('mailBody').value
+        const newEmail = EmailService.getEmptyEmail(subject, body, false, Date.now(), null, 'user@pegasus.com', to, false)
         EmailService.save(newEmail)
     }
     return <section className="mail-details">

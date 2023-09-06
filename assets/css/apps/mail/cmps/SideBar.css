@@ -1,22 +1,24 @@
-.mailbox-chooser{
+
+.mailbox-chooser {
     display: flex;
     flex-direction: column;
-    width: 256px;
-    background-color: rgb(226, 226, 226);
+    width: 150px;
+    background-color: #F1F3F4;
+    border-right: 1px solid #ccc;
 }
-.mailbox-chooser button{
+
+.mailbox-chooser button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border: 0;
-    height: 32px;
-    background-color: rgb(226, 226, 226);
-    padding: 2px;
+    border: none;
+    height: 40px;
+    background-color: #F1F3F4;
+    padding: 10px;
+    font-size: 16px;
 }
-.mailbox-chooser button:hover{
-    background-color: rgb(177, 177, 177);
-    transition: color 1s;
-}
-.chosen{
-    background-color: rgb(109, 109, 109);
+
+.mailbox-chooser button:hover,
+.chosen {
+    background-color: #7d7e81;
 }

@@ -29,7 +29,6 @@ export function MailPreview({ email }) {
   }
 
   return <section className="mail">
-
     <div className="innerBox">
       <button onClick={changeStarSelection}>
         {/* {console.log(email.isStar)} */}
@@ -41,18 +40,18 @@ export function MailPreview({ email }) {
     </div>
     <p>{email.subject}</p>
     <p>{email.sentAt}</p>
-    <div>
-    <button onClick={toNote}>
-      <i className="fa-regular fa-note-sticky"></i>
-    </button>
-    <button onClick={deleteMail}>
-      <i className="fa-solid fa-trash"></i>
-    </button>
-    <button>
-    <Link to={`/mail/details/${email.id}`}>
-        <i className="fa-solid fa-expand"></i>
-    </Link>
-    </button>
+    <div className='mail-buttons'>
+      <button onClick={toNote}>
+        <i className="fa-regular fa-note-sticky"></i>
+      </button>
+      <button onClick={deleteMail}>
+        <i className="fa-solid fa-trash"></i>
+      </button>
+      <button>
+        <Link to={`/mail/details/${email.id}`}>
+          <i className="fa-solid fa-expand"></i>
+        </Link>
+      </button>
     </div>
   </section>
 }
