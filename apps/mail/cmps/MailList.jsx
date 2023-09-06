@@ -20,7 +20,6 @@ export function MailList() {
     }
     if(emails.length===0)return
         return <section className="mails">
-                <button><Link to={`/mail/compose`}>compose</Link></button>
                 <ul className="mail-line">
                   {emails.map(mail=>
                   <li key={mail.id} className="mail-box">
