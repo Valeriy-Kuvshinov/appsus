@@ -22,7 +22,6 @@ export function MailPreview({email}){
         console.log('note')
     }
     function deleteMail(){
-        console.log(email.id)
         EmailService.remove(email.id)
 
     }
@@ -30,7 +29,6 @@ export function MailPreview({email}){
             
             <div className="innerBox">
               <button onClick={changeStarSelection}>
-                {console.log(email.isStar)}
                 {(email.isStar===true)?
                 <i className="fa-solid fa-star starred"></i>:
                 <i className="fa-regular fa-star"></i>}

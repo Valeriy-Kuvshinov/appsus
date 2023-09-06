@@ -1,7 +1,9 @@
 import { MailList } from "../cmps/MailList.jsx"
+import { SideBar } from "../cmps/SideBar.jsx"
 
 export function MailIndex() {
-    return <section>
+    return <section className="main-mail">
+        <SideBar/>
         <MailList/>
     </section>
 }

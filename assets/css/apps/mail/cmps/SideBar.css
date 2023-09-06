@@ -1,0 +1,4 @@
+.mailbox-chooser{
+    display: flex;
+    flex-direction: column;
+}
