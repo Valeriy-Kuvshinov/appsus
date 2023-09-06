@@ -17,29 +17,38 @@ export function MailPreview({ email }) {
     // }
     // getEmails(emails)
   }
-
-  const convertToNote = () => {
+  function toNote() {
     EmailService.createNoteFromEmail(email.id)
       .then(() => {
         console.log("Converted to note")
       })
+  }
+  function deleteMail() {
+    console.log(email.id)
+    EmailService.remove(email.id)
+
   }
 
   return <section className="mail">
 
     <div className="innerBox">
       <button onClick={changeStarSelection}>
-        {/* {console.log(emails.isStar)} */}
+        {console.log(email.isStar)}
         {(email.isStar === true) ?
-          <i className="fa-solid fa-star"></i> :
+          <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}
       </button>
-      <button onClick={convertToNote}> OOO </button>
-      <button>X</button>
+      <button> X </button>
+      <button> X </button>
       <p>{email.from}</p>
     </div>
     <p>{email.subject}</p>
     <p>{email.sentAt}</p>
-    {/* <Link to={`/mail/details/${email.id}`}>S</Link> */}
+    <button onClick={toNote}>
+      <i className="fa-regular fa-note-sticky"></i>
+    </button>
+    <button onClick={deleteMail}>
+      <i className="fa-solid fa-trash"></i>
+    </button>
   </section>
 }
