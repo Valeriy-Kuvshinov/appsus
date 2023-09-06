@@ -1,3 +1,3 @@
-export function NoteTxt({ info, changeInfo }) {
+export const NoteTxt = React.memo(({ info }) => {
     return <div>{info.txt}</div>
-}
+})

@@ -1,4 +1,4 @@
-export function NoteTodos({ info, changeInfo }) {
+export const NoteTodos = React.memo(({ info }) => {
     return (
         <div>
             {info.todos.map((todo, idx) => (
@@ -6,4 +6,4 @@ export function NoteTodos({ info, changeInfo }) {
             ))}
         </div>
     )
-}
+})

@@ -114,8 +114,7 @@ function _createNotes() {
                 type: 'NoteVideo',
                 isPinned: false,
                 info: {
-                    //'https://www.youtube.com/watch?v=YLv9kot4lzE',
-                    url: 'google.com',
+                    url: 'https://www.youtube.com/watch?v=YLv9kot4lzE',
                     title: 'Cat Video'
                 },
                 style: {
