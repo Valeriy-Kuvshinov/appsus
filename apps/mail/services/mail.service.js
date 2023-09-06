@@ -32,7 +32,7 @@ function query() {
 }
 
 function get(emailId) {
-    return storageService.get(EMAIL_KEY, emailId)
+    return asyncStorageService.get(EMAIL_KEY, emailId)
     .then((email) => 
     {
         // email = _setNextPrevEmailId(email)
@@ -82,6 +82,8 @@ function _createEmails() {
         emails = []
         emails.push(_createEmail('bread','bread is good for fiber'
         ,false, Date.now(), null,'bread@bread.com','user@pegasus.com',false))
+        emails.push(_createEmail('bready','bread is great'
+        ,false, Date.now(), null,'breadtistic@bread123.com','user@pegasus.com',false))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
 }
