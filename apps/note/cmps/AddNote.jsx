@@ -55,7 +55,7 @@ export const AddNote = ({ onNoteAdded }) => {
     }
 
     return (
-        <div>
+        <div className='note-creation'>
             <select onChange={(e) => setNoteType(e.target.value)} value={noteType}>
                 <option value="NoteTxt">Text</option>
                 <option value="NoteImg">Image</option>

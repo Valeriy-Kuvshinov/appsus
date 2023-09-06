@@ -3,7 +3,7 @@ const { useState, useEffect } = React
 
 export const NoteFilter = ({ onSearchChange, onFilterTypeChange, searchTerm, filterType }) => {
     return (
-        <div>
+        <div className='note-filter'>
             <input
                 type="text"
                 placeholder="Search..."

@@ -24,7 +24,7 @@ export function NoteList({ notes, loadNotes }) {
         loadNotes()
     }
     return (
-        <div>
+        <div className='notes-list'>
             {notes.map(note => (
                 <NotePreview key={note.id} note={note} onDelete={handleDelete} onSave={handleSave} onDuplicate={handleDuplicate} />
             ))}
