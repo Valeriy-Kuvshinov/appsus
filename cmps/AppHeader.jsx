@@ -1,4 +1,3 @@
-const { Link, NavLink } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function AppHeader() {
@@ -20,11 +19,13 @@ export function AppHeader() {
         return window.location.hash.includes(path) ? 'active' : ''
     }
 
+    const youtubeVideoUrl = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+
     return (
         <header className="app-header">
-            <Link to="/" className="logo-container">
+            <a href={youtubeVideoUrl} target="_blank" rel="noopener noreferrer" className="logo-container">
                 <img src={currentImage} alt="App logo" className="logo" />
-            </Link>
+            </a>
             <nav className="nav-links">
                 <a className={setActiveNavLink("/")} href="#/">Home</a>
                 <a className={setActiveNavLink("/about")} href="#/about">About</a>
