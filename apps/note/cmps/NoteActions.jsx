@@ -1,8 +1,8 @@
 const { Link } = ReactRouterDOM
 
 export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete, handleAddTodo }) {
-    const mailSubject = encodeURIComponent(note.info.title || "");
-    const mailBody = encodeURIComponent(note.info.txt || "");
+    const mailSubject = encodeURIComponent(note.info.title || "")
+    const mailBody = encodeURIComponent(note.info.txt || "")
     const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
 
     return (
