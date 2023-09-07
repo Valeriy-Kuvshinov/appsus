@@ -8,14 +8,9 @@ export function MailPreview({ email }) {
   // console.log(email)
   // const [emails, getEmails] = useState(email)
 
-  function changeStarSelection(ev) {
-    // console.log(emails.isStar)
-    // if (emails.isStar===true) {
-    //     emails.isStar=false
-    // } else {
-    //     emails.isStar=true
-    // }
-    // getEmails(emails)
+  function changeStarSelection() {
+    console.log('star')
+    EmailService.star(email)
   }
   function toNote() {
     EmailService.createNoteFromEmail(email.id)
@@ -25,13 +20,16 @@ export function MailPreview({ email }) {
   }
   function deleteMail() {
     EmailService.trash(email)
-
   }
-
-  return <section className="mail">
+  var classN=''
+  if(email.isRead === true){
+    classN='mail'
+  } else {
+    classN='mail not-read'
+  }
+  return <section className={classN}>
     <div className="innerBox">
       <button onClick={changeStarSelection}>
-        {/* {console.log(email.isStar)} */}
         {(email.isStar === true) ?
           <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}

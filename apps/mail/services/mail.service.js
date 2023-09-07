@@ -13,6 +13,8 @@ export const EmailService = {
     remove,
     save,
     trash,
+    read,
+    star,
     getEmptyEmail,
     getFilterBy,
     setFilterBy,
@@ -36,9 +38,10 @@ function query() {
             }
             else if (gFilterBy.isDraft) {
                 emails = emails.filter(email => (email.sentAt===null)&&(email.removedAt===null))
-            } else {
-                emails = emails.filter(email => email.removedAt===null)
-            }
+            } 
+            // else {
+            //     emails = emails.filter(email => email.removedAt===null)
+            // }
             return emails
         })
 }
@@ -104,6 +107,20 @@ function trash(email){
     email.removedAt=Date.now()
     save(email)
 }
+
+function read(email){
+    email.isRead=true
+    save(email)
+}
+
+function star(email){
+    if (email.isStar === false) {
+        email.isStar = true 
+    } else {
+        email.isStar = false 
+    } 
+    save(email)
+} 
 
 function _createEmails() {
     console.log('email created')

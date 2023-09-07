@@ -64,6 +64,8 @@
 
  .innerBox button {
    background-color: transparent;
+   width: 20px;
+   height: 20px;
  }
 
 .email-text{
@@ -91,4 +93,8 @@
 
  .mail-buttons button:hover {
    background-color: #f2f2f2;
+ }
+
+ .not-read{
+  font-weight: bold;
  }
