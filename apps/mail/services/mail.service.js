@@ -13,6 +13,7 @@ export const EmailService = {
     remove,
     save,
     trash,
+    read,
     getEmptyEmail,
     getFilterBy,
     setFilterBy,
@@ -36,9 +37,10 @@ function query() {
             }
             else if (gFilterBy.isDraft) {
                 emails = emails.filter(email => (email.sentAt===null)&&(email.removedAt===null))
-            } else {
-                emails = emails.filter(email => email.removedAt===null)
-            }
+            } 
+            // else {
+            //     emails = emails.filter(email => email.removedAt===null)
+            // }
             return emails
         })
 }
@@ -105,6 +107,10 @@ function trash(email){
     save(email)
 }
 
+function read(email){
+    email.isRead=true
+    save(email)
+}
 function _createEmails() {
     console.log('email created')
     let emails = storageService.loadFromStorage(EMAIL_KEY)

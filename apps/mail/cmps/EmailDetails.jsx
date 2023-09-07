@@ -25,6 +25,7 @@ export function EmailDetails(){
     
     if(emails.length===0) return
     var index=emails.findIndex((email)=>email.id===params.emailId)
+    EmailService.read(emails[index])
     return <section className="email-details">
              <div className="details-header detail">
              <div>{emails[index].subject}</div>

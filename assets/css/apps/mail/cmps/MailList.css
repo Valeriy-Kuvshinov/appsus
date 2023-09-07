@@ -83,3 +83,7 @@
  .mail-buttons button:hover {
    background-color: #f2f2f2;
  }
+
+ .not-read{
+  font-weight: bold;
+ }
