@@ -14,6 +14,7 @@ export const EmailService = {
     save,
     trash,
     read,
+    star,
     getEmptyEmail,
     getFilterBy,
     setFilterBy,
@@ -111,6 +112,16 @@ function read(email){
     email.isRead=true
     save(email)
 }
+
+function star(email){
+    if (email.isStar === false) {
+        email.isStar = true 
+    } else {
+        email.isStar = false 
+    } 
+    save(email)
+} 
+
 function _createEmails() {
     console.log('email created')
     let emails = storageService.loadFromStorage(EMAIL_KEY)
