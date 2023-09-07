@@ -11,10 +11,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const [isEditing, setIsEditing] = useState(false)
     const [tempNote, setTempNote] = useState({ ...note })
 
-    useEffect(() => {
-        setTempNote({ ...note })
-    }, [note])
-
     const renderDynamicComponent = (type, info) => {
         switch (type) {
             case 'NoteTxt':
@@ -47,7 +43,9 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     }
 
     const changeBackgroundColor = (newColor) => {
-        setTempNote({ ...tempNote, style: { backgroundColor: newColor } })
+        const updatedTempNote = { ...tempNote, style: { backgroundColor: newColor } }
+        setTempNote(updatedTempNote)
+        onSave(updatedTempNote)
     }
 
     const saveChanges = () => {
@@ -59,7 +57,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         await noteService.togglePin(note.id)
         setIsPinned(!isPinned)
 
-        const updatedNote = { ...note, isPinned: !isPinned }
+        const updatedNote = { ...note, isPinned: !isPinned, style: note.style }
         onSave(updatedNote)
     }
 
@@ -69,19 +67,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         setIsPinned(note.isPinned)
     }, [note.isPinned])
 
-    // const renderEditFields = () => {
-    //     switch (tempNote.type) {
-    //         case 'NoteTxt':
-    //             return <textarea value={tempNote.info.txt} onChange={(e) => updateNoteText(e.target.value)} />
-    //         case 'NoteImg':
-    //         case 'NoteVideo':
-    //             return <input type="text" value={tempNote.info.url} onChange={(e) => updateMediaLink(e.target.value)} />
-    //         case 'NoteTodos':
-    //             return <input type="text" value={tempNote.info.todos.map(todo => todo.txt).join(', ')} onChange={(e) => updateTodos(e.target.value)} />
-    //         default:
-    //             return null
-    //     }
-    // }
     const renderEditFields = () => {
         return (
             <React.Fragment>
@@ -107,6 +92,10 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         )
     }
 
+    useEffect(() => {
+        setTempNote({ ...note })
+    }, [note])
+
     return (
         <div className='note-card' style={tempNote.style}>
             {isEditing ? null : <h2>{note.info.title || note.info.txt}</h2>}
@@ -114,13 +103,11 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                 {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info)}
             </div>
             <div className="actions">
-                {!isEditing && <button onClick={() => onDelete(note.id)}><i className="fa-solid fa-rectangle-xmark"></i></button>}
-                {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
-                {isEditing && <button onClick={saveChanges} >Save</button>}
-                {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
+                {!isEditing && (<button onClick={handlePin}><i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i></button>)}
                 <div className="color-picker-dropdown">
                     <button><i className="fa-solid fa-palette"></i></button>
                     <div className="color-picker-content">
+                        <div className="color-box" onClick={() => changeBackgroundColor("#FFFFFF")} style={{ background: 'transparent' }}><i className="fa-solid fa-droplet-slash"></i></div>
                         <div className="color-box" onClick={() => changeBackgroundColor("#FF6B6B")} style={{ backgroundColor: "#FF6B6B" }}></div>
                         <div className="color-box" onClick={() => changeBackgroundColor("#98FB98")} style={{ backgroundColor: "#98FB98" }}></div>
                         <div className="color-box" onClick={() => changeBackgroundColor("#ADD8E6")} style={{ backgroundColor: "#ADD8E6" }}></div>
@@ -132,11 +119,13 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                         <div className="color-box" onClick={() => changeBackgroundColor("#FFB6C1")} style={{ backgroundColor: "#FFB6C1" }}></div>
                         <div className="color-box" onClick={() => changeBackgroundColor("#FFE4E1")} style={{ backgroundColor: "#FFE4E1" }}></div>
                         <div className="color-box" onClick={() => changeBackgroundColor("#F0E68C")} style={{ backgroundColor: "#F0E68C" }}></div>
-                        <div className="color-box" onClick={() => changeBackgroundColor("#FFFFFF")} style={{ background: 'transparent' }}><i className="fa-solid fa-droplet-slash"></i></div>
                     </div>
                 </div>
-                {!isEditing && (<button onClick={handlePin}><i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i></button>)}
+                {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
+                {isEditing && <button onClick={saveChanges} >Save</button>}
+                {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
                 {!isEditing && <button onClick={() => console.log('testing')}><i className="fa-solid fa-envelope"></i></button>}
+                {!isEditing && <button onClick={() => onDelete(note.id)}><i className="fa-solid fa-rectangle-xmark"></i></button>}
             </div>
         </div>
     )

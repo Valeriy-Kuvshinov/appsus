@@ -11,26 +11,6 @@
     margin-top: 20px;
 }
 
-.note-filter {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    background: #fff;
-    padding: 10px;
-    border-radius: 15px;
-    max-width: 400px;
-}
-
-.note-filter input,
-.note-filter select {
-    margin-left: 10px;
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: 18px;
-}
-
 .notes-container h3 {
     text-align: left;
     margin-bottom: 3vh;
@@ -43,6 +23,7 @@
 .notes-list {
     column-count: 4;
     column-gap: 10px;
+    margin-bottom: 15vh;
 }
 
 .note-card {
@@ -99,56 +80,6 @@
     justify-content: space-between;
 }
 
-.note-creation {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 500px;
-    margin: 0 auto;
-    margin-bottom: 2vh;
-}
-
-.note-creation select,
-.note-creation input,
-.note-creation textarea,
-.note-creation button {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    outline: none;
-    transition: border-color 0.3s ease;
-}
-
-.note-creation select:focus,
-.note-creation input:focus,
-.note-creation textarea:focus {
-    border-color: #007bff;
-}
-
-.note-creation button {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.note-creation button:hover {
-    background-color: #0056b3;
-}
-
-.note-creation p {
-    color: red;
-    width: 100%;
-    text-align: left;
-    margin: 5px 0 0;
-}
-
 .color-picker-dropdown {
     position: relative;
     display: inline-block;
@@ -159,7 +90,7 @@
     position: absolute;
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 10;
     grid-template-columns: repeat(3, 1fr);
     gap: 5px;
     padding: 10px;
