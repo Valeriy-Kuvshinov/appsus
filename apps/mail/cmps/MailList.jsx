@@ -15,8 +15,6 @@ export function MailList() {
 
     if (emails.length === 0) return null
 
-    // if (emails.length === 0) return
-
     return <section className="mails">
        
         <ul className="mail-line">
