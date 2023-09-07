@@ -121,7 +121,14 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
 
     return (
         <div className='note-card' style={tempNote.style}>
-            {isEditing ? null : <h2>{note.info.title || note.info.txt}</h2>}
+            <div className="note-header">
+                {isEditing ? null : <h2>{note.info.title || note.info.txt}</h2>}
+                {!isEditing && (
+                    <button onClick={handlePin} className="pin-button">
+                        <i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i>
+                    </button>
+                )}
+            </div>
             <div className="content">
                 {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateTodos)}
             </div>

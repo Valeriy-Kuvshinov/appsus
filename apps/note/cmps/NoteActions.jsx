@@ -1,13 +1,12 @@
 const { Link } = ReactRouterDOM
 
-export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete, handleAddTodo }) {
+export function NoteActions({ isEditing, isPinned, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete, handleAddTodo }) {
     const mailSubject = encodeURIComponent(note.info.title || "")
     const mailBody = encodeURIComponent(note.info.txt || "")
     const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
 
     return (
-        <div className={`actions ${isPinned ? 'always-visible' : ''}`}>
-            {!isEditing && (<button onClick={handlePin}><i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i></button>)}
+        <div className={`actions`}>
             <div className="color-picker-dropdown">
                 <button><i className="fa-solid fa-palette"></i></button>
                 <div className="color-picker-content">

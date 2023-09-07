@@ -16,7 +16,7 @@
 
 .note-card h2 {
     margin: 0;
-    font-size: 20px;
+    font-size: 25px;
     color: #202124;
     margin-bottom: 12px;
 }
@@ -29,6 +29,16 @@
     transition: background 0.3s;
     padding: 4px;
     border-radius: 50%;
+}
+
+.note-card .note-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note-card .pin-button {
+    margin-bottom: auto;
 }
 
 .note-card button:hover {
@@ -48,11 +58,11 @@
     height: fit-content;
 }
 
-.note-text{
+.note-text {
     margin-top: 15px;
 }
 
-.note-card input{
+.note-card input {
     border: none;
     background: transparent;
     line-height: 1.5;
@@ -69,11 +79,6 @@
 }
 
 .note-card:hover .actions {
-    visibility: visible;
-    opacity: 1;
-}
-
-.note-card .actions.always-visible .fa-thumbtack.pinned {
     visibility: visible;
     opacity: 1;
 }
