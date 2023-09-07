@@ -10,9 +10,7 @@ export const NoteVideo = ({ info }) => {
         return `https://www.youtube.com/embed/${videoId}`
     }
     const embedUrl = youtubeEmbedUrl(info.url)
-
     const videoId = embedUrl ? embedUrl.split('https://www.youtube.com/embed/')[1] : null
-
     const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/0.jpg` : null
 
     if (!embedUrl) return <p>Invalid YouTube URL</p>
@@ -21,7 +19,10 @@ export const NoteVideo = ({ info }) => {
         <div>
             <div onClick={() => setIsVideoClicked(true)} style={{ cursor: 'pointer', position: 'relative', padding: '50%', height: 0, overflow: 'hidden' }}>
                 {!isVideoClicked && (
-                    <img src={thumbnailUrl} alt="Video Thumbnail" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
+                    <React.Fragment>
+                        <img src={thumbnailUrl} alt="Video Thumbnail" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
+                        <i className="fa-solid fa-circle-play" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '5em', color: 'white' }}></i>
+                    </React.Fragment>
                 )}
                 {isVideoClicked && (
                     <iframe

@@ -14,15 +14,15 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFFFFF")} style={{ background: 'transparent' }}><i className="fa-solid fa-droplet-slash"></i></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FF6B6B")} style={{ backgroundColor: "#FF6B6B" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#98FB98")} style={{ backgroundColor: "#98FB98" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#ADD8E6")} style={{ backgroundColor: "#ADD8E6" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#9097f8")} style={{ backgroundColor: "#9097f8" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#D8BFD8")} style={{ backgroundColor: "#D8BFD8" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#dfaf84")} style={{ backgroundColor: "#dfaf84" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFFFE0")} style={{ backgroundColor: "#FFFFE0" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#E0FFFF")} style={{ backgroundColor: "#E0FFFF" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#D2B48C")} style={{ backgroundColor: "#D2B48C" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#6cbcfd")} style={{ backgroundColor: "#6cbcfd" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFB6C1")} style={{ backgroundColor: "#FFB6C1" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#FFE4E1")} style={{ backgroundColor: "#FFE4E1" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#f37544")} style={{ backgroundColor: "#f37544" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#dbf36f")} style={{ backgroundColor: "#dbf36f" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#e99b7c")} style={{ backgroundColor: "#e99b7c" }}></div>
                 </div>
             </div>
             <button><i className="fa-solid fa-tags"></i></button>

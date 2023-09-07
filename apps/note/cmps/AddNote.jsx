@@ -10,7 +10,27 @@ export const AddNote = ({ onNoteAdded }) => {
     const [noteType, setNoteType] = useState('NoteTxt')
     const [mediaLink, setMediaLink] = useState('')
     const [todos, setTodos] = useState('')
+    const [backgroundColor, setBackgroundColor] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+
+    const randomizeBackgroundColor = () => {
+        const colors = [
+            "#FF6B6B",
+            "#98FB98",
+            "#9097f8",
+            "#D8BFD8",
+            "#dfaf84",
+            "#FFFFE0",
+            "#E0FFFF",
+            "#6cbcfd",
+            "#FFB6C1",
+            "#dbf36f",
+            "#e99b7c"
+        ]
+        const randomColor = colors[Math.floor(Math.random() * colors.length)]
+        setBackgroundColor(randomColor)
+        return randomColor
+    }
 
     const handleCreate = async () => {
         const { isValid, errorMessage } = NoteValidator({
@@ -25,6 +45,7 @@ export const AddNote = ({ onNoteAdded }) => {
             setErrorMessage(errorMessage)
             return
         }
+        const chosenColor = randomizeBackgroundColor()
 
         let info = {}
 
@@ -47,7 +68,7 @@ export const AddNote = ({ onNoteAdded }) => {
             }
         }
 
-        const newNote = await noteService.createNote(noteType, info)
+        const newNote = await noteService.createNote(noteType, info, false, { backgroundColor: chosenColor })
 
         setNewNoteTitle('')
         setNewNoteText('')
@@ -101,7 +122,7 @@ export const AddNote = ({ onNoteAdded }) => {
                     onChange={(e) => setTodos(e.target.value)}
                 />
             )}
-            <button onClick={handleCreate}>Close</button>
+            <button onClick={handleCreate}>Create</button>
 
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>

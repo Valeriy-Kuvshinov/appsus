@@ -52,7 +52,7 @@ function togglePin(noteId) {
     })
 }
 
-function createNote(type, info, isPinned = false, style = {}) {
+function createNote(type, info, isPinned = false, style = { backgroundColor: '#FFFFFF' }) {
     const newNote = getEmptyNote()
     newNote.type = type
     newNote.info = info
@@ -87,11 +87,11 @@ function _createNotes() {
                 createdAt: 1112222,
                 type: 'NoteTxt',
                 isPinned: true,
-                style: { backgroundColor: '#FFFFFF' },
                 info: {
                     title: 'Yes Fullstack!',
                     txt: 'Fullstack Me Baby!'
-                }
+                },
+                style: { backgroundColor: '#FF6B6B' }
             },
             {
                 id: 'n102',
@@ -103,7 +103,7 @@ function _createNotes() {
                     txt: 'Friends forever'
                 },
                 style: {
-                    backgroundColor: '#FFFFFF'
+                    backgroundColor: '#98FB98'
                 }
             },
             {
@@ -116,19 +116,77 @@ function _createNotes() {
                         { txt: 'Driving license', doneAt: null },
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
+                },
+                style: {
+                    backgroundColor: '#9097f8'
                 }
             },
             {
                 id: 'n104',
                 type: 'NoteVideo',
-                isPinned: false,
+                isPinned: true,
                 info: {
                     title: 'Cat Video',
                     url: 'https://www.youtube.com/watch?v=YLv9kot4lzE',
                     txt: 'so cute!'
                 },
                 style: {
-                    backgroundColor: '#FFFFFF'
+                    backgroundColor: '#D8BFD8'
+                }
+            },
+            {
+                id: 'n105',
+                createdAt: Date.now(),
+                type: 'NoteTxt',
+                isPinned: true,
+                info: {
+                    title: 'Reminder',
+                    txt: 'To add MissBooks to the project.'
+                },
+                style: { backgroundColor: '#dfaf84' }
+            },
+            {
+                id: 'n106',
+                createdAt: Date.now(),
+                type: 'NoteImg',
+                isPinned: false,
+                info: {
+                    title: 'Nature',
+                    url: 'https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/hz4mzyf4iktjywa59nfp',
+                    txt: 'So refreshing'
+                },
+                style: {
+                    backgroundColor: '#FFFFE0'
+                }
+            },
+            {
+                id: 'n107',
+                createdAt: Date.now(),
+                type: 'NoteTodos',
+                isPinned: false,
+                info: {
+                    title: 'Weekend Plans',
+                    todos: [
+                        { txt: 'Hiking', doneAt: null },
+                        { txt: 'Reading', doneAt: null }
+                    ]
+                },
+                style: {
+                    backgroundColor: '#E0FFFF'
+                }
+            },
+            {
+                id: 'n108',
+                createdAt: Date.now(),
+                type: 'NoteVideo',
+                isPinned: true,
+                info: {
+                    title: 'Funny Video',
+                    url: 'https://www.youtube.com/watch?v=EcMlX_36gjs',
+                    txt: 'Hilarious!'
+                },
+                style: {
+                    backgroundColor: '#6cbcfd'
                 }
             }
         ]
