@@ -16,21 +16,24 @@ export const NoteVideo = ({ info }) => {
     if (!embedUrl) return <p>Invalid YouTube URL</p>
 
     return (
-        <div onClick={() => setIsVideoClicked(true)} style={{ cursor: 'pointer', position: 'relative', padding: '50%', height: 0, overflow: 'hidden' }}>
-            {!isVideoClicked && (
-                <img src={thumbnailUrl} alt="Video Thumbnail" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
-            )}
-            {isVideoClicked && (
-                <iframe
-                    style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
-                    src={embedUrl}
-                    frameBorder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                    sandbox="allow-scripts allow-same-origin allow-popups"
-                ></iframe>
-            )}
+        <div>
+            <div onClick={() => setIsVideoClicked(true)} style={{ cursor: 'pointer', position: 'relative', padding: '50%', height: 0, overflow: 'hidden' }}>
+                {!isVideoClicked && (
+                    <img src={thumbnailUrl} alt="Video Thumbnail" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
+                )}
+                {isVideoClicked && (
+                    <iframe
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+                        src={embedUrl}
+                        frameBorder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowFullScreen
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin allow-popups"
+                    ></iframe>
+                )}
+            </div>
+            <div className='note-text'>{info.txt}</div>
         </div>
     )
 }
