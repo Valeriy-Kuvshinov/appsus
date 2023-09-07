@@ -72,14 +72,12 @@
 .note-card .actions {
     display: flex;
     justify-content: space-between;
-    visibility: hidden;
     position: relative;
     opacity: 0;
     transition: opacity 0.5s ease;
 }
 
 .note-card:hover .actions {
-    visibility: visible;
     opacity: 1;
 }
 
