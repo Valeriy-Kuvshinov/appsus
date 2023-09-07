@@ -4,7 +4,7 @@ import { storageService } from '../../../services/storage.service.js'
 import { noteService } from '../../note/services/note.service.js'
 
 const EMAIL_KEY = 'emailDB'
-var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false}
+var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false, isDraft: false}
 _createEmails()
 
 export const EmailService = {
@@ -12,8 +12,8 @@ export const EmailService = {
     get,
     remove,
     save,
+    trash,
     getEmptyEmail,
-    getNextEmailId,
     getFilterBy,
     setFilterBy,
     createNoteFromEmail,
@@ -25,16 +25,20 @@ function query() {
             if (gFilterBy.isStar) {
                 emails = emails.filter(email => email.isStar)
             }
-            // if (gFilterBy.isRead) {
-            //     emails = emails.filter(email => email.isRead)
-            // }
-            if (gFilterBy.isTrash) {
+            else if (gFilterBy.isRead) {
+                emails = emails.filter(email => email.isRead)
+            }
+            else if (gFilterBy.isTrash) {
                 emails = emails.filter(email => email.removedAt!==null)
             }
-            if (gFilterBy.isSent) {
+            else if (gFilterBy.isSent) {
                 emails = emails.filter(email => email.sentAt!==null)
             }
-            console.log()
+            else if (gFilterBy.isDraft) {
+                emails = emails.filter(email => (email.sentAt===null)&&(email.removedAt===null))
+            } else {
+                emails = emails.filter(email => email.removedAt===null)
+            }
             return emails
         })
 }
@@ -68,7 +72,6 @@ function getFilterBy() {
 }
 
 function setFilterBy(filterType = '') {
-    console.log(filterType);
     if (filterType === 'starred') {
         gFilterBy.isStar = true
     } else {
@@ -89,17 +92,17 @@ function setFilterBy(filterType = '') {
     }  else {
         gFilterBy.isSent = false
     }
-    console.log(gFilterBy)
+    if (filterType==='drafts') {
+        gFilterBy.isDraft = true
+    }  else {
+        gFilterBy.isDraft = false
+    }
     return gFilterBy
 }
 
-function getNextEmailId(emailId) {
-    return storageService.query(EMAIL_KEY)
-        .then(emails => {
-            var idx = emails.findIndex(email => email.id === emailId)
-            if (idx === emails.length - 1) idx = -1
-            return emails[idx + 1].id
-        })
+function trash(email){
+    email.removedAt=Date.now()
+    save(email)
 }
 
 function _createEmails() {
@@ -113,8 +116,16 @@ function _createEmails() {
             , false, Date.now(), Date.now(), 'breadtistic@bread123.com', 'user@pegasus.com', true))
         emails.push(_createEmail('Mark Zuckerberg', 'i am a human'
             , false, Date.now(), null, 'totallyahuman@.com', 'user@pegasus.com', true))
+        emails.push(_createEmail('Donald Trump', 'fake news!'
+                , false, null, null, 'realdonaldtrump@money.com', 'user@pegasus.com', false))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
+}
+
+function _createEmail(subject, body, isRead = false, sentAt = null, removedAt = null, from = '', to = '', isStar = false) {
+    const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from, to, isStar)
+    email.id = utilService.makeId()
+    return email
 }
 
 function createNoteFromEmail(emailId) {
@@ -126,21 +137,4 @@ function createNoteFromEmail(emailId) {
             }
             return noteService.createNote('NoteTxt', noteInfo)
         })
-}
-
-function _createEmail(subject, body, isRead = false, sentAt = null, removedAt = null, from = '', to = '', isStar = false) {
-    const email = getEmptyEmail(subject, body, isRead, sentAt, removedAt, from, to, isStar)
-    email.id = utilService.makeId()
-    return email
-}
-
-function _setNextPrevEmailId(email) {
-    return storageService.query(EMAIL_KEY).then((emails) => {
-        const emailIdx = emails.findIndex((currEmail) => currEmail.id === email.id)
-        const nextEmail = emails[emailIdx + 1] ? emails[emailIdx + 1] : emails[0]
-        const prevEmail = emails[emailIdx - 1] ? emails[emailIdx - 1] : emails[emails.length - 1]
-        email.nextEmailId = nextEmail.id
-        email.prevEmailId = prevEmail.id
-        return email
-    })
 }

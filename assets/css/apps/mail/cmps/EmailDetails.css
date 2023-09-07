@@ -1,0 +1,16 @@
+.email-details{
+    display: flex;
+    flex-direction: column;
+    border: 3px solid rgb(162, 162, 162);
+}
+.details-header{
+    display: flex;
+    justify-content: space-between;
+}
+.detail{
+    padding: 20px;
+}
+.details-body{
+    display: flex;
+    padding: 30px;
+}

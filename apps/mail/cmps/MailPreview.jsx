@@ -24,7 +24,7 @@ export function MailPreview({ email }) {
       })
   }
   function deleteMail() {
-    EmailService.remove(email.id)
+    EmailService.trash(email)
 
   }
 
