@@ -1,14 +1,15 @@
 import { EmailService } from "../services/mail.service.js"
 import { MailPreview } from "./MailPreview.jsx"
 
-
-
 const { useState, useEffect } = React
+const { useParams } = ReactRouterDOM
 
-export function MailList() {
+export function FilteredMail(){
     const [emails, getEmails] = useState([])
+    const params = useParams()
 
     useEffect(() => {
+        EmailService.setFilterBy(params.filterType)
         EmailService.query().then(emails => getEmails(emails))
     }, [])
     

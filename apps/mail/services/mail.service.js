@@ -22,13 +22,19 @@ export const EmailService = {
 function query() {
     return asyncStorageService.query(EMAIL_KEY)
         .then(emails => {
-            // if (gFilterBy.txt) {
-            //     const regex = new RegExp(gFilterBy.txt, 'i')
-            //     emails = emails.filter(email => regex.test(email.title))
+            if (gFilterBy.isStar) {
+                emails = emails.filter(email => email.isStar)
+            }
+            // if (gFilterBy.isRead) {
+            //     emails = emails.filter(email => email.isRead)
             // }
-            // if (gFilterBy.listPrice) {
-            //     emails = emails.filter(email => email.listPrice.amount >= gFilterBy.listPrice)
-            // }  
+            if (gFilterBy.isTrash) {
+                emails = emails.filter(email => email.removedAt!==null)
+            }
+            if (gFilterBy.isSent) {
+                emails = emails.filter(email => email.sentAt!==null)
+            }
+            console.log()
             return emails
         })
 }
@@ -61,12 +67,29 @@ function getFilterBy() {
     // return gFilterBy.listPrice
 }
 
-function setFilterBy(filterType = {}) {
-    // if (filterBy.txt !== undefined) gFilterBy.txt = filterBy.txt
-    (filterType.isStar) ? gFilterBy.isStar : !gFilterBy.isStar
-    (filterType.isRead) ? gFilterBy.isRead : !gFilterBy.isRead
-    (filterType.isTrash) ? gFilterBy.isTrash : !gFilterBy.isTrash
-    (filterType.isSent) ? gFilterBy.isSent : !gFilterBy.isSent
+function setFilterBy(filterType = '') {
+    console.log(filterType);
+    if (filterType === 'starred') {
+        gFilterBy.isStar = true
+    } else {
+        gFilterBy.isStar = false
+    }
+    if (filterType === 'read') {
+        gFilterBy.isRead = true
+    } else {
+        gFilterBy.isRead = false
+    }
+    if (filterType==='trash') {
+        gFilterBy.isTrash = true
+    }  else {
+        gFilterBy.isTrash = false
+    }
+    if (filterType==='sent') {
+        gFilterBy.isSent = true
+    }  else {
+        gFilterBy.isSent = false
+    }
+    console.log(gFilterBy)
     return gFilterBy
 }
 
@@ -87,7 +110,7 @@ function _createEmails() {
         emails.push(_createEmail('bread', 'bread is good for fiber'
             , false, Date.now(), null, 'bread@bread.com', 'user@pegasus.com', false))
         emails.push(_createEmail('bready', 'bread is great'
-            , false, Date.now(), null, 'breadtistic@bread123.com', 'user@pegasus.com', true))
+            , false, Date.now(), Date.now(), 'breadtistic@bread123.com', 'user@pegasus.com', true))
         emails.push(_createEmail('Mark Zuckerberg', 'i am a human'
             , false, Date.now(), null, 'totallyahuman@.com', 'user@pegasus.com', true))
         storageService.saveToStorage(EMAIL_KEY, emails)
