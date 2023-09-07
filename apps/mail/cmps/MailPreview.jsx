@@ -27,8 +27,13 @@ export function MailPreview({ email }) {
     EmailService.trash(email)
 
   }
-
-  return <section className="mail">
+  var classN=''
+  if(email.isRead === true){
+    classN='mail'
+  } else {
+    classN='mail not-read'
+  }
+  return <section className={classN}>
     <div className="innerBox">
       <button onClick={changeStarSelection}>
         {/* {console.log(email.isStar)} */}
