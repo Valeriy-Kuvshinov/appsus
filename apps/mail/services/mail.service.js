@@ -46,6 +46,19 @@ function query() {
         })
 }
 
+function queryByFilter(filter) {
+    return asyncStorageService.query(EMAIL_KEY)
+        .then(emails => {
+            if (filter==='date') {
+                emails = emails.map(email => email.isStar)
+            }
+            else if (filter==='name') {
+                emails = emails.map(email => email.isRead)
+            }
+            return emails
+        })
+}
+
 function get(emailId) {
     return asyncStorageService.get(EMAIL_KEY, emailId)
         .then((email) => {
