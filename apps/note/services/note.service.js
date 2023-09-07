@@ -98,8 +98,9 @@ function _createNotes() {
                 type: 'NoteImg',
                 isPinned: false,
                 info: {
+                    title: 'Bobi and Me',
                     url: 'https://images.unsplash.com/photo-1522098635833-216c03d81fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJpZW5kfGVufDB8fDB8fHww&w=1000&q=80',
-                    title: 'Bobi and Me'
+                    txt: 'Friends forever'
                 },
                 style: {
                     backgroundColor: '#FFFFFF'
@@ -122,8 +123,9 @@ function _createNotes() {
                 type: 'NoteVideo',
                 isPinned: false,
                 info: {
+                    title: 'Cat Video',
                     url: 'https://www.youtube.com/watch?v=YLv9kot4lzE',
-                    title: 'Cat Video'
+                    txt: 'so cute!'
                 },
                 style: {
                     backgroundColor: '#FFFFFF'

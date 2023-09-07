@@ -37,6 +37,7 @@ export const AddNote = ({ onNoteAdded }) => {
             info = {
                 title: newNoteTitle,
                 url: mediaLink,
+                txt: newNoteText,
             }
         } else if (noteType === 'NoteTodos') {
             const todoItems = todos.split(',').map((txt) => ({ txt: txt.trim(), doneAt: null }))
@@ -77,12 +78,20 @@ export const AddNote = ({ onNoteAdded }) => {
                 />
             )}
             {(noteType === 'NoteImg' || noteType === 'NoteVideo') && (
-                <input
-                    type="text"
-                    placeholder="Media URL"
-                    value={mediaLink}
-                    onChange={(e) => setMediaLink(e.target.value)}
-                />
+                <React.Fragment>
+                    <input
+                        type="text"
+                        placeholder="Media URL"
+                        value={mediaLink}
+                        onChange={(e) => setMediaLink(e.target.value)}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Text under media"
+                        value={newNoteText}
+                        onChange={(e) => setNewNoteText(e.target.value)}
+                    />
+                </React.Fragment>
             )}
             {noteType === 'NoteTodos' && (
                 <input
@@ -92,7 +101,7 @@ export const AddNote = ({ onNoteAdded }) => {
                     onChange={(e) => setTodos(e.target.value)}
                 />
             )}
-            <button onClick={handleCreate}>Create New Note</button>
+            <button onClick={handleCreate}>Close</button>
 
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
