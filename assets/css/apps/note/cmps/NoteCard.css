@@ -52,13 +52,20 @@
     margin-top: 15px;
 }
 
+.note-card input{
+    border: none;
+    background: transparent;
+    line-height: 1.5;
+    width: 100%;
+}
+
 .note-card .actions {
     display: flex;
     justify-content: space-between;
     visibility: hidden;
     position: relative;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 .note-card:hover .actions {
@@ -72,7 +79,7 @@
 }
 
 .pinned {
-    color: gold;
+    color: rgb(255, 217, 0);
 }
 
 .color-picker-dropdown {
