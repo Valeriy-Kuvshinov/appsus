@@ -1,8 +1,8 @@
 const { Link } = ReactRouterDOM
 
-export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete }) {
-    const mailSubject = encodeURIComponent(note.info.title || "");
-    const mailBody = encodeURIComponent(note.info.txt || "");
+export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete, handleAddTodo }) {
+    const mailSubject = encodeURIComponent(note.info.title || "")
+    const mailBody = encodeURIComponent(note.info.txt || "")
     const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
 
     return (
@@ -16,7 +16,7 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
                     <div className="color-box" onClick={() => changeBackgroundColor("#98FB98")} style={{ backgroundColor: "#98FB98" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#ADD8E6")} style={{ backgroundColor: "#ADD8E6" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#D8BFD8")} style={{ backgroundColor: "#D8BFD8" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#FFDAB9")} style={{ backgroundColor: "#FFDAB9" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#dfaf84")} style={{ backgroundColor: "#dfaf84" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFFFE0")} style={{ backgroundColor: "#FFFFE0" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#E0FFFF")} style={{ backgroundColor: "#E0FFFF" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#D2B48C")} style={{ backgroundColor: "#D2B48C" }}></div>
@@ -26,6 +26,7 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
                 </div>
             </div>
             {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
+            {isEditing && note.type === 'NoteTodos' && <button onClick={handleAddTodo}><i className="fa-solid fa-square-plus"></i></button>}
             {isEditing && <button onClick={saveChanges} >Save</button>}
             {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
             {!isEditing && (
