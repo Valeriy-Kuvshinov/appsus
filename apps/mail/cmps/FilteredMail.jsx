@@ -4,15 +4,19 @@ import { MailPreview } from "./MailPreview.jsx"
 const { useState, useEffect } = React
 const { useParams } = ReactRouterDOM
 
-export function FilteredMail(){
+export function FilteredMail() {
     const [emails, getEmails] = useState([])
     const params = useParams()
+
     useEffect(() => {
         EmailService.setFilterBy(params.filterType)
         EmailService.query().then(emails => getEmails(emails))
-    }, [])
-    
-    if (emails.length === 0) return
+    }, [params.filterType])
+
+    if (emails.length === 0) return null
+
+    // if (emails.length === 0) return
+
     return <section className="mails">
         <ul className="mail-line">
             {emails.map(mail =>

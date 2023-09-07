@@ -12,21 +12,25 @@ export function MailPreview({ email }) {
     console.log('star')
     EmailService.star(email)
   }
+  
   function toNote() {
     EmailService.createNoteFromEmail(email.id)
       .then(() => {
         console.log("Converted to note")
       })
   }
+
   function deleteMail() {
     EmailService.trash(email)
   }
-  var classN=''
-  if(email.isRead === true){
-    classN='mail'
+
+  var classN = ''
+  if (email.isRead === true) {
+    classN = 'mail'
   } else {
-    classN='mail not-read'
+    classN = 'mail not-read'
   }
+
   return <section className={classN}>
     <div className="innerBox">
       <button onClick={changeStarSelection}>

@@ -1,7 +1,7 @@
 const { useState } = React
 
 export const NoteVideo = ({ info }) => {
-    const [isVideoClicked, setIsVideoClicked] = useState(false);
+    const [isVideoClicked, setIsVideoClicked] = useState(false)
 
     const youtubeEmbedUrl = (url) => {
         const match = url.match(/(?:v=|\/v\/|youtu\.be\/)([a-zA-Z0-9_-]+)/)
@@ -9,9 +9,11 @@ export const NoteVideo = ({ info }) => {
         const videoId = match[1]
         return `https://www.youtube.com/embed/${videoId}`
     }
-
     const embedUrl = youtubeEmbedUrl(info.url)
-    const thumbnailUrl = `https://img.youtube.com/vi/${embedUrl}/0.jpg`
+
+    const videoId = embedUrl ? embedUrl.split('https://www.youtube.com/embed/')[1] : null
+
+    const thumbnailUrl = videoId ? `https://img.youtube.com/vi/${videoId}/0.jpg` : null
 
     if (!embedUrl) return <p>Invalid YouTube URL</p>
 
