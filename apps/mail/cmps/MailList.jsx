@@ -8,6 +8,7 @@ const { useState, useEffect } = React
 export function MailList() {
     const [emails, getEmails] = useState([])
 
+    EmailService.resetFilters()
     useEffect(() => {
         EmailService.query().then(emails => getEmails(emails))
     }, [])

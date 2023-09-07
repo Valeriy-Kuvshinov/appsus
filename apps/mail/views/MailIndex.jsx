@@ -4,7 +4,7 @@ import { SideBar } from "../cmps/SideBar.jsx"
 
 export function MailIndex() {
     return <section className="main-mail">
-        <SideBar/>
-        <MailList/>
-    </section>
+             <SideBar/>
+             <MailList/>
+           </section>
 }
