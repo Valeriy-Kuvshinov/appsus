@@ -25,6 +25,7 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
                     <div className="color-box" onClick={() => changeBackgroundColor("#f37544")} style={{ backgroundColor: "#f37544" }}></div>
                 </div>
             </div>
+            <button><i className="fa-solid fa-tags"></i></button>
             {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
             {isEditing && note.type === 'NoteTodos' && <button onClick={handleAddTodo}><i className="fa-solid fa-square-plus"></i></button>}
             {isEditing && <button onClick={saveChanges} >Save</button>}
