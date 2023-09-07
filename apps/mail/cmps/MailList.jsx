@@ -8,13 +8,12 @@ const { useState, useEffect } = React
 export function MailList() {
     const [emails, getEmails] = useState([])
 
+    EmailService.resetFilters()
     useEffect(() => {
         EmailService.query().then(emails => getEmails(emails))
     }, [])
 
     if (emails.length === 0) return null
-
-    // if (emails.length === 0) return
 
     return <section className="mails">
        

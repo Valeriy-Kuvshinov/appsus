@@ -20,6 +20,7 @@ export const EmailService = {
     getFilterBy,
     setFilterBy,
     setFilterBy2,
+    resetFilters,
     createNoteFromEmail,
 }
 
@@ -99,11 +100,6 @@ function setFilterBy(filterType = '') {
     } else {
         gFilterBy.isStar = false
     }
-    if (filterType === 'read') {
-        gFilterBy.isRead = true
-    } else {
-        gFilterBy.isRead = false
-    }
     if (filterType==='trash') {
         gFilterBy.isTrash = true
     }  else {
@@ -132,6 +128,14 @@ function setFilterBy2(filterType = '') {
     } else {
         gFilterBy2.bySubject = false
     }
+}
+
+function resetFilters(){
+    gFilterBy.isStar = false
+    gFilterBy.isSent = false
+    gFilterBy.isDraft = false
+    // gFilterBy2.byDate = false
+    // gFilterBy2.bySubject = false
 }
 
 function trash(email){
