@@ -41,10 +41,10 @@ export function MailPreview({ email }) {
           <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}
       </button>
-      <p>{email.from}</p>
+      <p className='email-address'>{email.from}</p>
     </div>
-    <p>{email.subject}</p>
-    <p>{email.sentAt}</p>
+    <p className='email-header'>{email.subject}</p>
+    <p className='email-text'>{email.sentAt}</p>
     <div className='mail-buttons'>
       <button onClick={toNote}>
         <i className="fa-regular fa-note-sticky"></i>

@@ -66,6 +66,15 @@
    background-color: transparent;
  }
 
+.email-text{
+  font-family: Arial, sans-serif;
+}
+
+.email-header,
+.email-address{
+  font-family: 'Roboto', sans-serif;
+}
+
  .starred {
    color: goldenrod;
  }

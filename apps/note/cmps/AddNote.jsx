@@ -22,37 +22,37 @@ export const AddNote = ({ onNoteAdded }) => {
         })
 
         if (!isValid) {
-            setErrorMessage(errorMessage);
-            return;
+            setErrorMessage(errorMessage)
+            return
         }
 
-        let info = {};
+        let info = {}
 
         if (noteType === 'NoteTxt') {
             info = {
                 title: newNoteTitle,
                 txt: newNoteText,
-            };
+            }
         } else if (noteType === 'NoteImg' || noteType === 'NoteVideo') {
             info = {
                 title: newNoteTitle,
                 url: mediaLink,
-            };
+            }
         } else if (noteType === 'NoteTodos') {
-            const todoItems = todos.split(',').map((txt) => ({ txt: txt.trim(), doneAt: null }));
+            const todoItems = todos.split(',').map((txt) => ({ txt: txt.trim(), doneAt: null }))
             info = {
                 title: newNoteTitle,
                 todos: todoItems,
-            };
+            }
         }
 
-        const newNote = await noteService.createNote(noteType, info);
+        const newNote = await noteService.createNote(noteType, info)
 
-        setNewNoteTitle('');
-        setNewNoteText('');
-        setMediaLink('');
-        setTodos('');
-        onNoteAdded(newNote);
+        setNewNoteTitle('')
+        setNewNoteText('')
+        setMediaLink('')
+        setTodos('')
+        onNoteAdded(newNote)
     }
 
     return (
@@ -65,13 +65,13 @@ export const AddNote = ({ onNoteAdded }) => {
             </select>
             <input
                 type="text"
-                placeholder="New note title"
+                placeholder="Title"
                 value={newNoteTitle}
                 onChange={(e) => setNewNoteTitle(e.target.value)}
             />
             {noteType === 'NoteTxt' && (
                 <textarea
-                    placeholder="New note text"
+                    placeholder="Take a note..."
                     value={newNoteText}
                     onChange={(e) => setNewNoteText(e.target.value)}
                 />
