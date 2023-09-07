@@ -11,6 +11,7 @@ const { useState, useEffect } = React
 export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const [isEditing, setIsEditing] = useState(false)
     const [tempNote, setTempNote] = useState({ ...note })
+    const [labels, setLabels] = useState(note.labels || [])
 
     const renderDynamicComponent = (type, info, isEditing, updateTodos, handleRemoveTodo) => {
         switch (type) {
@@ -58,6 +59,22 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             updatedTodos[idx].txt = newTodos
             setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
         }
+    }
+
+    const addLabel = (label) => {
+        const newLabels = [...labels, label]
+        setLabels(newLabels)
+        const updatedNote = { ...tempNote, labels: newLabels }
+        setTempNote(updatedNote)
+        onSave(updatedNote)
+    }
+
+    const removeLabel = (label) => {
+        const newLabels = labels.filter((l) => l !== label)
+        setLabels(newLabels)
+        const updatedNote = { ...tempNote, labels: newLabels }
+        setTempNote(updatedNote)
+        onSave(updatedNote)
     }
 
     const changeBackgroundColor = (newColor) => {
@@ -132,6 +149,18 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             <div className="content">
                 {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateTodos)}
             </div>
+            <div className="labels">
+                {labels.map((label, idx) => (
+                    <span
+                        key={idx}
+                        className="label-span"
+                        style={label.style}
+                        onClick={() => removeLabel(label)}
+                    >
+                        {label.type}
+                    </span>
+                ))}
+            </div>
             <NoteActions
                 handleAddTodo={handleAddTodo}
                 handleRemoveTodo={handleRemoveTodo}
@@ -144,6 +173,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                 onDuplicate={onDuplicate}
                 note={note}
                 onDelete={onDelete}
+                addLabel={addLabel}
             />
         </div>
     )

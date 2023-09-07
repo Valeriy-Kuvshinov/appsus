@@ -1,9 +1,48 @@
 const { Link } = ReactRouterDOM
+const { useState } = React
 
-export function NoteActions({ isEditing, isPinned, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete, handleAddTodo }) {
+export function NoteActions({ isEditing, changeBackgroundColor, setIsEditing, saveChanges
+    , onDuplicate, note, onDelete, handleAddTodo, addLabel }) {
     const mailSubject = encodeURIComponent(note.info.title || "")
     const mailBody = encodeURIComponent(note.info.txt || "")
     const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
+    const [isLabelDropdownVisible, setLabelDropdownVisible] = useState(false)
+
+    const labels = [
+        {
+            type: 'Critical',
+            style: { backgroundColor: '#fd2c2c' }
+        },
+        {
+            type: 'Family',
+            style: { backgroundColor: '#093492' }
+        },
+        {
+            type: 'Work',
+            style: { backgroundColor: '#59c044' }
+        },
+        {
+            type: 'Friends',
+            style: { backgroundColor: '#f3f167' }
+        },
+        {
+            type: 'Spam',
+            style: { backgroundColor: '#f1a518' }
+        },
+        {
+            type: 'Memories',
+            style: { backgroundColor: '#7942ac' }
+        },
+        {
+            type: 'Romantic',
+            style: { backgroundColor: '#1e8bf0' }
+        }
+    ]
+
+    const onLabelClick = (label) => {
+        addLabel(label)
+        setLabelDropdownVisible(false)
+    }
 
     return (
         <div className={`actions`}>
@@ -24,7 +63,21 @@ export function NoteActions({ isEditing, isPinned, changeBackgroundColor, setIsE
                     <div className="color-box" onClick={() => changeBackgroundColor("#e99b7c")} style={{ backgroundColor: "#e99b7c" }}></div>
                 </div>
             </div>
-            <button><i className="fa-solid fa-tags"></i></button>
+            <button onClick={() => setLabelDropdownVisible(!isLabelDropdownVisible)}>
+                <i className="fa-solid fa-tags"></i>
+            </button>
+            <div className={`label-dropdown ${isLabelDropdownVisible ? 'active' : ''}`}>
+                {labels.map((label) => (
+                    <div
+                        key={label.type}
+                        className="label-option"
+                        style={label.style}
+                        onClick={() => onLabelClick(label)}
+                    >
+                        {label.type}
+                    </div>
+                ))}
+            </div>
             {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
             {isEditing && note.type === 'NoteTodos' && <button onClick={handleAddTodo}><i className="fa-solid fa-square-plus"></i></button>}
             {isEditing && <button onClick={saveChanges} >Save</button>}

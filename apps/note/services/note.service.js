@@ -91,7 +91,10 @@ function _createNotes() {
                     title: 'Yes Fullstack!',
                     txt: 'Fullstack Me Baby!'
                 },
-                style: { backgroundColor: '#FF6B6B' }
+                style: {
+                    backgroundColor: '#FF6B6B'
+                },
+                labels: []
             },
             {
                 id: 'n102',
@@ -104,7 +107,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#98FB98'
-                }
+                },
+                labels: []
             },
             {
                 id: 'n103',
@@ -119,7 +123,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#9097f8'
-                }
+                },
+                labels: []
             },
             {
                 id: 'n104',
@@ -132,7 +137,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#D8BFD8'
-                }
+                },
+                labels: []
             },
             {
                 id: 'n105',
@@ -143,7 +149,10 @@ function _createNotes() {
                     title: 'Reminder',
                     txt: 'To add MissBooks to the project.'
                 },
-                style: { backgroundColor: '#dfaf84' }
+                style: {
+                    backgroundColor: '#dfaf84'
+                },
+                labels: []
             },
             {
                 id: 'n106',
@@ -157,7 +166,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#FFFFE0'
-                }
+                },
+                labels: []
             },
             {
                 id: 'n107',
@@ -173,7 +183,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#E0FFFF'
-                }
+                },
+                labels: []
             },
             {
                 id: 'n108',
@@ -187,7 +198,8 @@ function _createNotes() {
                 },
                 style: {
                     backgroundColor: '#6cbcfd'
-                }
+                },
+                labels: []
             }
         ]
         saveToStorage(NOTE_KEY, notes)
