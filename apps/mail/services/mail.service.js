@@ -135,8 +135,12 @@ function setFilterBy2(filterType = '') {
 }
 
 function trash(email){
+    if(email.removedAt===null){
     email.removedAt=Date.now()
     save(email)
+    } else {
+        remove(email.id)
+    }
 }
 
 function read(email){
