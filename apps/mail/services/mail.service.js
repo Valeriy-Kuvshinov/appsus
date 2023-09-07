@@ -5,6 +5,7 @@ import { noteService } from '../../note/services/note.service.js'
 
 const EMAIL_KEY = 'emailDB'
 var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false, isDraft: false}
+var gFilterBy2= {byDate: false, bySubject: false}
 _createEmails()
 
 export const EmailService = {
@@ -18,6 +19,7 @@ export const EmailService = {
     getEmptyEmail,
     getFilterBy,
     setFilterBy,
+    setFilterBy2,
     createNoteFromEmail,
 }
 
@@ -39,6 +41,13 @@ function query() {
             else if (gFilterBy.isDraft) {
                 emails = emails.filter(email => (email.sentAt===null)&&(email.removedAt===null))
             } 
+
+            if (gFilterBy2.byDate) {
+                emails = sortBy(emails,'sentAt',-1)
+            }
+            else if (gFilterBy2.bySubject) {
+                emails = sortBy(emails,'subject',1)
+            }
             // else {
             //     emails = emails.filter(email => email.removedAt===null)
             // }
@@ -46,17 +55,14 @@ function query() {
         })
 }
 
-function queryByFilter(filter) {
-    return asyncStorageService.query(EMAIL_KEY)
-        .then(emails => {
-            if (filter==='date') {
-                emails = emails.map(email => email.isStar)
-            }
-            else if (filter==='name') {
-                emails = emails.map(email => email.isRead)
-            }
-            return emails
-        })
+function sortBy(items, key , dir){
+    const isStrings=['subject']
+    if(isStrings.includes(key)){
+        items.sort((a,b)=>(a[key].localeCompare(b[key]))*dir) 
+    } else {
+        items.sort((a,b)=>(b[key]-a[key])*dir)
+    }
+    return items
 }
 
 function get(emailId) {
@@ -113,7 +119,19 @@ function setFilterBy(filterType = '') {
     }  else {
         gFilterBy.isDraft = false
     }
-    return gFilterBy
+}
+
+function setFilterBy2(filterType = '') {
+    if (filterType === 'Date') {
+        gFilterBy2.byDate = true
+    } else {
+        gFilterBy2.byDate = false
+    }
+    if (filterType === 'Subject') {
+        gFilterBy2.bySubject = true
+    } else {
+        gFilterBy2.bySubject = false
+    }
 }
 
 function trash(email){
@@ -143,10 +161,10 @@ function _createEmails() {
         emails.push(_createEmail('bread', 'bread is good for fiber'
             , false, Date.now(), null, 'bread@bread.com', 'user@pegasus.com', false))
         emails.push(_createEmail('bready', 'bread is great'
-            , false, Date.now(), Date.now(), 'breadtistic@bread123.com', 'user@pegasus.com', true))
-        emails.push(_createEmail('Mark Zuckerberg', 'i am a human'
-            , false, Date.now(), null, 'totallyahuman@.com', 'user@pegasus.com', true))
-        emails.push(_createEmail('Donald Trump', 'fake news!'
+            , false, Date.now()+1, Date.now(), 'breadtistic@bread123.com', 'user@pegasus.com', true))
+        emails.push(_createEmail('mark Zuckerberg', 'i am a human'
+            , false, Date.now()+2, null, 'totallyahuman@.com', 'user@pegasus.com', true))
+        emails.push(_createEmail('donald Trump', 'fake news!'
                 , false, null, null, 'realdonaldtrump@money.com', 'user@pegasus.com', false))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
