@@ -17,8 +17,9 @@ export function MailList() {
     // if (emails.length === 0) return
 
     return <section className="mails">
-        <FilterBar val={emails} func={getEmails} />
+       
         <ul className="mail-line">
+        <FilterBar val={emails} func={getEmails} />
             {emails.map(mail =>
                 <li key={mail.id} className="mail-box">
                     <MailPreview email={mail} />

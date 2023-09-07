@@ -47,6 +47,7 @@
  }
 
  .mails {
+   /* display: flex; */
    width: 100%;
    padding: 15px;
  }
@@ -97,4 +98,13 @@
 
  .not-read{
   font-weight: bold;
+ }
+
+ .mail-line{
+  width: 100%;
+ }
+
+ .filtered-mails{
+  display: flex;
+  height: 100%;
  }
