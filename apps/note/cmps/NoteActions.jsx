@@ -6,7 +6,7 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
     const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
 
     return (
-        <div className="actions">
+        <div className={`actions ${isPinned ? 'always-visible' : ''}`}>
             {!isEditing && (<button onClick={handlePin}><i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i></button>)}
             <div className="color-picker-dropdown">
                 <button><i className="fa-solid fa-palette"></i></button>
@@ -22,7 +22,7 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
                     <div className="color-box" onClick={() => changeBackgroundColor("#D2B48C")} style={{ backgroundColor: "#D2B48C" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFB6C1")} style={{ backgroundColor: "#FFB6C1" }}></div>
                     <div className="color-box" onClick={() => changeBackgroundColor("#FFE4E1")} style={{ backgroundColor: "#FFE4E1" }}></div>
-                    <div className="color-box" onClick={() => changeBackgroundColor("#F0E68C")} style={{ backgroundColor: "#F0E68C" }}></div>
+                    <div className="color-box" onClick={() => changeBackgroundColor("#f37544")} style={{ backgroundColor: "#f37544" }}></div>
                 </div>
             </div>
             {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}

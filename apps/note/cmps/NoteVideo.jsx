@@ -33,7 +33,7 @@ export const NoteVideo = ({ info }) => {
                     ></iframe>
                 )}
             </div>
-            <div>{info.txt}</div>
+            <div className='note-text'>{info.txt}</div>
         </div>
     )
 }
