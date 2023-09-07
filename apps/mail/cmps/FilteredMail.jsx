@@ -7,7 +7,6 @@ const { useParams } = ReactRouterDOM
 export function FilteredMail(){
     const [emails, getEmails] = useState([])
     const params = useParams()
-
     useEffect(() => {
         EmailService.setFilterBy(params.filterType)
         EmailService.query().then(emails => getEmails(emails))
