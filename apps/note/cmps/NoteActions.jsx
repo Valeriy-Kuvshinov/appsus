@@ -1,5 +1,10 @@
+const { Link } = ReactRouterDOM
 
 export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundColor, setIsEditing, saveChanges, onDuplicate, note, onDelete }) {
+    const mailSubject = encodeURIComponent(note.info.title || "");
+    const mailBody = encodeURIComponent(note.info.txt || "");
+    const mailtoLink = `/mail/compose?subject=${mailSubject}&body=${mailBody}`
+
     return (
         <div className="actions">
             {!isEditing && (<button onClick={handlePin}><i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i></button>)}
@@ -23,7 +28,11 @@ export function NoteActions({ isEditing, isPinned, handlePin, changeBackgroundCo
             {!isEditing && <button onClick={() => setIsEditing(true)}><i className="fa-solid fa-pen-to-square"></i></button>}
             {isEditing && <button onClick={saveChanges} >Save</button>}
             {!isEditing && <button onClick={() => onDuplicate(note)}><i className="fa-solid fa-copy"></i></button>}
-            {!isEditing && <button onClick={() => console.log('testing')}><i className="fa-solid fa-envelope"></i></button>}
+            {!isEditing && (
+                <Link to={mailtoLink}>
+                    <button><i className="fa-solid fa-envelope"></i></button>
+                </Link>
+            )}
             {!isEditing && <button onClick={() => onDelete(note.id)}><i className="fa-solid fa-rectangle-xmark"></i></button>}
         </div>
     )
