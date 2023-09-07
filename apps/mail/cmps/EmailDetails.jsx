@@ -27,7 +27,7 @@ export function EmailDetails(){
     var index=emails.findIndex((email)=>email.id===params.emailId)
     return <section className="email-details">
              <div className="details-header detail">
-             <div>{emails[index].subject}</div>
+             <div className='email-header'>{emails[index].subject}</div>
              <div>
              <button onClick={toNote}>
                <i className="fa-regular fa-note-sticky"></i>
@@ -37,7 +37,7 @@ export function EmailDetails(){
              </button>
              </div>
              </div>
-             <div className="detail">{emails[index].from}</div>
-             <div className="detail details-body">{emails[index].body}</div>
+             <div className="detail email-address">{emails[index].from}</div>
+             <div className="detail details-body email-text">{emails[index].body}</div>
            </section>
 }
