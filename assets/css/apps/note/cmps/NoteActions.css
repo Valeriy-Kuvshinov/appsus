@@ -20,7 +20,25 @@
     border: none;
     background: transparent;
     line-height: 1.5;
-    width: 100%;
+    font-size: 18px;
+}
+
+.note-card textarea {
+    resize: none;
+    background: transparent;
+    border: none;
+    line-height: 1.5;
+    font-size: 18px;
+}
+
+.note-card .title-textarea{
+    font-size: 21px;
+}
+
+.note-card input:focus,
+.note-card textarea:focus {
+    border: none;
+    outline: none;
 }
 
 .note-card .actions {
@@ -87,10 +105,4 @@
     text-align: center;
     cursor: pointer;
     border-radius: 10px;
-}
-
-.note-text-edit {
-    resize: none;
-    background: transparent;
-    border: none;
 }

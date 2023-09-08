@@ -16,9 +16,8 @@
 
 .note-card h2 {
     margin: 0;
-    font-size: 25px;
+    font-size: 21px;
     color: #202124;
-    margin-bottom: 12px;
 }
 
 .note-card .note-header {
@@ -33,6 +32,8 @@
     flex-direction: column;
     gap: 12px;
     line-height: 1.5;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .note-card img {
@@ -43,7 +44,6 @@
 .note-text {
     margin-top: 15px;
 }
-
 
 .labels {
     display: flex;

@@ -105,16 +105,17 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const renderEditFields = () => {
         return (
             <React.Fragment>
-                <input
+                <textarea
                     type="text"
                     value={tempNote.info.title || ''}
                     onChange={(e) => updateTitle(e.target.value)}
+                    className='title-textarea'
                     placeholder="Title"
                 />
                 {(() => {
                     switch (tempNote.type) {
                         case 'NoteTxt':
-                            return <textarea className='note-text-edit' value={tempNote.info.txt} onChange={(e) => updateNoteText(e.target.value)} />
+                            return <textarea value={tempNote.info.txt} onChange={(e) => updateNoteText(e.target.value)} />
                         case 'NoteImg':
                         case 'NoteVideo':
                             return (

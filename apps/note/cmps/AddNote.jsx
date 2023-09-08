@@ -1,10 +1,11 @@
 
 import { NoteValidator } from "./NoteValidator.jsx"
+import { NoteDropdown } from "./NoteDropdown.jsx"
 import { noteService } from "../services/note.service.js"
 
 const { useState } = React
 
-export const AddNote = ({ onNoteAdded }) => {
+export function AddNote({ onNoteAdded }) {
     const [newNoteTitle, setNewNoteTitle] = useState('')
     const [newNoteText, setNewNoteText] = useState('')
     const [noteType, setNoteType] = useState('NoteTxt')
@@ -79,12 +80,10 @@ export const AddNote = ({ onNoteAdded }) => {
 
     return (
         <div className='note-creation'>
-            <select onChange={(e) => setNoteType(e.target.value)} value={noteType}>
-                <option value="NoteTxt">Text</option>
-                <option value="NoteImg">Image</option>
-                <option value="NoteVideo">Video</option>
-                <option value="NoteTodos">To-do</option>
-            </select>
+            <NoteDropdown
+                selectedValue={noteType}
+                onSelect={(value) => setNoteType(value)}
+            />
             <input
                 type="text"
                 placeholder="Title"
@@ -92,7 +91,7 @@ export const AddNote = ({ onNoteAdded }) => {
                 onChange={(e) => setNewNoteTitle(e.target.value)}
             />
             {noteType === 'NoteTxt' && (
-                <textarea style={{ resize: "none" }}
+                <input
                     placeholder="Take a note..."
                     value={newNoteText}
                     onChange={(e) => setNewNoteText(e.target.value)}
