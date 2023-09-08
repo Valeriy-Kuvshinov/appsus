@@ -1,21 +1,24 @@
-.note-creation {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
+.note-creation-wrapper {
     background-color: #fff;
     padding: 20px;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
-    margin-bottom: 2vh;
+}
+
+.note-creation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 12px;
 }
 
 .note-creation select,
 .note-creation input,
-.note-creation button {
+.note-creation button,
+.note-creation-wrapper input {
     width: 100%;
     padding: 10px;
     font-size: 16px;
@@ -30,13 +33,10 @@
     border-color: #007bff;
 }
 
-.note-creation button {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.note-creation button:hover {
-    background-color: #0056b3;
+.title-dropdown {
+    display: flex;
+    width: 100%;
+    gap: 10px;
 }
 
 .note-type-dropdown {
@@ -64,4 +64,15 @@
 
 .note-type-dropdown-option {
     padding: 10px;
+}
+
+.note-creation button {
+    background-color: #007bff;
+    color: #fff;
+    width: fit-content;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.note-creation button:hover {
+    background-color: #0056b3;
 }

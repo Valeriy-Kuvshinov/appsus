@@ -26,12 +26,14 @@ header {
 .nav-links {
     display: flex;
     align-items: center;
+    text-align: center;
     gap: 1em;
+    position: relative;
 }
 
 nav a {
     text-decoration: none;
-    padding: 0.5em 1em;
+    padding: 10px;
     border-radius: 10px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
@@ -45,4 +47,38 @@ nav a:active,
 nav a.active-link {
     background-color: #ccc;
     color: #333;
+}
+
+.nav-toggle {
+    display: none;
+    font-size: 40px;
+    background: transparent;
+}
+
+.nav-dropdown {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 1px;
+    z-index: 10;
+}
+
+.nav-toggle:hover+.nav-dropdown,
+.nav-dropdown:hover {
+    display: flex;
+}
+
+@media (max-width: 520px) {
+    .nav-links>a {
+        display: none;
+    }
+
+    .nav-toggle {
+        display: inline-block;
+    }
 }

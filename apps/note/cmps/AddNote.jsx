@@ -13,6 +13,7 @@ export function AddNote({ onNoteAdded }) {
     const [todos, setTodos] = useState('')
     const [backgroundColor, setBackgroundColor] = useState('')
     const [errorMessage, setErrorMessage] = useState('')
+    const [isExpanded, setIsExpanded] = useState(false)
 
     const randomizeBackgroundColor = () => {
         const colors = [
@@ -76,54 +77,69 @@ export function AddNote({ onNoteAdded }) {
         setMediaLink('')
         setTodos('')
         onNoteAdded(newNote)
+        setIsExpanded(false)
+        setNoteType('NoteTxt')
     }
 
     return (
-        <div className='note-creation'>
-            <NoteDropdown
-                selectedValue={noteType}
-                onSelect={(value) => setNoteType(value)}
-            />
-            <input
-                type="text"
-                placeholder="Title"
-                value={newNoteTitle}
-                onChange={(e) => setNewNoteTitle(e.target.value)}
-            />
-            {noteType === 'NoteTxt' && (
-                <input
-                    placeholder="Take a note..."
-                    value={newNoteText}
-                    onChange={(e) => setNewNoteText(e.target.value)}
-                />
-            )}
-            {(noteType === 'NoteImg' || noteType === 'NoteVideo') && (
-                <React.Fragment>
+        <div className='note-creation-wrapper'>
+            {isExpanded ? (
+                <div className='note-creation' onClick={() => setIsExpanded(true)}>
+                    <div className='title-dropdown'>
+                        <input
+                            type="text"
+                            placeholder="Title"
+                            value={newNoteTitle}
+                            onChange={(e) => setNewNoteTitle(e.target.value)}
+                        />
+                        <NoteDropdown
+                            selectedValue={noteType}
+                            onSelect={(value) => setNoteType(value)}
+                        />
+                    </div>
+                    {noteType === 'NoteTxt' && (
+                        <input
+                            placeholder="Take a note..."
+                            value={newNoteText}
+                            onChange={(e) => setNewNoteText(e.target.value)}
+                        />
+                    )}
+                    {(noteType === 'NoteImg' || noteType === 'NoteVideo') && (
+                        <React.Fragment>
+                            <input
+                                type="text"
+                                placeholder="Media URL"
+                                value={mediaLink}
+                                onChange={(e) => setMediaLink(e.target.value)}
+                            />
+                            <input
+                                type="text"
+                                placeholder="Text under media"
+                                value={newNoteText}
+                                onChange={(e) => setNewNoteText(e.target.value)}
+                            />
+                        </React.Fragment>
+                    )}
+                    {noteType === 'NoteTodos' && (
+                        <input
+                            type="text"
+                            placeholder="To-dos (comma separated)"
+                            value={todos}
+                            onChange={(e) => setTodos(e.target.value)}
+                        />
+                    )}
+                    <button onClick={handleCreate}>Create</button>
+                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+                </div>
+            ) : (
+                <div onClick={() => setIsExpanded(true)}>
                     <input
-                        type="text"
-                        placeholder="Media URL"
-                        value={mediaLink}
-                        onChange={(e) => setMediaLink(e.target.value)}
-                    />
-                    <input
-                        type="text"
-                        placeholder="Text under media"
+                        placeholder="Take a note..."
                         value={newNoteText}
                         onChange={(e) => setNewNoteText(e.target.value)}
                     />
-                </React.Fragment>
+                </div>
             )}
-            {noteType === 'NoteTodos' && (
-                <input
-                    type="text"
-                    placeholder="To-dos (comma separated)"
-                    value={todos}
-                    onChange={(e) => setTodos(e.target.value)}
-                />
-            )}
-            <button onClick={handleCreate}>Create</button>
-
-            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
-    )
+    );
 }

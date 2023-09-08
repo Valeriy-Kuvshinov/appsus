@@ -27,11 +27,19 @@ export function AppHeader() {
                 <img src={currentImage} alt="App logo" className="logo" />
             </a>
             <nav className="nav-links">
+                <button className="nav-toggle"><i className="fa-solid fa-bars"></i></button>
+                <div className="nav-dropdown">
+                    <a className={setActiveNavLink("/")} href="#/">Home</a>
+                    <a className={setActiveNavLink("/about")} href="#/about">About</a>
+                    <a className={setActiveNavLink("/mail")} href="#/mail">Mail</a>
+                    <a className={setActiveNavLink("/note")} href="#/note">Notes</a>
+                    <a className={setActiveNavLink("/books")} href="#/books">Books</a>
+                </div>
                 <a className={setActiveNavLink("/")} href="#/">Home</a>
                 <a className={setActiveNavLink("/about")} href="#/about">About</a>
                 <a className={setActiveNavLink("/mail")} href="#/mail">Mail</a>
                 <a className={setActiveNavLink("/note")} href="#/note">Notes</a>
-                <a className={setActiveNavLink("/note")} href="#/note">Books</a>
+                <a className={setActiveNavLink("/books")} href="#/books">Books</a>
             </nav>
         </header>
     )

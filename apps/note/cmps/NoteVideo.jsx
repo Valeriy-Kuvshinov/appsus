@@ -21,7 +21,7 @@ export const NoteVideo = ({ info }) => {
                 {!isVideoClicked && (
                     <React.Fragment>
                         <img src={thumbnailUrl} alt="Video Thumbnail" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }} />
-                        <i className="fa-solid fa-circle-play" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '5em', color: 'white' }}></i>
+                        <i className="fa-solid fa-circle-play" style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', fontSize: '4em', color: 'red' }}></i>
                     </React.Fragment>
                 )}
                 {isVideoClicked && (
