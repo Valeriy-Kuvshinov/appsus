@@ -1,0 +1,42 @@
+.book-filter {
+    padding: 0.5rem;
+    background-color: #039BE5;
+    color: #001F3F;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(31, 29, 29);
+}
+
+.book-filter h2 {
+    font-family: 'Oswald', sans-serif;
+    margin: auto;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 2px solid rgb(24, 23, 23);
+    width: fit-content;
+}
+
+.filter-form {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 0.5em;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 0.5em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}

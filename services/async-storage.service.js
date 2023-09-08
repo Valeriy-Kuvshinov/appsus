@@ -54,7 +54,7 @@ function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 
-function _makeId(length = 5) {
+function _makeId(length = 11) {
     var text = ''
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
     for (var i = 0; i < length; i++) {

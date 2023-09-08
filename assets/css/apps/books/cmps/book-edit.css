@@ -1,0 +1,47 @@
+.editor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+    padding: 20px;
+    margin: auto;
+    width: 500px;
+    color: #001F3F;
+    background-color: #29B6F6;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.editor-container label {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #534f4f;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+textarea {
+    height: 80px;
+    resize: vertical;
+}
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #FFC1A1;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.5s;
+}
+
+button[type="submit"]:hover {
+    background-color: #FF7043;
+}

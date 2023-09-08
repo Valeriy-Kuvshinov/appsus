@@ -1,0 +1,16 @@
+/* .main-layout {
+  margin: 0 auto;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+} */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.container {
+  padding: 1em;
+  margin: auto;
+}

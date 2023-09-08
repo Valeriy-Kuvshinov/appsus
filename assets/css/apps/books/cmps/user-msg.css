@@ -1,0 +1,54 @@
+.user-msg {
+  background-color: rgb(37, 36, 36);
+  padding: 0.5em 1em;
+  position: fixed;
+  bottom: 1em;
+  right: -300px;
+  color: rgb(240, 232, 232);
+  font-weight: bold;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-msg p {
+  padding: 0;
+  margin: auto;
+}
+
+@keyframes slideIn {
+  from {
+    right: -300px;
+  }
+
+  to {
+    right: 1em;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    right: 1em;
+  }
+
+  to {
+    right: -300px;
+  }
+}
+
+.user-msg.show {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.user-msg.hide {
+  animation: slideOut 0.5s ease-out forwards;
+}
+
+.user-msg.success {
+  background-color: rgb(9, 87, 9);
+}
+
+.user-msg.error {
+  background-color: red;
+}
