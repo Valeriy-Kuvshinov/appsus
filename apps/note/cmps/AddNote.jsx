@@ -92,7 +92,7 @@ export const AddNote = ({ onNoteAdded }) => {
                 onChange={(e) => setNewNoteTitle(e.target.value)}
             />
             {noteType === 'NoteTxt' && (
-                <textarea
+                <textarea style={{ resize: "none" }}
                     placeholder="Take a note..."
                     value={newNoteText}
                     onChange={(e) => setNewNoteText(e.target.value)}

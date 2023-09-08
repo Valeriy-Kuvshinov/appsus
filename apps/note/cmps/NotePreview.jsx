@@ -69,8 +69,8 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         onSave(updatedNote)
     }
 
-    const removeLabel = (label) => {
-        const newLabels = labels.filter((l) => l !== label)
+    const removeLabel = (labelToRemove) => {
+        const newLabels = labels.filter(label => label.type !== labelToRemove.type)
         setLabels(newLabels)
         const updatedNote = { ...tempNote, labels: newLabels }
         setTempNote(updatedNote)
@@ -114,7 +114,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                 {(() => {
                     switch (tempNote.type) {
                         case 'NoteTxt':
-                            return <textarea value={tempNote.info.txt} onChange={(e) => updateNoteText(e.target.value)} />
+                            return <textarea className='note-text-edit' value={tempNote.info.txt} onChange={(e) => updateNoteText(e.target.value)} />
                         case 'NoteImg':
                         case 'NoteVideo':
                             return (

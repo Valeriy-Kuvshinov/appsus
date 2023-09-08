@@ -39,6 +39,13 @@ export function NoteActions({ isEditing, changeBackgroundColor, setIsEditing, sa
         }
     ]
 
+    const alreadyAddedLabels = note.labels || []
+    const availableLabels = labels.filter(
+        label => !alreadyAddedLabels.some(
+            addedLabel => addedLabel.type === label.type
+        )
+    )
+
     const onLabelClick = (label) => {
         addLabel(label)
         setLabelDropdownVisible(false)
@@ -63,11 +70,14 @@ export function NoteActions({ isEditing, changeBackgroundColor, setIsEditing, sa
                     <div className="color-box" onClick={() => changeBackgroundColor("#e99b7c")} style={{ backgroundColor: "#e99b7c" }}></div>
                 </div>
             </div>
-            <button onClick={() => setLabelDropdownVisible(!isLabelDropdownVisible)}>
+            <button
+                onClick={() => setLabelDropdownVisible(!isLabelDropdownVisible)}
+                disabled={availableLabels.length === 0}
+            >
                 <i className="fa-solid fa-tags"></i>
             </button>
             <div className={`label-dropdown ${isLabelDropdownVisible ? 'active' : ''}`}>
-                {labels.map((label) => (
+                {availableLabels.map((label) => (
                     <div
                         key={label.type}
                         className="label-option"
