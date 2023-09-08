@@ -17,7 +17,11 @@
     margin-top: 3vh;
     color: #423d3d;
     font-size: .8875rem;
-    margin-left: 1vw;
+    margin-left: 2vw;
+}
+
+.notes-container {
+    padding: 30px;
 }
 
 .notes-list {
@@ -42,5 +46,9 @@
 @media only screen and (max-width: 450px) {
     .notes-list {
         column-count: 1;
+    }
+
+    .notes-container {
+        padding: 10px;
     }
 }

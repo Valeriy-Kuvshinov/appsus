@@ -83,7 +83,7 @@ export const AddNote = ({ onNoteAdded }) => {
                 <option value="NoteTxt">Text</option>
                 <option value="NoteImg">Image</option>
                 <option value="NoteVideo">Video</option>
-                <option value="NoteTodos">To-dos</option>
+                <option value="NoteTodos">To-do</option>
             </select>
             <input
                 type="text"
