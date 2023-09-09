@@ -22,12 +22,13 @@
 
 .notes-container {
     padding: 30px;
+    margin-top: -5vh;
 }
 
 .notes-list {
     column-count: 4;
     column-gap: 10px;
-    margin-bottom: 15vh;
+    margin-bottom: 1vh;
 }
 
 /* Screen width adaptions */
