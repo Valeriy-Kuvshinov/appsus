@@ -1,13 +1,18 @@
+@media (min-width:1200px) {
+    .mailbox-chooser {
+        display: flex;
+        flex-direction: column;
+        width: 150px;
+        height: 100%;
+    }
+}
+
 
 .mailbox-chooser {
-    display: flex;
-    flex-direction: column;
-    width: 150px;
-    height: 100%;
+    
     background-color: #F1F3F4;
     border-right: 1px solid #ccc;
 }
-
 .mailbox-chooser button {
     display: flex;
     justify-content: space-between;
@@ -22,4 +27,12 @@
 .mailbox-chooser button:hover,
 .chosen {
     background-color: #7d7e81;
+}
+
+.mail-choosers1{
+    display: flex;
+}
+
+.mail-choosers2{
+    display: flex;
 }
