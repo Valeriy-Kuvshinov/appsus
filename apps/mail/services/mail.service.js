@@ -6,7 +6,7 @@ import { noteService } from '../../note/services/note.service.js'
 const EMAIL_KEY = 'emailDB'
 var gFilterBy = { isStar: false, isRead: false, isTrash: false, isSent: false, isDraft: false }
 var gFilterBy2 = { byDate: false, bySubject: false }
-//_createEmails()
+_createEmails()
 
 export const EmailService = {
     query,
