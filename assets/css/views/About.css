@@ -40,9 +40,10 @@
 .team-member {
     flex: 1;
     margin: 10px;
-    max-width: 400px;
     background-color: #70c9f4;
     border-radius: 25px;
+    width: 100%;
+    max-width: 900px;
 }
 
 .team-member img {
