@@ -1,0 +1,19 @@
+.button1{
+    color: white;
+    background-color: white;
+    border: 0;
+}
+
+.button1:hover{
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+}
+
+.button2:hover{
+    color: red;
+}
+
+.hidden{
+    display: none;
+}
