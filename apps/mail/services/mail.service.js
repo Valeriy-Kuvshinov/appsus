@@ -4,9 +4,9 @@ import { storageService } from '../../../services/storage.service.js'
 import { noteService } from '../../note/services/note.service.js'
 
 const EMAIL_KEY = 'emailDB'
-var gFilterBy = {isStar: false, isRead: false, isTrash: false, isSent: false, isDraft: false}
-var gFilterBy2= {byDate: false, bySubject: false}
-// _createEmails()
+var gFilterBy = { isStar: false, isRead: false, isTrash: false, isSent: false, isDraft: false }
+var gFilterBy2 = { byDate: false, bySubject: false }
+//_createEmails()
 
 export const EmailService = {
     query,
@@ -34,20 +34,20 @@ function query() {
                 emails = emails.filter(email => email.isRead)
             }
             else if (gFilterBy.isTrash) {
-                emails = emails.filter(email => email.removedAt!==null)
+                emails = emails.filter(email => email.removedAt !== null)
             }
             else if (gFilterBy.isSent) {
-                emails = emails.filter(email => email.sentAt!==null)
+                emails = emails.filter(email => email.sentAt !== null)
             }
             else if (gFilterBy.isDraft) {
-                emails = emails.filter(email => (email.sentAt===null)&&(email.removedAt===null))
-            } 
+                emails = emails.filter(email => (email.sentAt === null) && (email.removedAt === null))
+            }
 
             if (gFilterBy2.byDate) {
-                emails = sortBy(emails,'sentAt',-1)
+                emails = sortBy(emails, 'sentAt', -1)
             }
             else if (gFilterBy2.bySubject) {
-                emails = sortBy(emails,'subject',1)
+                emails = sortBy(emails, 'subject', 1)
             }
             // else {
             //     emails = emails.filter(email => email.removedAt===null)
@@ -56,12 +56,12 @@ function query() {
         })
 }
 
-function sortBy(items, key , dir){
-    const isStrings=['subject']
-    if(isStrings.includes(key)){
-        items.sort((a,b)=>(a[key].localeCompare(b[key]))*dir) 
+function sortBy(items, key, dir) {
+    const isStrings = ['subject']
+    if (isStrings.includes(key)) {
+        items.sort((a, b) => (a[key].localeCompare(b[key])) * dir)
     } else {
-        items.sort((a,b)=>(b[key]-a[key])*dir)
+        items.sort((a, b) => (b[key] - a[key]) * dir)
     }
     return items
 }
@@ -100,19 +100,19 @@ function setFilterBy(filterType = '') {
     } else {
         gFilterBy.isStar = false
     }
-    if (filterType==='trash') {
+    if (filterType === 'trash') {
         gFilterBy.isTrash = true
-    }  else {
+    } else {
         gFilterBy.isTrash = false
     }
-    if (filterType==='sent') {
+    if (filterType === 'sent') {
         gFilterBy.isSent = true
-    }  else {
+    } else {
         gFilterBy.isSent = false
     }
-    if (filterType==='drafts') {
+    if (filterType === 'drafts') {
         gFilterBy.isDraft = true
-    }  else {
+    } else {
         gFilterBy.isDraft = false
     }
 }
@@ -130,7 +130,7 @@ function setFilterBy2(filterType = '') {
     }
 }
 
-function resetFilters(){
+function resetFilters() {
     gFilterBy.isStar = false
     gFilterBy.isSent = false
     gFilterBy.isDraft = false
@@ -138,46 +138,46 @@ function resetFilters(){
     // gFilterBy2.bySubject = false
 }
 
-function trash(email){
-    if(email.removedAt===null){
-    email.removedAt=Date.now()
-    save(email)
+function trash(email) {
+    if (email.removedAt === null) {
+        email.removedAt = Date.now()
+        save(email)
     } else {
         remove(email.id)
     }
 }
 
-function read(email){
-    email.isRead=true
+function read(email) {
+    email.isRead = true
     save(email)
 }
 
-function star(email){
+function star(email) {
     if (email.isStar === false) {
-        email.isStar = true 
+        email.isStar = true
     } else {
-        email.isStar = false 
-    } 
+        email.isStar = false
+    }
     save(email)
-} 
+}
 
 function _createEmails() {
     console.log('email created')
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
-        var time=new Date()
+        var time = new Date()
         console.log(time)
         var time2
-        if(time.getMinutes()<10){
-            time2=`${time.getHours()}:0${time.getMinutes()}`
-            if(time.getHours()<10){
-                time2=`0${time.getHours()}:0${time.getMinutes()}`
+        if (time.getMinutes() < 10) {
+            time2 = `${time.getHours()}:0${time.getMinutes()}`
+            if (time.getHours() < 10) {
+                time2 = `0${time.getHours()}:0${time.getMinutes()}`
             }
-        } else if (time.getHours()<10){
-          time2=`0${time.getHours()}:${time.getMinutes()}`
+        } else if (time.getHours() < 10) {
+            time2 = `0${time.getHours()}:${time.getMinutes()}`
         } else {
-            time2=`${time.getHours()}:${time.getMinutes()}`
+            time2 = `${time.getHours()}:${time.getMinutes()}`
         }
         emails.push(_createEmail('bread', 'bread is good for fiber'
             , false, time2, null, 'bread@bread.com', 'user@pegasus.com', false))
@@ -186,7 +186,7 @@ function _createEmails() {
         emails.push(_createEmail('mark Zuckerberg', 'i am a human'
             , false, time2, null, 'totallyahuman@.com', 'user@pegasus.com', true))
         emails.push(_createEmail('donald Trump', 'fake news!'
-                , false, null, null, 'realdonaldtrump@money.com', 'user@pegasus.com', false))
+            , false, null, null, 'realdonaldtrump@money.com', 'user@pegasus.com', false))
         storageService.saveToStorage(EMAIL_KEY, emails)
     }
 }
