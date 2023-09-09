@@ -37,6 +37,7 @@
     display: flex;
     width: 100%;
     gap: 10px;
+    align-items: center;
 }
 
 .note-type-dropdown {
@@ -49,6 +50,7 @@
     border: 1px solid #ccc;
     padding: 10px;
     border-radius: 10px;
+    margin-top: 4px;
 }
 
 .note-type-dropdown-options {
