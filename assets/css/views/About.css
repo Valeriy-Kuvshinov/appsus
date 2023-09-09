@@ -1,3 +1,7 @@
+.section{
+    height: 1200px;
+}
+
 .button1{
     color: white;
     background-color: white;
@@ -20,4 +24,8 @@
 
 .fifth:hover{
     color: rgb(37, 37, 37);
+}
+
+.about img{
+    height: 250px;
 }
