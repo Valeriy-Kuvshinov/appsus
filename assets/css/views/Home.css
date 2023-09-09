@@ -1,44 +1,55 @@
  /* home */
 
  .home {
-     background-color: #f9f9f9;
+     background: url('/imgs/welcome.jpg');
+     background-size: cover;
      display: flex;
      flex-direction: column;
+     text-align: center;
      gap: 20px;
      padding: 20px;
+     color: rgb(39, 38, 38);
+     font-family: 'Roboto', sans-serif;
  }
 
  .home-wrapper {
-     background-color: white;
-     text-align: center;
      padding: 20px;
      border-radius: 8px;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     max-width: 600px;
+     margin: auto;
+ }
+
+ .home-title {
+     color: rgb(240, 240, 231);
  }
 
  .home-image {
-     max-width: 100%;
+     width: 100%;
      height: auto;
  }
 
  .projects {
      display: grid;
-     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
      gap: 20px;
  }
 
  .project-wrapper {
-     background-color: white;
+     background-color: rgb(238, 231, 231);
      padding: 20px;
-     text-align: center;
-     border-radius: 8px;
-     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     border-radius: 25px;
+     box-shadow: 16px 16px 8px rgba(0, 0, 0, 0.1);
+     max-width: 600px;
+     margin: auto;
+     opacity: 0.75;
+     transition: box-shadow 0.3s ease-in-out, opacity 0.3s ease-in-out;
+     cursor: pointer;
  }
 
  .project-logo {
      width: 80px;
      height: auto;
      margin-bottom: 15px;
+     border-radius: 50%;
  }
 
  .project-info h2 {
@@ -55,6 +66,6 @@
  }
 
  .project-wrapper:hover {
-     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-     transition: box-shadow 0.3s ease-in-out;
+     opacity: 1;
+     box-shadow: 16px 16px 8px rgba(0, 0, 0, 0.2);
  }
