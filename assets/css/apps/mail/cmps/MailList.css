@@ -104,6 +104,12 @@
   width: 100%;
  }
 
+ .mail-info{
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+ }
+
  .filtered-mails{
   display: flex;
   height: 100%;

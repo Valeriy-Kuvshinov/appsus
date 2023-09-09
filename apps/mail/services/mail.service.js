@@ -166,12 +166,25 @@ function _createEmails() {
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []
+        var time=new Date()
+        console.log(time)
+        var time2
+        if(time.getMinutes()<10){
+            time2=`${time.getHours()}:0${time.getMinutes()}`
+            if(time.getHours()<10){
+                time2=`0${time.getHours()}:0${time.getMinutes()}`
+            }
+        } else if (time.getHours()<10){
+          time2=`0${time.getHours()}:${time.getMinutes()}`
+        } else {
+            time2=`${time.getHours()}:${time.getMinutes()}`
+        }
         emails.push(_createEmail('bread', 'bread is good for fiber'
-            , false, Date.now(), null, 'bread@bread.com', 'user@pegasus.com', false))
+            , false, time2, null, 'bread@bread.com', 'user@pegasus.com', false))
         emails.push(_createEmail('bready', 'bread is great'
-            , false, Date.now()+1, Date.now(), 'breadtistic@bread123.com', 'user@pegasus.com', true))
+            , false, time2, time2, 'breadtistic@bread123.com', 'user@pegasus.com', true))
         emails.push(_createEmail('mark Zuckerberg', 'i am a human'
-            , false, Date.now()+2, null, 'totallyahuman@.com', 'user@pegasus.com', true))
+            , false, time2, null, 'totallyahuman@.com', 'user@pegasus.com', true))
         emails.push(_createEmail('donald Trump', 'fake news!'
                 , false, null, null, 'realdonaldtrump@money.com', 'user@pegasus.com', false))
         storageService.saveToStorage(EMAIL_KEY, emails)

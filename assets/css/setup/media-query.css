@@ -1,0 +1,47 @@
+/*  Home  */
+
+
+
+
+
+/*  About  */
+
+
+
+
+
+/*  Mail  */
+
+@media (max-width:1200px) {
+    
+}
+
+@media (max-width:800px) {
+    
+    .mail{
+        flex-direction: column;
+    }
+}
+
+@media (max-width:520px) {
+    .mailbox-chooser{
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 56px;
+    }
+    .main-mail {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        box-sizing: border-box;
+      }
+}
+
+/* Notes  */
+
+
+
+
+
+/* Books */

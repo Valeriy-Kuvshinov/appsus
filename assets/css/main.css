@@ -1,18 +1,20 @@
 /* Setup */
 
-@import './setup/variables.css';
 @import './setup/fonts.css';
+@import './setup/media-query.css';
+@import './setup/variables.css';
+@import './setup/vars.css';
 
 /* Basics */
 
 @import './basics/base.css';
+@import './basics/forms.css';
 @import './basics/helpers.css';
-@import './setup/fonts.css';
+@import './basics/layout.css';
+
 /* Views */
 @import './views/home.css';
-
 @import './apps/note/views/NoteIndex.css';
-
 @import './apps/mail/views/MailIndex.css';
 
 /* Cmps */

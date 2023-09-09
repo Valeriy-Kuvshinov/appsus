@@ -32,6 +32,7 @@ export function MailPreview({ email }) {
   }
 
   return <section className={classN}>
+    <div className="mail-info">
     <div className="innerBox">
       <button onClick={changeStarSelection}>
         {(email.isStar === true) ?
@@ -42,6 +43,7 @@ export function MailPreview({ email }) {
     </div>
     <p className='email-header'>{email.subject}</p>
     <p className='email-text'>{email.sentAt}</p>
+    </div>
     <div className='mail-buttons'>
       <button onClick={toNote}>
         <i className="fa-regular fa-note-sticky"></i>
