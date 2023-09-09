@@ -21,6 +21,8 @@
 
  .home-title {
      color: rgb(240, 240, 231);
+     margin-bottom: 1vh;
+     line-height: 1.5;
  }
 
  .home-image {
@@ -54,15 +56,19 @@
 
  .project-info h2 {
      margin-top: 0;
+     margin-bottom: 1vh;
+     line-height: 1.5;
  }
 
  .project-info h4 {
-     margin-bottom: 20px;
+     margin-bottom: 1vh;
+     line-height: 1.5;
  }
 
  .project-showcase {
      width: 100%;
      height: auto;
+     border-radius: 15px;
  }
 
  .project-wrapper:hover {
