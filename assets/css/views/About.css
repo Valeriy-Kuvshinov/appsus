@@ -17,3 +17,7 @@
 .hidden{
     display: none;
 }
+
+.fifth:hover{
+    color: rgb(37, 37, 37);
+}
