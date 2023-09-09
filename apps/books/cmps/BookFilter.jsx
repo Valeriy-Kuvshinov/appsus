@@ -1,5 +1,7 @@
 const { useState, useEffect } = React
 
+const { Link } = ReactRouterDOM
+
 const categories = ["Fiction", "Thriller", "German Literature", "Psychological Fiction",
     "Classics", "Drama", "Fantasy", "Historical Fiction", "Russian Literature",
     "Psychological Thriller", "Adventure", "Classic Literature", "Romance",
@@ -79,6 +81,8 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                         <option key={idx} value={cat}>{cat}</option>
                     ))}
                 </select>
+
+                <button><Link to={`/book/add`}>add books</Link></button>
             </form>
         </section>
     )

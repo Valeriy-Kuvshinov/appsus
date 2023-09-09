@@ -20,6 +20,7 @@ export const bookService = {
     addReview,
     deleteReview,
     createBook,
+    addGoogleBook
 }
 
 function query(filterBy = {}) {
@@ -126,6 +127,11 @@ function getEmptyReview() {
     }
 }
 
+function addGoogleBook(bookName='bread'){
+    const url2=`https://www.googleapis.com/books/v1/volumes?printType=books&q=${bookName}`
+    return axios.get(url2).then((res)=>{return (res.data.items).splice(0,5)})
+}
+
 function _createBooks() {
     let books = storageService.loadFromStorage(BOOK_KEY)
     if (!books || !books.length) {
@@ -137,51 +143,30 @@ function _createBooks() {
 function createBook({ title, subtitle, authors, publishedDate, description, pageCount
     , categories, thumbnail, language, amount = 0, currencyCode = 'USD', isOnSale = true }) {
     // Type checking
-    if (typeof title !== 'string') throw new Error('Title should be a string')
+    // if (typeof title !== 'string') throw new Error('Title should be a string')
 
-    const emptyBook = getEmptyBook()
-    const newBook = {
-        ...emptyBook,  // spread all properties of emptyBook into newBook
-        id: utilService.makeId(),  // overwrite id
-        title,  // overwrite title
-        subtitle,
-        authors,
-        publishedDate,
-        description,
-        pageCount,
-        categories,
-        thumbnail,
-        language,
-        listPrice: {
-            amount,
-            currencyCode,
-            isOnSale,
-        },
-    }
-    console.log('Creating book:', amount, typeof amount)
+    const book= getEmptyBook({id: utilService.makeId(),title,subtitle,authors,publishedDate,description,
+        pageCount,categories,thumbnail,language,listPrice: {amount,currencyCode,isOnSale,}})
 
-    return asyncStorageService.post(BOOK_KEY, newBook)
+    return asyncStorageService.post(BOOK_KEY, book)
         .then(savedBook => {
             return savedBook
         })
 }
 
-function getEmptyBook() {
+function getEmptyBook(title = '',description,pageCount, publishedDate=new Date(), listPrice={amount:0,currencyCode: 'USD',isOnSale:true},imageURL='',subtitle,language,authors) {
     return {
         id: '',
-        title: '',
-        subtitle: '',
-        authors: [],
-        publishedDate: 1900,
-        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing.',
-        pageCount: 0,
+        title,
+        subtitle,
+        authors,
+        publishedDate,
+        description,
+        pageCount,
         categories: [],
         thumbnail: '6',
-        language: 'en',
-        listPrice: {
-            amount: 0,
-            currencyCode: 'USD',
-            isOnSale: true
-        }
+        imageURL,
+        language,
+        listPrice
     }
 }
