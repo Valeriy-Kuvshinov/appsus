@@ -30,10 +30,9 @@ export function BookAdd(){
             isOnSale:(books[index].saleInfo.saleability==='NOT_FOR_SALE') ? false : true},
             (books[index].volumeInfo.imageLinks!==undefined) ? (books[index].volumeInfo.imageLinks.thumbnail) : 'no picture',
             books[index].volumeInfo.subtitle,
-            (books[index].volumeInfo.imageLinks!==undefined) ? books[index].volumeInfo.imageLinks.language : 'human language',
+            books[index].volumeInfo.language,
             books[index].volumeInfo.authors[0]
             )
-            console.log(book)
         bookService.save(book)
     }
     return <section>
