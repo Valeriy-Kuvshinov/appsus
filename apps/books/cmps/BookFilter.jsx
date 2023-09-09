@@ -82,7 +82,7 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                     ))}
                 </select>
 
-                <button><Link to={`/book/add`}>add books</Link></button>
+                <Link to={`/book/add`}><button>add books</button></Link>
             </form>
         </section>
     )
