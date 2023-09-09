@@ -40,7 +40,7 @@ export function BookIndex() {
         <section className='book-index main-layout'>
             <div className='add-book-header'>
                 <h2>Missing a book?</h2>
-                <Link to={`/book/add`}><button>Click Me!</button></Link>
+                <Link to={`/book/add`}><button className='add-book-button'>Click Me!</button></Link>
             </div>
             <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
             <BookList books={books} onRemoveBook={onRemoveBook} />

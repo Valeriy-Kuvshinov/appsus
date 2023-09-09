@@ -59,7 +59,8 @@
     flex-grow: 0;
 }
 
-.book-buttons button {
+.book-buttons button,
+.add-book-button {
     background-color: #FFC1A1;
     min-width: 40px;
     min-height: 40px;
@@ -67,7 +68,12 @@
     font-size: 16px;
 }
 
-.book-buttons button:hover {
+.add-book-button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.book-buttons button:hover,
+.add-book-button:hover {
     background-color: #FF7043;
     color: var(--gray1)
 }

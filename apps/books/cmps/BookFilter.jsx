@@ -58,16 +58,16 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 <input value={txt} onChange={handleChange} type="text" placeholder="Title" id="txt" name="txt" />
 
                 <label htmlFor="minPrice">Min Price: </label>
-                <input value={minPrice} onChange={handleChange} type="number" min="0" placeholder="0" id="minPrice" name="minPrice" />
+                <input value={minPrice} onChange={handleChange} type="number" min="0" max="999" placeholder="0" id="minPrice" name="minPrice" />
 
                 <label htmlFor="maxPrice">Max Price: </label>
-                <input value={maxPrice} onChange={handleChange} type="number" max="999" placeholder="999" id="maxPrice" name="maxPrice" />
+                <input value={maxPrice} onChange={handleChange} type="number" min="999" max="0" placeholder="999" id="maxPrice" name="maxPrice" />
 
                 <label htmlFor="publishedBefore">Published Before: </label>
-                <input value={publishedBefore} onChange={handleChange} type="number" max={new Date().getFullYear()} placeholder="2023" id="publishedBefore" name="publishedBefore" />
+                <input value={publishedBefore} onChange={handleChange} type="number" min="1600" max={new Date().getFullYear()} placeholder="2023" id="publishedBefore" name="publishedBefore" />
 
                 <label htmlFor="publishedAfter">Published After: </label>
-                <input value={publishedAfter} onChange={handleChange} type="number" min="1600" placeholder="1600" id="publishedAfter" name="publishedAfter" />
+                <input value={publishedAfter} onChange={handleChange} type="number" min="1600" max={new Date().getFullYear()} placeholder="1600" id="publishedAfter" name="publishedAfter" />
 
                 <label htmlFor="language">Language: </label>
                 <select value={language} onChange={handleChange} id="language" name="language">

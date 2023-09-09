@@ -31,6 +31,7 @@
 @import './apps/books/cmps/reviews.css';
 @import './apps/books/cmps/user-msg.css';
 @import './apps/books/views/book-index.css';
+@import './apps/books/cmps/book-add.css';
 
 @import './apps/note/cmps/NoteList.css';
 @import './apps/note/cmps/NoteCreate.css';
