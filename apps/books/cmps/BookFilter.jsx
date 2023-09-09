@@ -1,7 +1,5 @@
 const { useState, useEffect } = React
 
-const { Link } = ReactRouterDOM
-
 const categories = ["Fiction", "Thriller", "German Literature", "Psychological Fiction",
     "Classics", "Drama", "Fantasy", "Historical Fiction", "Russian Literature",
     "Psychological Thriller", "Adventure", "Classic Literature", "Romance",
@@ -13,6 +11,12 @@ const categories = ["Fiction", "Thriller", "German Literature", "Psychological F
     "Biography", "Practical Advice", "Automotives", "Games", "Art",
     "Adult", "Business", "Personal Growth", "Self Help", "Politics & War",
     "Moral & Ethics", "Social Commentary", "Science & Technology"]
+
+const authors = ['Lynette Noni', 'Joseph Smets', 'Barbara Ferrer', 'Dr. Stephen Larkin'
+    , 'V. A Jeffrey', 'CD Projekt Red', 'Dr. Seuss', 'Roger Welsch', 'Hector Hugh Munro', 'Joshua Glenn'
+    , 'Elizabeth Foy Larsen', 'A. Merritt', 'Neil Gaiman', 'Stephen Fry', 'Danielle Steel', 'Ann Druffel'
+    , 'Samantha James', 'Russ Ryan', 'Erwin S. Strauss', 'Gabriel García Márquez', 'Miguel de Cervantes Saavedra'
+    , 'Lev Tolstoy', 'Fyodor Dostoyevsky', 'Mikhail Bulgakov', 'Günter Grass', 'Johann Wolfgang von Goethe', 'Patrick Süskind']
 
 export function BookFilter({ filterBy, onSetFilterBy }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy, category: '' })
@@ -45,13 +49,13 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
         onSetFilterBy(filterByToEdit)
     }
 
-    const { txt, minPrice, maxPrice, language, publishedBefore, publishedAfter, category } = filterByToEdit
+    const { txt, minPrice, maxPrice, language, publishedBefore, publishedAfter, category, author } = filterByToEdit
     return (
         <section className="book-filter">
             <h2>Filter By:</h2>
             <form className="filter-form" onSubmit={onSubmitFilter}>
                 <label htmlFor="txt">Title: </label>
-                <input value={txt} onChange={handleChange} type="text" placeholder="By Title" id="txt" name="txt" />
+                <input value={txt} onChange={handleChange} type="text" placeholder="Title" id="txt" name="txt" />
 
                 <label htmlFor="minPrice">Min Price: </label>
                 <input value={minPrice} onChange={handleChange} type="number" min="0" placeholder="0" id="minPrice" name="minPrice" />
@@ -77,12 +81,18 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
                 <label htmlFor="category">Category: </label>
                 <select value={category} onChange={handleChange} id="category" name="category">
                     <option value="">Select Category</option>
-                    {categories.map((cat, idx) => (
-                        <option key={idx} value={cat}>{cat}</option>
+                    {categories.map((category, idx) => (
+                        <option key={idx} value={category}>{category}</option>
                     ))}
                 </select>
 
-                <Link to={`/book/add`}><button>add books</button></Link>
+                <label htmlFor="author">Author: </label>
+                <select value={author} onChange={handleChange} id="author" name="author">
+                    <option value="">Select Author</option>
+                    {authors.map((author, idx) => (
+                        <option key={idx} value={author}>{author}</option>
+                    ))}
+                </select>
             </form>
         </section>
     )

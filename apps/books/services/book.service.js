@@ -26,34 +26,30 @@ export const bookService = {
 function query(filterBy = {}) {
     return asyncStorageService.query(BOOK_KEY)
         .then(books => {
-            // Filter by text in title
-            if (filterBy.txt) {
+            if (filterBy.txt) { // Filter by text in title
                 const regExp = new RegExp(filterBy.txt, 'i')
                 books = books.filter(book => regExp.test(book.title))
             }
-            // Filter by minimum price
-            if (filterBy.minPrice) {
+            if (filterBy.minPrice) { // Filter by minimum price
                 books = books.filter(book => book.listPrice.amount >= filterBy.minPrice)
             }
-            // Filter by maximum price
-            if (filterBy.maxPrice) {
+            if (filterBy.maxPrice) { // Filter by maximum price
                 books = books.filter(book => book.listPrice.amount <= filterBy.maxPrice)
             }
-            // Filter by selected language
-            if (filterBy.language) {
+            if (filterBy.language) { // Filter by selected language
                 books = books.filter(book => book.language === filterBy.language)
             }
-            // Filter by books published before a certain year
-            if (filterBy.publishedBefore) {
+            if (filterBy.publishedBefore) { // Filter by published before a certain year
                 books = books.filter(book => book.publishedDate <= filterBy.publishedBefore)
             }
-            // Filter by books published after a certain year
-            if (filterBy.publishedAfter) {
+            if (filterBy.publishedAfter) { // Filter by published after a certain year
                 books = books.filter(book => book.publishedDate >= filterBy.publishedAfter)
             }
-            // Filter by selected categories
-            if (filterBy.category) {
-                books = books.filter(book => book.categories.includes(filterBy.category));
+            if (filterBy.category) { // Filter by selected category
+                books = books.filter(book => book.categories.includes(filterBy.category))
+            }
+            if (filterBy.author) { // Filter by selected author
+                books = books.filter(book => book.authors.includes(filterBy.author))
             }
             return books
         })
@@ -105,7 +101,7 @@ function addReview(bookId, review) {
                 if (book.reviews) book.reviews.push(review)
                 else book.reviews = [review]
 
-                return storageService.put(BOOK_KEY, book)
+                return asyncStorageService.put(BOOK_KEY, book)
             })
             .then(resolve)
             .catch(reject)
@@ -127,9 +123,9 @@ function getEmptyReview() {
     }
 }
 
-function addGoogleBook(bookName='bread'){
-    const url2=`https://www.googleapis.com/books/v1/volumes?printType=books&q=${bookName}`
-    return axios.get(url2).then((res)=>{return (res.data.items).splice(0,5)})
+function addGoogleBook(bookName = 'bread') {
+    const url2 = `https://www.googleapis.com/books/v1/volumes?printType=books&q=${bookName}`
+    return axios.get(url2).then((res) => { return (res.data.items).splice(0, 5) })
 }
 
 function _createBooks() {
@@ -144,17 +140,17 @@ function createBook({ title, subtitle, authors, publishedDate, description, page
     , categories, thumbnail, language, amount = 0, currencyCode = 'USD', isOnSale = true }) {
     // Type checking
     // if (typeof title !== 'string') throw new Error('Title should be a string')
-
-    const book= getEmptyBook({id: utilService.makeId(),title,subtitle,authors,publishedDate,description,
-        pageCount,categories,thumbnail,language,listPrice: {amount,currencyCode,isOnSale,}})
-
+    const book = getEmptyBook({
+        id: utilService.makeId(), title, subtitle, authors, publishedDate, description,
+        pageCount, categories, thumbnail, language, listPrice: { amount, currencyCode, isOnSale, }
+    })
     return asyncStorageService.post(BOOK_KEY, book)
         .then(savedBook => {
             return savedBook
         })
 }
 
-function getEmptyBook(title = '',description,pageCount, publishedDate=new Date(), listPrice={amount:0,currencyCode: 'USD',isOnSale:true},imageURL='',subtitle,language,authors) {
+function getEmptyBook(title = '', description, pageCount, publishedDate = new Date(), listPrice = { amount: 0, currencyCode: 'USD', isOnSale: true }, imageURL = '', subtitle, language, authors) {
     return {
         id: '',
         title,

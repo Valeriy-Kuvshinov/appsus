@@ -1,16 +1,7 @@
 import { BookPreview } from "./BookPreview.jsx"
-import { bookService } from "../services/book.service.js"
 const { Link } = ReactRouterDOM
 
-const { useState, useEffect } = React
-
-export function BookList({onRemoveBook }) {
-    const [books, getBooks] = useState([])
-    useEffect(() => {
-        // bookService.setFilterBy(params.filterType)
-        bookService.query().then(books => getBooks(books))
-    }, [])
-    if(books.length===0)return
+export function BookList({ books, onRemoveBook }) {
     return (
         <ul className="book-list">
             {books.map(book =>
