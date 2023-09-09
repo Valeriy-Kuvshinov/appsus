@@ -89,8 +89,8 @@ export function BookDetails() {
                 navigate('/book')
             })
     }
-
-
+    var isThereImgURL=(book.imageURL!==undefined)
+    
     return (
         <section className="book-details main-layout">
             <div className="navigation-buttons">
@@ -110,7 +110,7 @@ export function BookDetails() {
             {book.listPrice.isOnSale && <p className="on-sale">On Sale!!!</p>}
             <h1>{book.title}</h1>
             <h2>{book.subtitle}</h2>
-            <h3>Authors: {book.authors.join(', ')}</h3>
+            <h3>Authors: {(Array.isArray( book.authors))? book.authors.join(', ') : book.authors}</h3>
             <h4>Published Year: {book.publishedDate} {getVintageStatus(book.publishedDate)}</h4>
             <div className='book-description'>
                 <LongTxt txt={book.description} length={100} />
@@ -121,7 +121,7 @@ export function BookDetails() {
             <p style={{ color: getPriceColor(book.listPrice.amount) }}>
                 Price: {book.listPrice.amount} {book.listPrice.currencyCode}
             </p>
-            <img src={`assets/img/${book.thumbnail}.jpg`} alt={book.title} />
+            <img src = {(isThereImgURL===false) ? `imgs/${book.thumbnail}.jpg` : book.imageURL} alt={book.title} />
 
             <button onClick={() => setIsReview(!isReview)}>Add Review</button>
             {isReview && <AddReview onAddReview={onAddReview} />}
