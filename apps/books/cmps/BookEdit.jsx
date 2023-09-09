@@ -1,6 +1,6 @@
 
 import { bookService } from "../services/book.service.js"
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
+// import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 const { useNavigate, useParams } = ReactRouterDOM
 const { useState, useEffect } = React
@@ -74,23 +74,23 @@ export function BookEdit() {
             bookService.save(bookToSubmit)
                 .then(() => {
                     console.log("Book Updated")
-                    showSuccessMsg('Book successfully updated!')
+                    // showSuccessMsg('Book successfully updated!')
                     navigate('/book')
                 })
                 .catch(error => {
                     console.error('Failed to update book:', error)
-                    showErrorMsg('Failed to update the book.')
+                    // showErrorMsg('Failed to update the book.')
                 })
         } else {
             bookService.createBook(bookToSubmit)
                 .then(book => {
                     console.log("New Book Created", book)
-                    showSuccessMsg('Book successfully Added!')
+                    // showSuccessMsg('Book successfully Added!')
                     navigate('/book')
                 })
                 .catch(error => {
                     console.error('Failed to create new book:', error)
-                    showErrorMsg('Failed to add book.')
+                    // showErrorMsg('Failed to add book.')
                 })
         }
     }

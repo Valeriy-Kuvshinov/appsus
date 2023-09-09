@@ -1,5 +1,6 @@
-import { utilService } from './util.service.js'
-import { storageService } from './async-storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { asyncStorageService } from '../../../services/async-storage.service.js'
+import { storageService } from '../../../services/storage.service.js'
 import { booksData } from './books-database.js'
 
 const BOOK_KEY = 'bookDB'
@@ -22,7 +23,7 @@ export const bookService = {
 }
 
 function query(filterBy = {}) {
-    return storageService.query(BOOK_KEY)
+    return asyncStorageService.query(BOOK_KEY)
         .then(books => {
             // Filter by text in title
             if (filterBy.txt) {
@@ -65,20 +66,20 @@ function getDefaultFilter() {
 }
 
 function get(bookId) {
-    return storageService.get(BOOK_KEY, bookId)
+    return asyncStorageService.get(BOOK_KEY, bookId)
 }
 
 function remove(bookId) {
-    return storageService.remove(BOOK_KEY, bookId)
+    return asyncStorageService.remove(BOOK_KEY, bookId)
 }
 
 function save(book) {
-    if (book.id) return storageService.put(BOOK_KEY, book)
-    else return storageService.post(BOOK_KEY, book)
+    if (book.id) return asyncStorageService.put(BOOK_KEY, book)
+    else return asyncStorageService.post(BOOK_KEY, book)
 }
 
 function getNextBookId(bookId) {
-    return storageService.query(BOOK_KEY).then(books => {
+    return asyncStorageService.query(BOOK_KEY).then(books => {
         var idx = books.findIndex(book => book.id === bookId)
         if (idx === books.length - 1) idx = -1
         return books[idx + 1].id
@@ -86,7 +87,7 @@ function getNextBookId(bookId) {
 }
 
 function getPrevBookId(bookId) {
-    return storageService.query(BOOK_KEY).then(books => {
+    return asyncStorageService.query(BOOK_KEY).then(books => {
         const idx = books.findIndex(book => book.id === bookId)
         if (idx === 0) return books[books.length - 1].id
         return books[idx - 1].id
@@ -113,7 +114,7 @@ function addReview(bookId, review) {
 function deleteReview(bookId, reviewId) {
     return get(bookId).then(book => {
         book.reviews = book.reviews.filter(review => review.id !== reviewId)
-        return storageService.put(BOOK_KEY, book)
+        return asyncStorageService.put(BOOK_KEY, book)
     })
 }
 
@@ -126,10 +127,10 @@ function getEmptyReview() {
 }
 
 function _createBooks() {
-    let books = utilService.loadFromStorage(BOOK_KEY)
+    let books = storageService.loadFromStorage(BOOK_KEY)
     if (!books || !books.length) {
         books = booksData
-        utilService.saveToStorage(BOOK_KEY, books)
+        storageService.saveToStorage(BOOK_KEY, books)
     }
 }
 
@@ -159,7 +160,7 @@ function createBook({ title, subtitle, authors, publishedDate, description, page
     }
     console.log('Creating book:', amount, typeof amount)
 
-    return storageService.post(BOOK_KEY, newBook)
+    return asyncStorageService.post(BOOK_KEY, newBook)
         .then(savedBook => {
             return savedBook
         })

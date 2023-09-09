@@ -1,7 +1,7 @@
 import { BookFilter } from "../cmps/BookFilter.jsx"
 import { BookList } from "../cmps/BookList.jsx"
 import { bookService } from "../services/book.service.js"
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
+// import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 const { useState, useEffect } = React
 
@@ -11,7 +11,7 @@ export function BookIndex() {
 
     useEffect(() => {
         bookService.query(filterBy).then((books) => {
-            console.log('Books: ', books)
+            // console.log('Books: ', books)
             setBooks(books)
         })
     }, [filterBy])
@@ -21,11 +21,11 @@ export function BookIndex() {
             .remove(bookId)
             .then(() => {
                 setBooks((prevBooks) => prevBooks.filter((book) => book.id !== bookId))
-                showSuccessMsg(`Book removed!`)
+                // showSuccessMsg(`Book removed!`)
             })
             .catch((err) => {
                 console.error(err)
-                showErrorMsg(`Failed to remove book.`)
+                // showErrorMsg(`Failed to remove book.`)
             })
     }
 

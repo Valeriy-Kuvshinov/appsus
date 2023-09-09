@@ -1,5 +1,5 @@
 import { bookService } from "../services/book.service.js"
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
+// import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 import { LongTxt } from "../cmps/LongTxt.jsx"
 import { ReviewList } from "../cmps/ReviewList.jsx"
@@ -68,11 +68,11 @@ export function BookDetails() {
             .then(updatedBook => {
                 setBook(updatedBook)
                 setIsReview(false)
-                showSuccessMsg('Review saved successfully')
+                // showSuccessMsg('Review saved successfully')
             })
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Error saving review')
+                // showErrorMsg('Error saving review')
             })
     }
 
@@ -81,11 +81,11 @@ export function BookDetails() {
             .deleteReview(bookId, reviewId)
             .then(savedBook => {
                 setBook(savedBook)
-                showSuccessMsg('Review deleted successfully')
+                // showSuccessMsg('Review deleted successfully')
             })
             .catch(err => {
                 console.log('err:', err)
-                showErrorMsg('Error deleting review')
+                // showErrorMsg('Error deleting review')
                 navigate('/book')
             })
     }

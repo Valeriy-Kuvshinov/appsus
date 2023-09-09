@@ -32,7 +32,7 @@ a {
     color: inherit;
 }
 
-img {
+.app-header img {
     height: 30px;
     object-fit: cover;
 }

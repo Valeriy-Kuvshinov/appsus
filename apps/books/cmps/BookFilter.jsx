@@ -22,6 +22,7 @@ export function BookFilter({ filterBy, onSetFilterBy }) {
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
+        console.log('bread')
 
         switch (target.type) {
             case 'number':

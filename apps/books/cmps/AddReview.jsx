@@ -1,6 +1,6 @@
 import { bookService } from '../services/book.service.js'
 import { StarRating } from './StarRating.jsx'
-import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
+// import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
 const { useState } = React
 
@@ -36,11 +36,11 @@ export function AddReview({ onAddReview }) {
         }
         onAddReview(reviewToEdit)
             .then(() => {
-                showSuccessMsg('Review successfully added!')
+                // showSuccessMsg('Review successfully added!')
                 setReviewToEdit(bookService.getEmptyReview())
             })
             .catch((err) => {
-                showErrorMsg('Failed to add review.')
+                // showErrorMsg('Failed to add review.')
                 console.error('Error:', err)
             })
     }

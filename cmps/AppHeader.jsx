@@ -33,13 +33,13 @@ export function AppHeader() {
                     <a className={setActiveNavLink("/about")} href="#/about">About</a>
                     <a className={setActiveNavLink("/mail")} href="#/mail">Mail</a>
                     <a className={setActiveNavLink("/note")} href="#/note">Notes</a>
-                    <a className={setActiveNavLink("/books")} href="#/books">Books</a>
+                    <a className={setActiveNavLink("/book")} href="#/book">Books</a>
                 </div>
                 <a className={setActiveNavLink("/")} href="#/">Home</a>
                 <a className={setActiveNavLink("/about")} href="#/about">About</a>
                 <a className={setActiveNavLink("/mail")} href="#/mail">Mail</a>
                 <a className={setActiveNavLink("/note")} href="#/note">Notes</a>
-                <a className={setActiveNavLink("/books")} href="#/books">Books</a>
+                <a className={setActiveNavLink("/book")} href="#/book">Books</a>
             </nav>
         </header>
     )

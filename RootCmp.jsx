@@ -9,6 +9,9 @@ import { NoteIndex } from "./apps/note/views/NoteIndex.jsx"
 import { EmailCompose } from "./apps/mail/cmps/EmailCompose.jsx"
 import { EmailDetails } from "./apps/mail/cmps/EmailDetails.jsx"
 import { FilteredMail } from "./apps/mail/cmps/FilteredMail.jsx"
+import { BookList } from "./apps/books/cmps/BookList.jsx"
+import { BookDetails } from "./apps/books/cmps/BookDetails.jsx"
+import { BookIndex } from "./apps/books/views/BookIndex.jsx"
 
 export function App() {
     return <Router>
@@ -22,6 +25,8 @@ export function App() {
                 <Route path="/mail/details/:emailId" element={<EmailDetails/>}/>
                 <Route path="/mail/filtered/:filterType" element={<FilteredMail/>}/>
                 <Route path="/note" element={<NoteIndex />} />
+                <Route path="/book" element={<BookIndex/>}/>
+                <Route path="/book/edit/:bookId" element={<BookDetails/>}/>
             </Routes>
         </section>
     </Router>

@@ -24,7 +24,7 @@ export const booksData = [
     },
     {
         "id": "JYOJa2NpSCq",
-        "title": "You Cant Be an Astrunaut!",
+        "title": "You Cant Be an Astronaut!",
         "subtitle": "Its Just Not Realistic!",
         "authors": [
             "Joseph Smets"
@@ -94,7 +94,7 @@ export const booksData = [
     },
     {
         "id": "f4iuVmbuKCC",
-        "title": "Schisms",
+        "title": "SCHISMS",
         "subtitle": "Red World Trilogy Book 1",
         "authors": [
             "V. A. Jeffrey"
@@ -187,7 +187,7 @@ export const booksData = [
     },
     {
         "id": "nGhVwZvGCGp",
-        "title": "The Rise of the Russian Empire",
+        "title": "The Rise of The Russian Empire",
         "subtitle": "The Origins and Expansion of a Eurasian Power",
         "authors": [
             "Hector Hugh Munro"
@@ -210,7 +210,7 @@ export const booksData = [
     },
     {
         "id": "Q8Q9Lsd03BD",
-        "title": "Unbored",
+        "title": "UNBORED",
         "subtitle": "The Essential Field Guide to Serious Fun",
         "authors": [
             "Joshua Glenn",
