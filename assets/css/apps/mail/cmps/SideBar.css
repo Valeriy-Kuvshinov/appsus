@@ -28,3 +28,11 @@
 .chosen {
     background-color: #7d7e81;
 }
+
+.mail-choosers1{
+    display: flex;
+}
+
+.mail-choosers2{
+    display: flex;
+}

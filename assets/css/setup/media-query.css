@@ -13,29 +13,65 @@
 /*  Mail  */
 
 @media (max-width:1200px) {
+    .mail-choosers1{
+        display: flex;
+        flex-direction: column;
+    }
     
+    .mail-choosers2{
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 @media (max-width:800px) {
     
     .mail{
         flex-direction: column;
+        padding-block-start: 56px;
     }
-}
 
-@media (max-width:520px) {
-    .mailbox-chooser{
+    /* .mail-choosers1{
         display: flex;
         flex-direction: row;
-        width: 100%;
-        height: 56px;
     }
+    
+    .mail-choosers2{
+        display: flex;
+        flex-direction: row;
+    } */
+}
+
+
+@media (max-width:520px) {
+    .mail{
+        flex-direction: column;
+        padding-block-start: 56px;
+    }
+
+    .mailbox-chooser{
+        display: flex;
+        flex-direction: column;
+    }
+
     .main-mail {
         display: flex;
         flex-direction: column;
         height: 100%;
         box-sizing: border-box;
       }
+
+      .mail-choosers1{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    .mail-choosers2{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
 
 /* Notes  */
