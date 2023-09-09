@@ -13,13 +13,9 @@
 @import './basics/layout.css';
 
 /* Views */
-<<<<<<< HEAD
 @import './views/About.css';
 @import './views/Home.css';
 
-=======
-@import './views/Home.css';
->>>>>>> ea9407d94c7890e3118dc8698548dea9ec04fa44
 @import './apps/note/views/NoteIndex.css';
 @import './apps/mail/views/MailIndex.css';
 
