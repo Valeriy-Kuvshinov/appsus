@@ -32,11 +32,6 @@ a {
     color: inherit;
 }
 
-.app-header img {
-    height: 30px;
-    object-fit: cover;
-}
-
 button{
     cursor: pointer;
     border: none;

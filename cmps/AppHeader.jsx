@@ -24,7 +24,8 @@ export function AppHeader() {
     return (
         <header className="app-header">
             <a href={youtubeVideoUrl} target="_blank" rel="noopener noreferrer" className="logo-container">
-                <img src={currentImage} alt="App logo" className="logo" />
+                {/* <img src={currentImage} alt="App logo" className="logo" /> */}
+                <img src='imgs/appsusimposter.png' alt="App logo" className="logo" />
             </a>
             <nav className="nav-links">
                 <button className="nav-toggle"><i className="fa-solid fa-bars"></i></button>

@@ -3,6 +3,7 @@ import { BookList } from "../cmps/BookList.jsx"
 import { bookService } from "../services/book.service.js"
 // import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js"
 
+const { Link } = ReactRouterDOM
 const { useState, useEffect } = React
 
 export function BookIndex() {
@@ -30,13 +31,17 @@ export function BookIndex() {
     }
 
     function onSetFilterBy(newFilterBy) {
-        setFilterBy((prevFilter) => ({ ...prevFilter, ...newFilterBy }));
+        setFilterBy((prevFilter) => ({ ...prevFilter, ...newFilterBy }))
     }
 
-    if (!books) return <div>Loading...</div>;
+    if (!books) return <div>Loading...</div>
 
     return (
         <section className='book-index main-layout'>
+            <div className='add-book-header'>
+                <h2>Missing a book?</h2>
+                <Link to={`/book/add`}><button className='add-book-button'>Click Me!</button></Link>
+            </div>
             <BookFilter filterBy={filterBy} onSetFilterBy={onSetFilterBy} />
             <BookList books={books} onRemoveBook={onRemoveBook} />
         </section>

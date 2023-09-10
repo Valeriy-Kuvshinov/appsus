@@ -4,6 +4,17 @@
     align-items: center;
     border-top: 2px solid rgb(31, 29, 29);
     color: #001F3F;
+    background-color: #a2e2fb;
+}
+
+.add-book-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    background-color: #62CAFD;
+    width: 100%;
 }
 
 .book-list {
@@ -27,7 +38,7 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-    background-color: #81D4FA;
+    background-color: #52C4F9;
 }
 
 .book-list section,
@@ -48,7 +59,8 @@
     flex-grow: 0;
 }
 
-.book-buttons button {
+.book-buttons button,
+.add-book-button {
     background-color: #FFC1A1;
     min-width: 40px;
     min-height: 40px;
@@ -56,7 +68,12 @@
     font-size: 16px;
 }
 
-.book-buttons button:hover {
+.add-book-button {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.book-buttons button:hover,
+.add-book-button:hover {
     background-color: #FF7043;
     color: var(--gray1)
 }

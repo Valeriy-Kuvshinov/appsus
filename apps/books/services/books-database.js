@@ -73,7 +73,7 @@ export const booksData = [
         "title": "Beat Your Way to the Top",
         "subtitle": "Masturbation as a Technique For Business Success",
         "authors": [
-            "Dr. Stephen Larkin PhD"
+            "Dr. Stephen Larkin"
         ],
         "publishedDate": 2012,
         "description": "After interviewing nearly 300 successful business people, both men and women, Dr. Larkin reveals their secret characteristics of business success, and describes a series of seven exercises that you can follow to assess and develop these characteristics in yourself. Warning: mild adult content.",
@@ -350,11 +350,10 @@ export const booksData = [
     },
     {
         "id": "aOI7tQuPZ2f",
-        "title": "The Sith Empire will Rise again and we are the spark",
-        "subtitle": "Igniting the Galaxy's Last Hope",
+        "title": "The Sith Empire Will Rise Again",
+        "subtitle": "And We Are The Spark",
         "authors": [
-            "Author 1 (Star Wars Lore Expert)",
-            "Author 2 (Political/Adventure Storyteller)"
+            "Henry Stickmin"
         ],
         "publishedDate": 2023,
         "description": "In a galaxy torn apart by war and deceit, remnants of the Sith Empire have been hiding in the shadows, biding their time to strike back and reclaim their former glory. Amidst this brewing storm, a small group of rebels, self-dubbed 'the spark,' decide to take matters into their own hands. United by a common enemy, they must navigate betrayal, ancient prophecies, and their own inner demons to ignite a revolution that could either save the galaxy or plunge it into further darkness.",
