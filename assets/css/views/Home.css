@@ -3,6 +3,7 @@
  .home {
      background: url('/imgs/welcome.jpg');
      background-size: cover;
+     background-color: rgb(31, 30, 30);
      display: flex;
      flex-direction: column;
      text-align: center;
