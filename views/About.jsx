@@ -67,10 +67,12 @@ export function About() {
             alert('or a job, but i dont judge')
             alert('next step!')
             document.getElementById('6').classList.toggle('hidden')
+            document.getElementById('6.1').classList.toggle('hidden')
+            document.getElementById('6.2').classList.toggle('hidden')
             currentStep = 6
         }
         if (id === '6' && currentStep === 6) {
-            console.log(document.getElementById('6').value)
+            document.getElementById('6.1').innerText=document.getElementById('6').value
         }
         else if(id==='6.2'&&currentStep===6){
             if(document.getElementById('6').value==='6'){
@@ -155,7 +157,22 @@ export function About() {
                 document.querySelector('.about').style.backgroundColor='white'
             }
         }
+    }
 
+    function tiktok(){
+        if(timer===0){
+            alert('YOU ARE DEAD')
+
+            document.getElementById('8.1').classList.toggle('hidden')
+            document.getElementById('8.2').classList.toggle('hidden')
+            document.getElementById('8.3').classList.toggle('hidden')
+            document.getElementById('8.4').classList.toggle('hidden')
+
+            document.getElementById('8').height='600'
+            document.getElementById('8').src='imgs/boomboom.gif'
+        }
+        timer--
+        document.getElementById('8.4').innerText=timer
     }
     return <section className="about main-layout">
         <div className='about-text'>
@@ -224,6 +241,26 @@ export function About() {
                 888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888</h1>
 
             <input type="range" id="6" step={1} min={1} max={6} onChange={clicked} className='hidden' />
+            <span id='6.1' className='hidden'>1</span>
+              <button onClick={clicked} id='6.2' className='button3 hidden'>Submit answer</button>
+
+              <input type='text' id='7' className='hidden'></input>
+              <button onClick={clicked} id='7.1' className='button4 hidden'>Submit answer</button>
+
+              <img src='imgs/boom.jpg' id='8' className='hidden'/>
+              <input type='text' id="8.1" className='hidden'></input>
+              <div id='8.2' className='hidden'>X²+4x+4=0, x=?</div>
+              <button onClick={clicked} id='8.3' className='button5 hidden'>Submit answer</button>
+              <span id='8.4' className='hidden'>5</span>
+
+              <input type='text' id='9' className='hidden'></input>
+              <span id='9.1' className='hidden'>❄☟✋💧   ✋💧   ✋💣🏱⚐💧💧✋👌☹☜   ❄⚐   ❄☼✌☠💧☹✌❄☜</span>
+              <button onClick={clicked} id='9.2' className='button6 hidden'>Submit answer</button>
+
+              <div id='10' className='hidden'>which of <span onClick={clicked} id='10.1' className='hidden'>this</span> is correct?</div>
+              <button onClick={clicked} id='10.2' className='button7 hidden'>this</button>
+              <button onClick={clicked} id='10.3' className='button8 hidden'>that</button>
+              <button onClick={clicked} id='10.4' className='button9 hidden'>not that</button>
         </section>
     </section>
 }
