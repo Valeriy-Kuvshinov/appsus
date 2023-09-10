@@ -5,6 +5,7 @@ export function About() {
 
     function clicked(ev) {
         const id = ev.target.id
+        var timerItself
         if (id === '1' && currentStep === 1) {
             alert('read closely')
             alert('you have entered a classified area')
@@ -12,12 +13,12 @@ export function About() {
             alert('there are 10 steps until you are safe')
             alert('good luck')
             currentStep = 2
-        }
-        else if (id === '1' && currentStep === 2) {
-            alert('whats the first letter of the alphabet?')
+            document.getElementById('8.4').innerText=5
         }
 
-        if (id === '2' && currentStep === 2) {
+        else if (id === '1' && currentStep === 2) {
+            alert('whats the first letter of the alphabet?')
+        }else if (id === '2' && currentStep === 2) {
             document.getElementById('1').classList.toggle('hidden')
             alert('correct')
             alert('it seems you are smarter then the average person')
@@ -27,8 +28,7 @@ export function About() {
             document.getElementById('3').classList.toggle('hidden')
             document.getElementById('3.1').classList.toggle('hidden')
             alert('who is the number one youtuber?')
-        }
-        if (id === '3.1' && currentStep === 3) {
+        }else if (id === '3.1' && currentStep === 3) {
             const answer = (document.getElementById('3').value).toLowerCase()
             if (answer === 'pewdiepie') {
                 document.getElementById('3').classList.toggle('hidden')
@@ -43,8 +43,7 @@ export function About() {
                 document.getElementById('4.2').classList.toggle('hidden')
                 alert('which one is correct?')
             }
-        }
-        if ((id === '4.1' || id === '4.2') && currentStep === 4) {
+        }else if ((id === '4.1' || id === '4.2') && currentStep === 4) {
             if (id === '4.1') {
                 alert('correct')
                 alert('its common knowledge afterall')
@@ -55,11 +54,11 @@ export function About() {
                 document.getElementById('4.1').classList.toggle('hidden')
                 document.getElementById('4.2').classList.toggle('hidden')
                 document.getElementById('5').classList.toggle('hidden')
+                document.querySelector('.secret').style.backgroundColor='red'
             } else {
                 alert('WRONG!')
             }
-        }
-        if (id === '5.1' && currentStep === 5) {
+        }else if (id === '5.1' && currentStep === 5) {
             document.getElementById('5').classList.toggle('hidden')
             alert('correct')
             alert('you have a keen eye')
@@ -70,11 +69,10 @@ export function About() {
             document.getElementById('6.1').classList.toggle('hidden')
             document.getElementById('6.2').classList.toggle('hidden')
             currentStep = 6
-        }
-        if (id === '6' && currentStep === 6) {
+            alert('how much times stronger earth gravity compare to the moon?')
+        }else if (id === '6' && currentStep === 6) {
             document.getElementById('6.1').innerText=document.getElementById('6').value
-        }
-        else if(id==='6.2'&&currentStep===6){
+        }else if(id==='6.2'&&currentStep===6){
             if(document.getElementById('6').value==='6'){
                 alert('correct')
                 alert('you are as stubborn as a mule')
@@ -90,8 +88,7 @@ export function About() {
                 document.getElementById('7.1').classList.toggle('hidden')
                 alert('dont mind the background, its normal')
             }
-        }
-        else if(id==='7.1'&&currentStep===7){
+        }else if(id==='7.1'&&currentStep===7){
             if(document.getElementById('7').value.toLowerCase()==='sus'){
                 document.getElementById('7').classList.toggle('hidden')
                 document.getElementById('7.1').classList.toggle('hidden')
@@ -106,8 +103,7 @@ export function About() {
                 currentStep=8
                 timerItself=setInterval(tiktok,1000)
             }
-        }
-        else if(id==='8.3'&&currentStep===8){
+        }else if(id==='8.3'&&currentStep===8){
             if(document.getElementById('8.1').value==='-2'){
                 clearInterval(timerItself)
                 alert('correct, sadly')
@@ -122,8 +118,7 @@ export function About() {
                 document.getElementById('9.1').classList.toggle('hidden')
                 document.getElementById('9.2').classList.toggle('hidden')
             }
-        }
-        else if(id==='9.2'&&currentStep===9){
+        }else if(id==='9.2'&&currentStep===9){
             if(document.getElementById('9').value.toLowerCase()==='this is impossible to translate'){
                 alert('argh!!!')
                 document.getElementById('9').classList.toggle('hidden')
@@ -143,8 +138,7 @@ export function About() {
                 document.getElementById('10.4').style.color='white'
                 document.querySelector('.about').style.backgroundColor='black'
             }
-        }
-        else if(currentStep===10){
+        }else if(currentStep===10){
             if(id!=='10.1'){
                 window.location.href='https://www.youtube.com/watch?v=dQw4w9WgXcQ'
             } else {
