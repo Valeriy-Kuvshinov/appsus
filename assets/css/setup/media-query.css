@@ -13,20 +13,20 @@
 /*  Mail  */
 
 @media (max-width:1200px) {
-    .mail-choosers1{
+    .mail-choosers1 {
         display: flex;
         flex-direction: column;
     }
-    
-    .mail-choosers2{
+
+    .mail-choosers2 {
         display: flex;
         flex-direction: column;
     }
 }
 
 @media (max-width:800px) {
-    
-    .mail{
+
+    .mail {
         flex-direction: column;
         padding-block-start: 56px;
     }
@@ -44,12 +44,12 @@
 
 
 @media (max-width:520px) {
-    .mail{
+    .mail {
         flex-direction: column;
         padding-block-start: 56px;
     }
 
-    .mailbox-chooser{
+    .mailbox-chooser {
         display: flex;
         flex-direction: column;
     }
@@ -59,15 +59,15 @@
         flex-direction: column;
         height: 100%;
         box-sizing: border-box;
-      }
+    }
 
-      .mail-choosers1{
+    .mail-choosers1 {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
     }
-    
-    .mail-choosers2{
+
+    .mail-choosers2 {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -76,7 +76,33 @@
 
 /* Notes  */
 
+@media only screen and (max-width: 1200px) {
+    .notes-list {
+        column-count: 3;
+    }
+}
 
+@media only screen and (max-width: 900px) {
+    .notes-list {
+        column-count: 2;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .note-card .actions {
+        justify-content: center;
+    }
+
+    .notes-container {
+        padding: 10px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .notes-list {
+        column-count: 1;
+    }
+}
 
 
 

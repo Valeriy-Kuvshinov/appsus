@@ -1,7 +1,6 @@
 /* Setup */
 
 @import './setup/fonts.css';
-@import './setup/media-query.css';
 @import './setup/variables.css';
 @import './setup/vars.css';
 
@@ -44,3 +43,6 @@
 @import './apps/mail/cmps/MailIndex.css';
 @import './apps/mail/cmps/MailList.css';
 @import './apps/mail/cmps/SideBar.css';
+
+/* Media query */
+@import './setup/media-query.css';

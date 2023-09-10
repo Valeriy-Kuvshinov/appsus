@@ -32,24 +32,3 @@
 }
 
 /* Screen width adaptions */
-@media only screen and (max-width: 1200px) {
-    .notes-list {
-        column-count: 3;
-    }
-}
-
-@media only screen and (max-width: 800px) {
-    .notes-list {
-        column-count: 2;
-    }
-}
-
-@media only screen and (max-width: 450px) {
-    .notes-list {
-        column-count: 1;
-    }
-
-    .notes-container {
-        padding: 10px;
-    }
-}
