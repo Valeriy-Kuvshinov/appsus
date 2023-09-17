@@ -19,8 +19,6 @@
     padding: 0;
     margin: 0;
     height: auto;
-    margin-top: -6vh;
-    margin-bottom: -3vh;
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -33,15 +31,15 @@
     padding: 0;
     margin: 0;
     height: auto;
-    margin-top: -6vh;
+    margin-top: -2vh;
     margin-bottom: -3vh;
     font-family: 'Open Sans', sans-serif;
 }
 
 .note-card .title-textarea{
     font-size: 21px;
-    margin-top: -2vh;
-    margin-bottom: -2vh;
+    margin-top: -1vh;
+    margin-bottom: -4vh;
 }
 
 .note-card input:focus,
@@ -77,7 +75,7 @@
     background-color: #f1f1f1;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
     z-index: 10;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 5px;
     padding: 10px;
 }
@@ -88,8 +86,8 @@
 }
 
 .color-box {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     cursor: pointer;
     border-radius: 50%;
 }

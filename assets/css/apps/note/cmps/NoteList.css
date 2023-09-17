@@ -28,7 +28,5 @@
 .notes-list {
     column-count: 4;
     column-gap: 10px;
-    margin-bottom: 1vh;
+    margin-bottom: 10vh;
 }
-
-/* Screen width adaptions */

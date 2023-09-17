@@ -23,7 +23,7 @@ export function NoteList({ notes, setNotes }) {
         const newNote = JSON.parse(JSON.stringify(noteToDuplicate))
         delete newNote.id
 
-        newNote.info.title = `${newNote.info.title} (copy)`
+        newNote.info.title = `${newNote.info.title}`
 
         const savedNote = await noteService.createNote(newNote.type, newNote.info)
         setNotes([...notes, savedNote])

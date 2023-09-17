@@ -4,8 +4,8 @@ import { NoteVideo } from "./NoteVideo.jsx"
 import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteActions } from "./NoteActions.jsx"
 import { PinButton } from "./PinButton.jsx"
+import { NoteLabels } from "./NoteLabels.jsx"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
-import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
 
@@ -27,7 +27,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         }
         return null
     }
-
     const updateTitle = (newTitle) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, title: newTitle } })
     }
@@ -37,7 +36,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const updateMediaLink = (newUrl, newText) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, url: newUrl, txt: newText } })
     }
-
     const updateNoteField = (field) => (value) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, [field]: value } })
     }
@@ -72,7 +70,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         setIsEditing(false)
         showSuccessMsg('Note saved')
     }
-
+    
     const renderEditFields = () => {
         return (
             <React.Fragment>
@@ -117,18 +115,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             <div className="content">
                 {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateNoteField, null, true)}
             </div>
-            <div className="labels">
-                {labels.map((label, idx) => (
-                    <span
-                        key={idx}
-                        className="label-span"
-                        style={label.style}
-                        onClick={() => removeLabel(label)}
-                    >
-                        {label.type}
-                    </span>
-                ))}
-            </div>
+            <NoteLabels labels={labels} addLabel={addLabel} removeLabel={removeLabel} />
             <NoteActions
                 handleAddTodo={handleAddTodo}
                 isEditing={isEditing}
