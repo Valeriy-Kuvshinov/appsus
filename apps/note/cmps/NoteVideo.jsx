@@ -1,6 +1,6 @@
 const { useState } = React
 
-export const NoteVideo = ({ info }) => {
+export const NoteVideo = ({ info, showText }) => {
     const [isVideoClicked, setIsVideoClicked] = useState(false)
 
     const youtubeEmbedUrl = (url) => {
@@ -36,7 +36,7 @@ export const NoteVideo = ({ info }) => {
                     ></iframe>
                 )}
             </div>
-            <div className='note-text'>{info.txt}</div>
+            {showText && <div className='note-text'>{info.txt}</div>}
         </div>
     )
 }

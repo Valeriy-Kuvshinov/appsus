@@ -1,6 +1,3 @@
-
-const { useState, useEffect } = React
-
 export const NoteFilter = ({ onSearchChange, onFilterTypeChange, searchTerm, filterType }) => {
     return (
         <div className='note-filter'>

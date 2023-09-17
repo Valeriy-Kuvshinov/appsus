@@ -13,14 +13,14 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const [tempNote, setTempNote] = useState({ ...note })
     const [labels, setLabels] = useState(note.labels || [])
 
-    const renderDynamicComponent = (type, info, isEditing, updateTodos, handleRemoveTodo) => {
+    const renderDynamicComponent = (type, info, isEditing, updateTodos, handleRemoveTodo, showText = true) => {
         switch (type) {
             case 'NoteTxt':
                 return <NoteTxt info={info} changeInfo={updateNoteText} />
             case 'NoteImg':
-                return <NoteImg info={info} changeInfo={updateMediaLink} />
+                return <NoteImg info={info} changeInfo={updateMediaLink} showText={showText} />
             case 'NoteVideo':
-                return <NoteVideo info={info} changeInfo={updateMediaLink} />
+                return <NoteVideo info={info} changeInfo={updateMediaLink} showText={showText} />
             case 'NoteTodos':
                 return <NoteTodos info={info} changeInfo={updateTodos} isEditing={isEditing} handleRemoveTodo={handleRemoveTodo} />
         }
@@ -30,26 +30,21 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const updateTitle = (newTitle) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, title: newTitle } })
     }
-
     const updateNoteText = (newText) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, txt: newText } })
     }
-
     const updateMediaLink = (newUrl, newText) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, url: newUrl, txt: newText } })
     }
-
     const handleAddTodo = () => {
         const updatedTodos = [...tempNote.info.todos, { txt: 'todo text', doneAt: null }]
         setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
     }
-
     const handleRemoveTodo = (idx) => {
         const updatedTodos = [...tempNote.info.todos]
         updatedTodos.splice(idx, 1)
         setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
     }
-
     const updateTodos = (newTodos, idx = null) => {
         if (idx === null) {
             const todoItems = newTodos.split(',').map(txt => ({ txt: txt.trim(), doneAt: null }))
@@ -68,7 +63,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         setTempNote(updatedNote)
         onSave(updatedNote)
     }
-
     const removeLabel = (labelToRemove) => {
         const newLabels = labels.filter(label => label.type !== labelToRemove.type)
         setLabels(newLabels)
@@ -122,6 +116,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                         case 'NoteVideo':
                             return (
                                 <React.Fragment>
+                                    {renderDynamicComponent(tempNote.type, { ...tempNote.info, txt: '' }, false, null, null, false)}
                                     <input type="text" value={tempNote.info.url} onChange={(e) => updateMediaLink(e.target.value, tempNote.info.txt)} />
                                     <input type="text" value={tempNote.info.txt || ''} onChange={(e) => updateMediaLink(tempNote.info.url, e.target.value)} placeholder="Add text..." />
                                 </React.Fragment>
@@ -149,7 +144,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                 )}
             </div>
             <div className="content">
-                {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateTodos)}
+                {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateTodos, null, true)}
             </div>
             <div className="labels">
                 {labels.map((label, idx) => (
