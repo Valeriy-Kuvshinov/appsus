@@ -1,15 +1,19 @@
 .user-msg {
-  background-color: rgb(37, 36, 36);
   padding: 0.5em 1em;
   position: fixed;
   bottom: 1em;
   right: -300px;
   color: rgb(240, 232, 232);
   font-weight: bold;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
   border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: fit-content;
+  height: fit-content;
+  margin: auto;
 }
 
 .user-msg p {
@@ -46,9 +50,9 @@
 }
 
 .user-msg.success {
-  background-color: rgb(9, 87, 9);
+  background-color: rgb(9, 122, 9);
 }
 
 .user-msg.error {
-  background-color: red;
+  background-color: rgb(201, 21, 21);
 }

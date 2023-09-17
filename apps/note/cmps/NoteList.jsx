@@ -1,5 +1,6 @@
 import { NotePreview } from "./NotePreview.jsx"
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 export function NoteList({ notes, setNotes }) {
     const pinnedNotes = notes.filter(note => note.isPinned)
@@ -8,6 +9,7 @@ export function NoteList({ notes, setNotes }) {
     const handleDelete = async (noteId) => {
         await noteService.remove(noteId)
         setNotes(notes.filter(note => note.id !== noteId))
+        showSuccessMsg('Note has been deleted')
     }
 
     const handleSave = async (updatedNote) => {
@@ -25,6 +27,7 @@ export function NoteList({ notes, setNotes }) {
 
         const savedNote = await noteService.createNote(newNote.type, newNote.info)
         setNotes([...notes, savedNote])
+        showSuccessMsg('Note duplicated')
     }
 
     return (

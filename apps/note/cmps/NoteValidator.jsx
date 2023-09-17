@@ -1,28 +1,23 @@
-import { showErrorMsg, eventBusService } from "../../../services/event-bus.service.js"
+import { showErrorMsg } from "../../../services/event-bus.service.js"
 
 export const NoteValidator = ({ newNoteTitle, noteType, newNoteText, mediaLink, todos }) => {
-    let errorMessage = ''
+    let isValid = true;
 
     if (!newNoteTitle) {
-        errorMessage = 'Title cannot be empty'
-        showErrorMsg(errorMessage)
+        showErrorMsg('Title cannot be empty')
+        isValid = false
     } else if (noteType === 'NoteTxt' && !newNoteText) {
-        errorMessage = 'Note text cannot be empty'
-        showErrorMsg(errorMessage)
+        showErrorMsg('Note text cannot be empty')
+        isValid = false
     } else if ((noteType === 'NoteImg' || noteType === 'NoteVideo') && !mediaLink) {
-        errorMessage = 'Media URL cannot be empty'
-        showErrorMsg(errorMessage)
+        showErrorMsg('Media URL cannot be empty')
+        isValid = false
     } else if (noteType === 'NoteTodos' && !todos) {
-        errorMessage = 'Todos cannot be empty'
-        showErrorMsg(errorMessage)
-    }
-
-    if (errorMessage) {
-        eventBusService.emit('show-user-msg', { txt: errorMessage, type: 'error' })
+        showErrorMsg('Todos cannot be empty')
+        isValid = false
     }
 
     return {
-        isValid: !errorMessage,
-        errorMessage
+        isValid
     }
 }

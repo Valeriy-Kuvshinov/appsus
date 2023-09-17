@@ -1,6 +1,7 @@
 import { NoteValidator } from "./NoteValidator.jsx"
 import { NoteDropdown } from "./NoteDropdown.jsx"
 import { noteService } from "../services/note.service.js"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
 
 const { useState } = React
 
@@ -11,7 +12,6 @@ export function AddNote({ onNoteAdded }) {
     const [mediaLink, setMediaLink] = useState('')
     const [todos, setTodos] = useState('')
     const [backgroundColor, setBackgroundColor] = useState('')
-    const [errorMessage, setErrorMessage] = useState('')
     const [isExpanded, setIsExpanded] = useState(false)
 
     const randomizeBackgroundColor = () => {
@@ -34,7 +34,7 @@ export function AddNote({ onNoteAdded }) {
     }
 
     const handleCreate = async () => {
-        const { isValid, errorMessage } = NoteValidator({
+        const { isValid } = NoteValidator({
             newNoteTitle,
             noteType,
             newNoteText,
@@ -42,7 +42,6 @@ export function AddNote({ onNoteAdded }) {
             todos,
         })
         if (!isValid) {
-            setErrorMessage(errorMessage)
             return
         }
         const chosenColor = randomizeBackgroundColor()
@@ -77,6 +76,7 @@ export function AddNote({ onNoteAdded }) {
         onNoteAdded(newNote)
         setIsExpanded(false)
         setNoteType('NoteTxt')
+        showSuccessMsg('Note has been added')
     }
 
     return (
@@ -128,7 +128,6 @@ export function AddNote({ onNoteAdded }) {
                         />
                     )}
                     <button onClick={handleCreate}>Create</button>
-                    {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
                 </div>
             ) : (
                 <div onClick={() => setIsExpanded(true)}>

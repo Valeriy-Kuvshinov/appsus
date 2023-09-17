@@ -1,10 +1,10 @@
-
 import { NoteTxt } from "./NoteTxt.jsx"
 import { NoteImg } from "./NoteImg.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 import { NoteTodos } from "./NoteTodos.jsx"
-import { noteService } from "../services/note.service.js"
 import { NoteActions } from "./NoteActions.jsx"
+import { showSuccessMsg } from "../../../services/event-bus.service.js"
+import { noteService } from "../services/note.service.js"
 
 const { useState, useEffect } = React
 
@@ -86,6 +86,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const saveChanges = () => {
         onSave(tempNote)
         setIsEditing(false)
+        showSuccessMsg('Note saved')
     }
 
     const handlePin = async () => {
@@ -94,8 +95,9 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
 
         const updatedNote = { ...note, isPinned: !isPinned, style: note.style }
         onSave(updatedNote)
+        if (!isPinned) showSuccessMsg('Note pinned')
+        else showSuccessMsg('Note unpinned')
     }
-
     const [isPinned, setIsPinned] = useState(note.isPinned)
 
     useEffect(() => {
@@ -132,7 +134,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             </React.Fragment>
         )
     }
-
     useEffect(() => {
         setTempNote({ ...note })
     }, [note])
