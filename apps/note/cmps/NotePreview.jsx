@@ -3,6 +3,7 @@ import { NoteImg } from "./NoteImg.jsx"
 import { NoteVideo } from "./NoteVideo.jsx"
 import { NoteTodos } from "./NoteTodos.jsx"
 import { NoteActions } from "./NoteActions.jsx"
+import { PinButton } from "./PinButton.jsx"
 import { showSuccessMsg } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/note.service.js"
 
@@ -13,7 +14,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const [tempNote, setTempNote] = useState({ ...note })
     const [labels, setLabels] = useState(note.labels || [])
 
-    const renderDynamicComponent = (type, info, isEditing, updateTodos, handleRemoveTodo, showText = true) => {
+    const renderDynamicComponent = (type, info, isEditing, showText = true) => {
         switch (type) {
             case 'NoteTxt':
                 return <NoteTxt info={info} changeInfo={updateNoteText} />
@@ -22,7 +23,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             case 'NoteVideo':
                 return <NoteVideo info={info} changeInfo={updateMediaLink} showText={showText} />
             case 'NoteTodos':
-                return <NoteTodos info={info} changeInfo={updateTodos} isEditing={isEditing} handleRemoveTodo={handleRemoveTodo} />
+                return <NoteTodos info={info} isEditing={isEditing} changeInfo={updateNoteField('todos')} />
         }
         return null
     }
@@ -36,24 +37,13 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
     const updateMediaLink = (newUrl, newText) => {
         setTempNote({ ...tempNote, info: { ...tempNote.info, url: newUrl, txt: newText } })
     }
+
+    const updateNoteField = (field) => (value) => {
+        setTempNote({ ...tempNote, info: { ...tempNote.info, [field]: value } })
+    }
     const handleAddTodo = () => {
         const updatedTodos = [...tempNote.info.todos, { txt: 'todo text', doneAt: null }]
         setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
-    }
-    const handleRemoveTodo = (idx) => {
-        const updatedTodos = [...tempNote.info.todos]
-        updatedTodos.splice(idx, 1)
-        setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
-    }
-    const updateTodos = (newTodos, idx = null) => {
-        if (idx === null) {
-            const todoItems = newTodos.split(',').map(txt => ({ txt: txt.trim(), doneAt: null }))
-            setTempNote({ ...tempNote, info: { ...tempNote.info, todos: todoItems } })
-        } else {
-            const updatedTodos = [...tempNote.info.todos]
-            updatedTodos[idx].txt = newTodos
-            setTempNote({ ...tempNote, info: { ...tempNote.info, todos: updatedTodos } })
-        }
     }
 
     const addLabel = (label) => {
@@ -83,21 +73,6 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         showSuccessMsg('Note saved')
     }
 
-    const handlePin = async () => {
-        await noteService.togglePin(note.id)
-        setIsPinned(!isPinned)
-
-        const updatedNote = { ...note, isPinned: !isPinned, style: note.style }
-        onSave(updatedNote)
-        if (!isPinned) showSuccessMsg('Note pinned')
-        else showSuccessMsg('Note unpinned')
-    }
-    const [isPinned, setIsPinned] = useState(note.isPinned)
-
-    useEffect(() => {
-        setIsPinned(note.isPinned)
-    }, [note.isPinned])
-
     const renderEditFields = () => {
         return (
             <React.Fragment>
@@ -122,7 +97,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
                                 </React.Fragment>
                             )
                         case 'NoteTodos':
-                            return <NoteTodos info={tempNote.info} changeInfo={updateTodos} isEditing={true} />
+                            return <NoteTodos info={tempNote.info} changeInfo={updateNoteField} isEditing={true} />
                     }
                     return null
                 })()}
@@ -137,14 +112,10 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
         <div className='note-card' style={tempNote.style}>
             <div className="note-header">
                 {isEditing ? null : <h2>{note.info.title || note.info.txt}</h2>}
-                {!isEditing && (
-                    <button onClick={handlePin} className="pin-button">
-                        <i className={`fa-solid fa-thumbtack ${isPinned ? 'pinned' : ''}`}></i>
-                    </button>
-                )}
+                {!isEditing && (<PinButton note={note} onSave={onSave} />)}
             </div>
             <div className="content">
-                {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateTodos, null, true)}
+                {isEditing ? renderEditFields() : renderDynamicComponent(note.type, note.info, isEditing, updateNoteField, null, true)}
             </div>
             <div className="labels">
                 {labels.map((label, idx) => (
@@ -160,10 +131,7 @@ export function NotePreview({ note, onDelete, onSave, onDuplicate }) {
             </div>
             <NoteActions
                 handleAddTodo={handleAddTodo}
-                handleRemoveTodo={handleRemoveTodo}
                 isEditing={isEditing}
-                isPinned={isPinned}
-                handlePin={handlePin}
                 changeBackgroundColor={changeBackgroundColor}
                 setIsEditing={setIsEditing}
                 saveChanges={saveChanges}

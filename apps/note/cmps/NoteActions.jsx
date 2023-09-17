@@ -1,5 +1,5 @@
 const { Link } = ReactRouterDOM
-const { useState } = React
+const { useState, useEffect } = React
 
 export function NoteActions({ isEditing, changeBackgroundColor, setIsEditing, saveChanges
     , onDuplicate, note, onDelete, handleAddTodo, addLabel }) {
@@ -9,47 +9,37 @@ export function NoteActions({ isEditing, changeBackgroundColor, setIsEditing, sa
     const [isLabelDropdownVisible, setLabelDropdownVisible] = useState(false)
 
     const labels = [
-        {
-            type: 'Critical',
-            style: { backgroundColor: '#fd2c2c' }
-        },
-        {
-            type: 'Family',
-            style: { backgroundColor: '#093492' }
-        },
-        {
-            type: 'Work',
-            style: { backgroundColor: '#59c044' }
-        },
-        {
-            type: 'Friends',
-            style: { backgroundColor: '#f3f167' }
-        },
-        {
-            type: 'Spam',
-            style: { backgroundColor: '#f1a518' }
-        },
-        {
-            type: 'Memories',
-            style: { backgroundColor: '#7942ac' }
-        },
-        {
-            type: 'Romantic',
-            style: { backgroundColor: '#1e8bf0' }
-        }
+        { type: 'Critical', style: { backgroundColor: '#fd2c2c' } },
+        { type: 'Family', style: { backgroundColor: '#55adff' } },
+        { type: 'Work', style: { backgroundColor: '#59c044' } },
+        { type: 'Friends', style: { backgroundColor: '#f3f167' } },
+        { type: 'Spam', style: { backgroundColor: '#f1a518' } },
+        { type: 'Memories', style: { backgroundColor: '#7942ac' } },
+        { type: 'Romantic', style: { backgroundColor: '#1e8bf0' } }
     ]
-
     const alreadyAddedLabels = note.labels || []
     const availableLabels = labels.filter(
         label => !alreadyAddedLabels.some(
             addedLabel => addedLabel.type === label.type
         )
     )
-
     const onLabelClick = (label) => {
         addLabel(label)
         setLabelDropdownVisible(false)
     }
+
+    useEffect(() => {
+        function handleClickOutside(event) {
+            if (isLabelDropdownVisible && !event.target.closest('.label-dropdown')) {
+                setLabelDropdownVisible(false)
+            }
+        }
+        document.addEventListener('mousedown', handleClickOutside)
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [isLabelDropdownVisible])
 
     return (
         <div className={`actions`}>

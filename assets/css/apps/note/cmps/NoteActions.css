@@ -7,10 +7,6 @@
     border-radius: 50%;
 }
 
-.note-card .pin-button {
-    margin-bottom: auto;
-}
-
 .note-card button:hover {
     background: #e8eaed;
 }
@@ -18,20 +14,34 @@
 .note-card input {
     border: none;
     background: transparent;
-    line-height: 1.5;
     font-size: 18px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    margin-top: -6vh;
+    margin-bottom: -3vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .note-card textarea {
     resize: none;
     background: transparent;
     border: none;
-    line-height: 1.5;
     font-size: 18px;
+    line-height: 1.5;
+    padding: 0;
+    margin: 0;
+    height: auto;
+    margin-top: -6vh;
+    margin-bottom: -3vh;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .note-card .title-textarea{
     font-size: 21px;
+    margin-top: -2vh;
+    margin-bottom: -2vh;
 }
 
 .note-card input:focus,

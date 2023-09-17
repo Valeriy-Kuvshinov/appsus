@@ -41,9 +41,7 @@ export function AddNote({ onNoteAdded }) {
             mediaLink,
             todos,
         })
-        if (!isValid) {
-            return
-        }
+        if (!isValid) { return }
         const chosenColor = randomizeBackgroundColor()
 
         let info = {}

@@ -91,9 +91,7 @@ function _createNotes() {
                     title: 'Yes Fullstack!',
                     txt: 'Fullstack Me Baby!'
                 },
-                style: {
-                    backgroundColor: '#FF6B6B'
-                },
+                style: { backgroundColor: '#FF6B6B' },
                 labels: []
             },
             {
@@ -105,9 +103,7 @@ function _createNotes() {
                     url: 'https://images.unsplash.com/photo-1522098635833-216c03d81fbe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZnJpZW5kfGVufDB8fDB8fHww&w=1000&q=80',
                     txt: 'Friends forever'
                 },
-                style: {
-                    backgroundColor: '#98FB98'
-                },
+                style: { backgroundColor: '#98FB98' },
                 labels: []
             },
             {
@@ -121,9 +117,7 @@ function _createNotes() {
                         { txt: 'Coding power', doneAt: 187111111 }
                     ]
                 },
-                style: {
-                    backgroundColor: '#9097f8'
-                },
+                style: { backgroundColor: '#9097f8' },
                 labels: []
             },
             {
@@ -135,9 +129,7 @@ function _createNotes() {
                     url: 'https://www.youtube.com/watch?v=YLv9kot4lzE',
                     txt: 'so cute!'
                 },
-                style: {
-                    backgroundColor: '#D8BFD8'
-                },
+                style: { backgroundColor: '#D8BFD8' },
                 labels: []
             },
             {
@@ -149,9 +141,7 @@ function _createNotes() {
                     title: 'Reminder',
                     txt: 'To add MissBooks to the project.'
                 },
-                style: {
-                    backgroundColor: '#dfaf84'
-                },
+                style: { backgroundColor: '#dfaf84' },
                 labels: []
             },
             {
@@ -164,9 +154,7 @@ function _createNotes() {
                     url: 'https://res.cloudinary.com/worldpackers/image/upload/c_fill,f_auto,q_auto,w_1024/v1/guides/article_cover/hz4mzyf4iktjywa59nfp',
                     txt: 'So refreshing'
                 },
-                style: {
-                    backgroundColor: '#FFFFE0'
-                },
+                style: { backgroundColor: '#FFFFE0' },
                 labels: []
             },
             {
@@ -181,9 +169,7 @@ function _createNotes() {
                         { txt: 'Reading', doneAt: null }
                     ]
                 },
-                style: {
-                    backgroundColor: '#E0FFFF'
-                },
+                style: { backgroundColor: '#E0FFFF' },
                 labels: []
             },
             {
@@ -196,9 +182,7 @@ function _createNotes() {
                     url: 'https://www.youtube.com/watch?v=EcMlX_36gjs',
                     txt: 'Hilarious!'
                 },
-                style: {
-                    backgroundColor: '#6cbcfd'
-                },
+                style: { backgroundColor: '#6cbcfd' },
                 labels: []
             }
         ]

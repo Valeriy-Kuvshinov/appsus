@@ -15,7 +15,6 @@ export function NoteIndex() {
         loadNotes()
     }, [searchTerm, filterType])
 
-
     const loadNotes = async () => {
         const filterBy = { txt: searchTerm, type: filterType }
         const fetchedNotes = await noteService.query(filterBy)
@@ -29,7 +28,6 @@ export function NoteIndex() {
     return (
         <div className='note-page'>
             <h1>MissKeep</h1>
-
             <div>
                 <NoteFilter
                     onSearchChange={setSearchTerm}
@@ -38,7 +36,6 @@ export function NoteIndex() {
                     filterType={filterType}
                 />
             </div>
-
             <main>
                 <AddNote onNoteAdded={handleNoteAdded} />
                 <NoteList notes={notes} setNotes={setNotes} />
