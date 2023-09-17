@@ -27,7 +27,6 @@ export function NoteIndex() {
 
     return (
         <div className='note-page'>
-            <h1>MissKeep</h1>
             <div>
                 <NoteFilter
                     onSearchChange={setSearchTerm}

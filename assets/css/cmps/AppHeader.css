@@ -23,6 +23,13 @@ header {
     border-radius: 10px;
 }
 
+.logo-text {
+    font-size: 20px;
+    margin-top: 25px;
+    margin-left: 5px;
+    font-family: 'Satisfy', sans-serif;
+}
+
 .nav-links {
     display: flex;
     align-items: center;
