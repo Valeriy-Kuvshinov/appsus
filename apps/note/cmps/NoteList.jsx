@@ -23,9 +23,11 @@ export function NoteList({ notes, setNotes }) {
         const newNote = JSON.parse(JSON.stringify(noteToDuplicate))
         delete newNote.id
 
-        newNote.info.title = `${newNote.info.title}`
+        newNote.info.title = `${newNote.info.title} (Copy)`
+        const savedNote = await noteService.createNote(newNote.type, newNote.info, newNote.isPinned, newNote.style)
 
-        const savedNote = await noteService.createNote(newNote.type, newNote.info)
+        if (noteToDuplicate.labels) savedNote.labels = [...noteToDuplicate.labels]
+        
         setNotes([...notes, savedNote])
         showSuccessMsg('Note duplicated')
     }

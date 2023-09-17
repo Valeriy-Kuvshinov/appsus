@@ -54,11 +54,11 @@ function togglePin(noteId) {
 
 function createNote(type, info, isPinned = false, style = { backgroundColor: '#FFFFFF' }) {
     const newNote = getEmptyNote()
+    newNote.id = utilService.makeId()
     newNote.type = type
     newNote.info = info
     newNote.isPinned = isPinned
     newNote.style = style
-    newNote.id = utilService.makeId()
     newNote.createdAt = Date.now()
 
     return asyncStorageService.post(NOTE_KEY, newNote)
