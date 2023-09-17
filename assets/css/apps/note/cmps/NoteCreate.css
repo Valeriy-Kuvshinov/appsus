@@ -1,11 +1,12 @@
 .note-creation-wrapper {
     background-color: #fff;
-    padding: 20px;
+    padding: 10px;
     border-radius: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    border: 1px solid transparent;
+    box-shadow: 4px 4px 12px 0 rgba(60, 64, 67, 0.302), 4px 4px 12px rgba(60, 64, 67, 0.149);
 }
 
 .note-creation {
@@ -21,16 +22,20 @@
 .note-creation-wrapper input {
     width: 100%;
     padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
     border-radius: 10px;
     outline: none;
-    transition: border-color 0.3s ease;
+    border: none;
+    font-size: 1.2rem;
 }
 
 .note-creation select:focus,
-.note-creation input:focus {
-    border-color: #007bff;
+.note-creation input:focus,
+.note-creation-wrapper input:focus {
+    background: none;
+}
+
+.input-title {
+    opacity: 0.85;
 }
 
 .title-dropdown {
@@ -47,10 +52,13 @@
 }
 
 .note-type-dropdown-header {
-    border: 1px solid #ccc;
     padding: 10px;
     border-radius: 10px;
-    margin-top: 4px;
+    transition: 0.3s ease;
+}
+
+.note-type-dropdown-header:hover {
+    background-color: #ccc;
 }
 
 .note-type-dropdown-options {
@@ -65,16 +73,26 @@
 }
 
 .note-type-dropdown-option {
+    border-radius: 10px;
     padding: 10px;
+    transition: 0.3s ease;
+}
+
+.note-type-dropdown-option:hover {
+    background-color: #ccc;
 }
 
 .note-creation button {
-    background-color: #007bff;
-    color: #fff;
+    color: #131212;
     width: fit-content;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 5px;
+    background: none;
+    border: none;
+    transition: 0.3s;
 }
 
 .note-creation button:hover {
     background-color: #0056b3;
+    color: rgb(240, 234, 234);
 }

@@ -12,6 +12,7 @@ import { FilteredMail } from "./apps/mail/cmps/FilteredMail.jsx"
 import { BookDetails } from "./apps/books/cmps/BookDetails.jsx"
 import { BookIndex } from "./apps/books/views/BookIndex.jsx"
 import { BookAdd } from "./apps/books/cmps/book-add.jsx"
+import { UserMsg } from "./cmps/UserMsg.jsx"
 
 export function App() {
     return <Router>
@@ -21,14 +22,15 @@ export function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/mail" element={<MailIndex />} />
-                <Route path="/mail/compose" element={<EmailCompose/>}/>
-                <Route path="/mail/details/:emailId" element={<EmailDetails/>}/>
-                <Route path="/mail/filtered/:filterType" element={<FilteredMail/>}/>
+                <Route path="/mail/compose" element={<EmailCompose />} />
+                <Route path="/mail/details/:emailId" element={<EmailDetails />} />
+                <Route path="/mail/filtered/:filterType" element={<FilteredMail />} />
                 <Route path="/note" element={<NoteIndex />} />
-                <Route path="/book" element={<BookIndex/>}/>
-                <Route path="/book/:bookId" element={<BookDetails/>}/>
-                <Route path="/book/add" element={<BookAdd/>}/>
+                <Route path="/book" element={<BookIndex />} />
+                <Route path="/book/:bookId" element={<BookDetails />} />
+                <Route path="/book/add" element={<BookAdd />} />
             </Routes>
+            <UserMsg />
         </section>
     </Router>
 }

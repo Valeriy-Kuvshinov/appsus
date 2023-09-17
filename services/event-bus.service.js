@@ -34,4 +34,3 @@ export function showErrorMsg(txt) {
 
 window.showSuccessMsg = showSuccessMsg
 window.showErrorMsg = showErrorMsg
-

@@ -162,7 +162,6 @@ function star(email) {
 }
 
 function _createEmails() {
-    console.log('email created')
     let emails = storageService.loadFromStorage(EMAIL_KEY)
     if (!emails || !emails.length) {
         emails = []

@@ -1,4 +1,3 @@
-
 import { NoteValidator } from "./NoteValidator.jsx"
 import { NoteDropdown } from "./NoteDropdown.jsx"
 import { noteService } from "../services/note.service.js"
@@ -42,7 +41,6 @@ export function AddNote({ onNoteAdded }) {
             mediaLink,
             todos,
         })
-
         if (!isValid) {
             setErrorMessage(errorMessage)
             return
@@ -91,6 +89,7 @@ export function AddNote({ onNoteAdded }) {
                             placeholder="Title"
                             value={newNoteTitle}
                             onChange={(e) => setNewNoteTitle(e.target.value)}
+                            className="input-title"
                         />
                         <NoteDropdown
                             selectedValue={noteType}
@@ -141,5 +140,5 @@ export function AddNote({ onNoteAdded }) {
                 </div>
             )}
         </div>
-    );
+    )
 }

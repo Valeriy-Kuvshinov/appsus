@@ -6,7 +6,7 @@ export const NoteFilter = ({ onSearchChange, onFilterTypeChange, searchTerm, fil
         <div className='note-filter'>
             <input
                 type="text"
-                placeholder="Search..."
+                placeholder="Find your note..."
                 value={searchTerm}
                 onChange={(e) => onSearchChange(e.target.value)}
             />
