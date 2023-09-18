@@ -60,6 +60,7 @@ nav a.active-link {
     display: none;
     font-size: 40px;
     background: transparent;
+    padding: 10px;
 }
 
 .nav-dropdown {

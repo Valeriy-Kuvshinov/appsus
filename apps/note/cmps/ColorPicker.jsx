@@ -3,7 +3,7 @@ export function ColorPicker({ changeBackgroundColor }) {
         <div className="color-picker-dropdown">
             <button><i className="fa-solid fa-palette"></i></button>
             <div className="color-picker-content">
-                <div className="color-box" onClick={() => changeBackgroundColor("#FFFFFF")} style={{ background: 'transparent' }}><i className="fa-solid fa-droplet-slash"></i></div>
+                <div className="color-box" onClick={() => changeBackgroundColor("#FFFFFF")} style={{ background: 'transparent', color: '#161515' }}><i className="fa-solid fa-droplet-slash"></i></div>
                 <div className="color-box" onClick={() => changeBackgroundColor("#FF6B6B")} style={{ backgroundColor: "#FF6B6B" }}></div>
                 <div className="color-box" onClick={() => changeBackgroundColor("#98FB98")} style={{ backgroundColor: "#98FB98" }}></div>
                 <div className="color-box" onClick={() => changeBackgroundColor("#9097f8")} style={{ backgroundColor: "#9097f8" }}></div>

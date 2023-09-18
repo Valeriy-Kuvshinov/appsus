@@ -4,7 +4,7 @@ button {
     margin: 0.5em;
     border: 0;
     padding: 0.5em 0.8em;
-    border-radius: 4px;   
+    border-radius: 4px;
 }
 
 button:hover {
@@ -12,6 +12,7 @@ button:hover {
     color: white;
     transition: .3s;
 }
+
 input:focus {
     background-color: var(--clr1bg);
     transition: background-color 1s;

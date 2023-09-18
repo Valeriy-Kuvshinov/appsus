@@ -1,1 +1,55 @@
- /* note index */
+.note-page {
+    background-color: #f1f3f4;
+    color: #161515;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    overflow-x: hidden;
+    transition: 0.3s;
+}
+
+.dark-mode {
+    background-color: #161515;
+    color: #dde4e8;
+}
+
+.note-sidebar {
+    position: fixed;
+    left: 0;
+    height: 100vh;
+    width: 60px;
+    z-index: 100;
+    padding: 20px 0px;
+    margin-top: -2vh;
+}
+
+.note-sidebar button {
+    padding: 5px;
+    background: none;
+    font-size: 24px;
+    border-radius: 25px;
+    transition: 0.3s;
+    color: #161515;
+}
+
+.dark-mode .note-sidebar button {
+    color: #c8d0d4;
+}
+
+.note-sidebar button:hover {
+    background-color: #b1b8bd;
+}
+
+.dark-mode .note-sidebar button:hover {
+    background-color: #e1e6e9;
+    color: #161515;
+}
+
+.note-content {
+    margin-left: 60px;
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}

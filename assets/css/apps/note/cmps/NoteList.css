@@ -1,20 +1,7 @@
-.note-page {
-    background-color: #f1f3f4;
-    font-family: 'Roboto', sans-serif;
-    padding: 10px;
-    text-align: center;
-}
-
-.note-page h1 {
-    color: #202124;
-    font-size: 32px;
-    margin-top: 20px;
-}
-
 .notes-container h3 {
     text-align: left;
-    margin-bottom: 2vh;
-    margin-top: 6vh;
+    margin-bottom: 1em;
+    margin-top: 4em;
     color: #423d3d;
     font-size: .8875rem;
     margin-left: 2vw;
