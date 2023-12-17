@@ -4,17 +4,19 @@ import { FilterBar } from "./FilterBar.jsx"
 
 
 const { useState, useEffect } = React
+const { useParams } = ReactRouterDOM
 
 export function MailList() {
     const [emails, getEmails] = useState([])
+    const params = useParams()
 
     EmailService.resetFilters()
     useEffect(() => {
+        EmailService.setFilterBy(params.filterType)
         EmailService.query().then(emails => getEmails(emails))
     }, [emails])
 
     function changeStarSelection(emailId) {
-        console.log('star')
         const email=emails.find((email)=>email.id===emailId)
         EmailService.star(email)
       }

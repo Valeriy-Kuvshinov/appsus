@@ -13,8 +13,8 @@
    text-align: center;
  }
 
- .mails {
-   width: 100%;
+ .mails {  
+   flex-grow: 1;
    padding: 0.5em;
  }
 
@@ -86,9 +86,4 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
- }
-
- .filtered-mails{
-  display: flex;
-  height: 100%;
  }
