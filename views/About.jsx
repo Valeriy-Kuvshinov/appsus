@@ -5,7 +5,7 @@ export function About() {
 
     function clicked(ev) {
         const id = ev.target.id
-        var timerItself
+        var timerItself=5
         if (id === '1' && currentStep === 1) {
             alert('read closely')
             alert('you have entered a classified area')
@@ -184,10 +184,10 @@ export function About() {
                     <h4>Follow me on:</h4>
                     <div className='team-links'>
                         <h4><a href="https://github.com/RoeiTal123"><i className="fa-brands fa-square-github"></i></a></h4>
-                        <h4><a href="https://github.com/RoeiTal123"><i className="fa-brands fa-linkedin"></i></a></h4>
-                        <h4><a href="https://github.com/RoeiTal123"><i className="fa-brands fa-square-instagram"></i></a></h4>
+                        <h4><a href="https://www.linkedin.com/in/roei-tal-25814129b/"><i className="fa-brands fa-linkedin"></i></a></h4>
+                        {/* <h4><a href="https://github.com/RoeiTal123"><i className="fa-brands fa-square-instagram"></i></a></h4> */}
                     </div>
-                    <img src="imgs/roei.png" />
+                    <img src="imgs/roei.jpeg" />
                 </div>
                 <div className='team-member'>
                     <h2>Valeriy Kuvshinov</h2>
