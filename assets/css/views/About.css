@@ -9,7 +9,7 @@
 .about-text {
     line-height: 1.5;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
 }
 
 .about-text h1 {
@@ -57,10 +57,15 @@
     display: flex;
     justify-content: center;
     gap: 15px;
+    transition: color 0.5s;
 }
 
 .team-links a {
     font-size: 35px;
+}
+
+.team-links a i:hover{
+    color: white
 }
 
 .button1 {
@@ -89,4 +94,5 @@
 
 .about img{
     height: 250px;
+    width: 250px;
 }
