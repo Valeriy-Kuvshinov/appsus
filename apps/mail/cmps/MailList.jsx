@@ -11,9 +11,17 @@ export function MailList() {
     EmailService.resetFilters()
     useEffect(() => {
         EmailService.query().then(emails => getEmails(emails))
-    }, [])
+    }, [emails])
+
+    function changeStarSelection(emailId) {
+        console.log('star')
+        const email=emails.find((email)=>email.id===emailId)
+        EmailService.star(email)
+      }
 
     if (emails.length === 0) return null
+
+    // console.log('emails from maillist: ',emails)
 
     return <section className="mails">
        
@@ -21,7 +29,7 @@ export function MailList() {
         <FilterBar val={emails} func={getEmails} />
             {emails.map(mail =>
                 <li key={mail.id} className="mail-box">
-                    <MailPreview email={mail} />
+                    <MailPreview changeStarSelection={changeStarSelection} email={mail} />
                 </li>
             )}
         </ul>

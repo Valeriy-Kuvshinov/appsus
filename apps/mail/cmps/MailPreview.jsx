@@ -4,14 +4,14 @@ import { EmailService } from "../services/mail.service.js"
 
 const { useParams, useNavigate, Link } = ReactRouterDOM
 
-export function MailPreview({ email }) {
+export function MailPreview({ email, changeStarSelection }) {
   // console.log(email)
   // const [emails, getEmails] = useState(email)
 
-  function changeStarSelection() {
-    console.log('star')
-    EmailService.star(email)
-  }
+  // function changeStarSelection() {
+  //   console.log('star')
+  //   EmailService.star(email)
+  // }
   
   function toNote() {
     EmailService.createNoteFromEmail(email.id)
@@ -34,7 +34,7 @@ export function MailPreview({ email }) {
   return <section className={classN}>
     <div className="mail-info">
     <div className="innerBox">
-      <button onClick={changeStarSelection}>
+      <button onClick={()=>(changeStarSelection(email.id))}>
         {(email.isStar === true) ?
           <i className="fa-solid fa-star starred"></i> :
           <i className="fa-regular fa-star"></i>}

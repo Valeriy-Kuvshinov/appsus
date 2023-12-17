@@ -16,6 +16,8 @@ export function FilteredMail() {
 
     if (emails.length === 0) return null
 
+    console.log('emails from iltermail: ',emails)
+
     // if (emails.length === 0) return
 
     return <section className="filtered-mails">

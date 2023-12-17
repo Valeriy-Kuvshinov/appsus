@@ -1,38 +1,59 @@
-@media (min-width:1200px) {
-    .mailbox-chooser {
-        display: flex;
-        flex-direction: column;
-        width: 150px;
-        height: 100%;
-    }
+@media (min-width: 601px) {
+  .mailbox-chooser {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    height: 100%;
+  }
+  .mail-choosers1 {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mail-choosers2 {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
+@media (max-width: 600px) {
+  .mail-choosers1 {
+    display: flex;
+  }
+
+  .mail-choosers2 {
+    display: flex;
+  }
+}
 
 .mailbox-chooser {
-    
-    background-color: #F1F3F4;
-    border-right: 1px solid #ccc;
+  background-color: #f1f3f4;
+  border-right: 1px solid #ccc;
 }
+
 .mailbox-chooser button {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: none;
-    height: 40px;
-    background-color: #F1F3F4;
-    padding: 10px;
-    font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border: none;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #f1f3f4;
 }
 
 .mailbox-chooser button:hover,
 .chosen {
-    background-color: #7d7e81;
+  background-color: #7d7e81;
 }
 
-.mail-choosers1{
-    display: flex;
+.mail-choosers1 {
+  display: flex;
 }
 
-.mail-choosers2{
-    display: flex;
+.mail-choosers2 {
+  display: flex;
 }

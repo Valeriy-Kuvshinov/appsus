@@ -134,6 +134,7 @@ function resetFilters() {
     gFilterBy.isStar = false
     gFilterBy.isSent = false
     gFilterBy.isDraft = false
+    gFilterBy.isTrash = false
     // gFilterBy2.byDate = false
     // gFilterBy2.bySubject = false
 }

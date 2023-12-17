@@ -1,44 +1,11 @@
  /* mail list */
- /* .mail {
-   display: flex;
-   justify-content: space-between;
-   align-items: center;
-   border: 1px solid black;
- }
-
- .mail-box {
-   padding: 10px;
- }
-
- .mails {
-   width: 100%;
-   text-align: center;
- }
-
- ul {
-   list-style-type: none;
-   padding: 10px;
- }
-
- .innerBox {
-   display: flex;
- }
-
- .innerBox button {
-   background-color: white;
-   border: 0;
- }
-
- .starred {
-   color: goldenrod;
- } */
 
  .mail {
    display: flex;
    justify-content: space-between;
    align-items: center;
-   border-bottom: 1px solid #ccc;
-   padding: 12px;
+   border-block-end: 1px solid #ccc;
+   padding: 1em;
    cursor: pointer;
  }
 
@@ -47,9 +14,8 @@
  }
 
  .mails {
-   /* display: flex; */
    width: 100%;
-   padding: 15px;
+   padding: 0.5em;
  }
 
  ul {
@@ -61,12 +27,16 @@
  .innerBox {
    display: flex;
    align-items: center;
+   width: 300px;
+   overflow-x: hidden;
  }
 
  .innerBox button {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   padding: 0;
    background-color: transparent;
-   width: 20px;
-   height: 20px;
  }
 
 .email-text{
@@ -102,6 +72,14 @@
 
  .mail-line{
   width: 100%;
+ }
+
+ .mail-filter{
+   height: 40px;
+   width: auto;
+   margin: 0;
+   padding: 8px;
+   margin-block-end: 8px;
  }
 
  .mail-info{

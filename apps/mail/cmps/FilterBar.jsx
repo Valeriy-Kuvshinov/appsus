@@ -20,7 +20,7 @@ export function FilterBar({ val, func }) {
 
     if (emails.length === 0) return null
 
-    return <select onChange={(e) => onFilterChange(e.target.value)}>
+    return <select className="mail-filter" onChange={(e) => onFilterChange(e.target.value)}>
         <option value="all">All</option>
         <option value="Date">Date</option>
         <option value="Subject">Subject</option>
