@@ -4,6 +4,7 @@
     background: transparent;
     transition: background 0.3s;
     padding: 4px;
+    margin: 0;
     border-radius: 50%;
 }
 
